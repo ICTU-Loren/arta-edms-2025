@@ -1,0 +1,141 @@
+Last update:
+
+06/30/21
+To be continue make date and time form work
+
+06/11/21 
+Dynamic Dropdown
+-homecontroller --deleted code below
+        public function docs()
+    {
+        return view('docs.create');
+    }
+-dynamicdependent --not working
+-web --check routes
+-create --script not working
+-master --added ajax script in <head>
+
+
+<!-- COMMANDS -->
+
+// rename column in datatable
+php artisan make:migration rename_column_to_users_table
+
+php artisan migrate --path=/database/migrations/sample.php
+
+<!-- <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+                <p>
+                  Assigned Documents
+                  <i class="right fas fa-caret-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon"></i>
+                  <p> External
+                    <i class="right fas fa-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ url('files/n/external')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>New</p>
+                        <span class="badge badge-info right">{{ $extcounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/p/external')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>In-Progress</p>
+                        <span class="badge badge-info right">{{ $extprocounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/h/external')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>Hold</p>
+                        <span class="badge badge-info right">{{ $extholdcounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/d/external')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>Done</p>
+                        <span class="badge badge-info right">{{ $extdonecounts }}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon"></i>
+                  <p> Internal
+                    <i class="right fas fa-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ url('files/n/internal')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>New</p>
+                        <span class="badge badge-info right">{{ $intcounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/p/internal')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>In-Progress</p>
+                        <span class="badge badge-info right">{{ $intprocounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/h/internal')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>Hold</p>
+                        <span class="badge badge-info right">{{ $intprocounts }}</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('files/d/internal')}}" class="nav-link">
+                      <i class="fas fa-caret-right nav-icon"></i>
+                        <p>Done</p>
+                        <span class="badge badge-info right">{{ $intdonecounts }}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li> -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p> My Files
+                <i class="right fas fa-caret-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('files/external') }}" class="nav-link {{ request()->is('files/external') ? 'active' : '' }}">
+                  <i class="fas fa-caret-right nav-icon"></i>
+                    <p> External</p>
+                    <!-- <span class="badge badge-info right">{{ $extopen }}</span> -->
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('files/internal') }}" class="nav-link {{ request()->is('files/internal') ? 'active' : '' }}">
+                  <i class="fas fa-caret-right nav-icon"></i>
+                    <p> Internal</p>
+                    <!-- <span class="badge badge-info right">{{ $intopen }}</span> -->
+                </a>
+              </li>
+            </ul>
+          </li>
+
+

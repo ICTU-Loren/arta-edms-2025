@@ -1,0 +1,117 @@
+@extends('layouts.master')
+
+@section('content')
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Create new document</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Form -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Document Classification</label>
+                  <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">-</option>
+                  <option>Internal</option>
+                  <option>External</option>
+
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+          </div>
+          <!-- Sent-To-Office -->
+          <label>Sent To</label>  
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                  <select name="office" id="office" class="form-control input-lg dynamic" data-dependent="division">
+                    <option>Select Office</option>
+                    @foreach($office_list as $office)
+                    <option value="{{ $office->office}}">{{ $office->office }}</option>
+                    @endforeach
+                  </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- Division -->
+            <div class="col-md-4">
+              <div class="form-group">
+                  <select name="division" id="division" class="form-control input-lg dynamic" data-dependent="personnel">
+                    <option value="">Select Division</option>
+                  </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- Personnel -->
+            <div class="col-md-4">
+              <div class="form-group">
+                  <select name="personnel" id="personnel" class="form-control input-lg">
+                    <option value="">Select Personnel</option>
+                  </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+
+            {{ csrf_field()}}
+
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.card-body -->
+       </div>
+       <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
+<script>
+$(document).ready(function(){
+
+ $('.dynamic').change(function(){
+  if($(this).val() != '')
+  {
+   var select = $(this).attr("id");
+   var value = $(this).val();
+   var dependent = $(this).data('dependent');
+   var _token = $('input[name="_token"]').val();
+   $.ajax({
+    url:"{{ route('dynamicdependent.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token:_token, dependent:dependent},
+    success:function(result)
+    {
+     $('#'+dependent).html(result);
+    }
+
+   })
+  }
+ });
+
+ $('#office').change(function(){
+  $('#division').val('');
+  $('#personnel').val('');
+ });
+
+ $('#division').change(function(){
+  $('#personnel').val('');
+ });
+ 
+
+});
+</script>
+
+@endsection

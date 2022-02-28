@@ -130,7 +130,7 @@ class CreateNew extends Component
     public $s_email;
     public $s_contact;
     public $received_by;
-    public $comment = '- ';
+    public $comment;
     public $date_received;
     public $time_received;
     public $created_by;
@@ -143,13 +143,13 @@ class CreateNew extends Component
     {
         $data = $this->validate([
             'department' => 'required',
-            'office' => 'required',
-            'div_unit' => 'required',
+            'office' => '',
+            'div_unit' => '',
             'personnel' => 'required',
             'doc_class' => 'required',
             'doc_type' => 'required',
             'subject' => 'required',
-            'mode_of_trans' => '',
+            'mode_of_trans' => 'required',
             's_profile' => '',
             's_name' => '',
             's_address' => '',
@@ -172,7 +172,7 @@ class CreateNew extends Component
         $s_name = Auth::user()->name;
         $data['s_name']=$s_name;
 
-        $s_address = Auth::user()->div_unit_id;
+        $s_address = Auth::user()->div_unit;
         $data['s_adre$s_address']=$s_address;
 
         $s_email = Auth::user()->email;

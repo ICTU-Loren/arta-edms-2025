@@ -1,9 +1,14 @@
+<head>
+    <title>ARTA - EDTS</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/arta.png') }}">
+</head>
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
             <div class="mt-6">
-                <h3 class="box-title text-center text-lg "><strong>Electronic Document Tracking System</strong> <sup class="text-sm font-weight-lighter">&beta;eta</sup></h3>
+                <h3 class="box-title text-center text-lg"><strong>Electronic Document Tracking System</strong> <sup class="text-sm font-weight-lighter">&beta;eta</sup></h3>
             </div> 
         </x-slot>
 
@@ -35,20 +40,20 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <!-- <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-end mt-2" role="group" aria-label="Button group">
-                <x-jet-button class="mr-2 mt-2 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition">
+                <!-- <x-jet-button class="mr-2 mt-2 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition">
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}">Register</a>
                     @endif
-                </x-jet-button>
+                </x-jet-button> -->
 
                 <x-jet-button class="mt-2 inline-flex items-center justify-center px-4 py-2 bg-gray-600">
                         {{ __('Log in') }}

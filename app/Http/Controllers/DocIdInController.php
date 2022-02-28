@@ -31,13 +31,15 @@ class DocIdInController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
-            'title' => '',
+          'status' => 'required',
+          'modified_by' => '',
+          'modified_by_div_unit' => '',
     ]);
-            $internals = Internals::find($id);
-            $internals->status = $request->status;
-            $internals->title = Auth::user()->name;
-            $internals->save();
+          $internals = Internals::find($id);
+          $internals->status = $request->status;
+          $internals->modified_by = Auth::user()->name;
+          $internals->modified_by_div_unit = Auth::user()->div_unit;
+          $internals->save();
 
             return redirect()->route('iv.index', $internals->id)
             ->with('success','This document is now closed.');

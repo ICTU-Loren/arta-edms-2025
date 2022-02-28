@@ -22,6 +22,7 @@ Dynamic Dropdown
 php artisan make:migration rename_column_to_users_table
 
 php artisan migrate --path=/database/migrations/sample.php
+php artisan db:seed --class=SampleTable
 
 <!-- <li class="nav-item">
             <a href="#" class="nav-link">

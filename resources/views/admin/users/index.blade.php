@@ -11,10 +11,10 @@
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
-                      @role('SuperAdmin')
-                        <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="fa fa-plus-circle mr-1"></i> Create New User</a>
+                      @can('user-create')
+                        <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}"><i class="fa fa-plus-circle mr-1"></i> Create New User</a>
                         <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createUser"><i class="fa fa-plus-circle mr-1"></i> Create New User</button> -->
-                      @endrole
+                      @endcan
                     </div>
                     <!-- /.col -->
                     
@@ -78,15 +78,15 @@
                               </td>
                               <td>
                                 <!-- <a class="btn btn-info btn-sm mr-0" href="{{ route('users.show',$user->id) }}">View</a> -->
-                                @hasanyrole('SuperAdmin|Admin')
+                                @can('user-edit')
                                   <a  class="btn btn-primary btn-sm mr-0" href="{{ route('users.edit',$user->id) }}" title="View / Edit">View / Edit</i></a>
-                                @endhasanyrole
+                                @endcan
                                 
-                                @role('SuperAdmin')
+                                @can('role-delete')
                                   {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline', 'title'=>'Delete']) !!}
                                       {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm'] ) !!}
                                   {!! Form::close() !!}
-                                @endrole
+                                @endcan
                               </td>
                             </tr>
 
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="goBack()">Back</button>
                     </div>
                     
                   </div>

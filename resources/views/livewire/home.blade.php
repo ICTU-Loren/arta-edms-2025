@@ -1,29 +1,47 @@
-<!DOCTYPE html>    
-<html lang="en">    
-<head>    
-  <meta charset="utf-8">    
-  <title>jQuery Change Event Example</title>    
-  <style>    
-  div {    
-    color: red;    
-  }    
-  </style>    
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>    
-<body>    
- <select id="select_id" name="actors" >    
-  <option>Test</option>    
-  <option selected="selected">Java</option>    
-  <option>Python</option>    
-  <option>Ruby</option>    
-  <option>PHP</option>    
-  <option>Jquery</option>    
-</select>    
-<div id="location"></div>    
- <script>    
-$( "select" ).change(function () {    
-document.getElementById("location").innerHTML="You selected: "+document.getElementById("select_id").value;  
-});  
-</script>    
- </body>    
-</html>   
+@extends('layouts.app')
+
+@section('content')
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h5 class="m-0">Dashboard</h5>
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content-header -->
+
+        @if(Session::has('message'))
+          <div class="alert alert-success alert-dismissible mb-3">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{Session::get('message')}}
+          </div>
+        @endif
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              
+                <div class="col-12">
+
+                      <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-info"></i> Welcome!</h5>
+                        Please wait 10-15 minutes for the Administrator to verify and activate your account. Thank you.
+                      </div>
+
+                </div>
+              
+            </div>
+            <!-- /.row -->
+          </div>
+        </section>
+        <!-- /.main-content -->
+        
+@endsection
+
+

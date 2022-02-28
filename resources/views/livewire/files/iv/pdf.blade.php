@@ -16,25 +16,30 @@
                         }
                     </style>
 
-                        <img src="<?php echo $header_logo ?>" style="position:fixed;top:-50px;width:300px height:80px;float:right;margin-botton:30px">
+                        <div class="col-12 mb-3">
+                            <img src="<?php echo $header_logo ?>" style="position:fixed;top:-30px;width:250px height:60px;float:right;margin-botton:30px">
+                        </div>
 
-                        <br /><br /><br />
+                        <br/><br/><br/><br/>
 
                         <table>
                             <tr>
-                                <th width="25%">DTS No.</th>
-                                <td>DTS No. IN2021-00{{ $internals->id }}</td>
+                                <th>DTS No.</th>
+                                <th width="25%">Document Status</th>
+                                <th>ARTA-EDTS URL</th>
                             </tr>
                             <tr>
-                                <th>Document Status</th>
+                                <td>IN2022-00{{ $internals->id }}</td>
                                 <td>{{ $internals->status }}</td>
+                                <td>127.0.0.1:8000/files/iv/{{ $internals->id }}</td>
                             </tr>
                         </table>
 
+
                         <table>
                             <tr>
-                                <td colspan="2" style="background:#E9ECEF;color:#6c757d;padding:5px;">
-                                 Document Details
+                                <td colspan="2" style="background:#f2f2f2;color:#6c757d;padding:5px;">
+                                Document Details
                                 </td>
                             </tr>
                             <tr>
@@ -43,10 +48,39 @@
                                     @if($internals->personnel > 0)
                                         {{ $internals->personnel }} <br />
                                     @endif
-                                                                
-                                    @if($internals->div_unit > 0)
-                                        {{ $internals->div_unit }} <br />
+                                    <span class="ml-0" style="font-size:14px;">
+                                    @if($internals->department > 0)
+                                        @if ($internals->department == '1')
+                                                Office of the Director General (ODG)
+                                            @elseif ($internals->department == '2')
+                                                Office of the Deputy Director General for Administration & Finance (ODDGAF)
+                                            @elseif ($internals->department == '3')
+                                                Office of the Deputy Director General for Legal (ODDGL)
+                                            @else ($internals->department == '4')
+                                                Office of the Deputy Director General for Operations (ODDGO)
+                                        @endif <br />
                                     @endif
+                                                                    
+                                    @if($internals->office > 0)
+                                        @if ($internals->office == '1')
+                                            Special Project Management Office (SPMO)        
+                                            @elseif ($internals->office == '2')
+                                                Finance and Administrative Office (FAO)
+                                            @elseif ($internals->office == '3')
+                                                Investigation, Enforcement and Litigation Office (IELO)     
+                                            @elseif ($internals->office == '4')
+                                                Legal and Public Assistance Office (LPAO)       
+                                            @elseif ($internals->office == '5')
+                                                Better Regulations Office (BRO)     
+                                            @else ($internals->office == '6')
+                                                Compliance Monitoring and Evaluation Office (CMEO)
+                                        @endif <br />
+                                    @endif
+
+                                    @if($internals->div_unit > 0)
+                                        {{ $internals->div_unit }}
+                                    @endif
+                                </span>
                                 </td>
                             </tr>
                             <tr>
@@ -71,10 +105,11 @@
                             </tr>
                             <tr>
                                 <th width="25%">Name</th>
-                                <td>{{ $internals->s_name }}</td>
+                                <td>{{ $internals->s_name }} <br /> 
+                                <span class="ml-0" style="font-size:14px;">{{ $internals->created_by_div_unit }}</td>
                             </tr>
                             <tr>
-                                <th>Contact Details</th>
+                                <th>Email Address</th>
                                 <td>{{ $internals->s_email }}</td>
                             </tr>
                             <tr>
@@ -97,8 +132,14 @@
 
                     <table>
                         <tr>
-                            <th width="25%">Modified by</th>
-                            <td>{{ $internals->modified_by }} <br /> {{ $internals->modified_by_div_unit }}</td>
+                            <td colspan="2" style="background:#f2f2f2;color:#6c757d;padding:5px;">
+                                ARTA-EDTS Details
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%">Closed by</th>
+                            <td>{{ $internals->modified_by }} <br /> 
+                                <span class="ml-0" style="font-size:14px;">{{ $internals->modified_by_div_unit }}</td>
                         </tr>
                         <tr>
                             <th>Date & Time modified</th>

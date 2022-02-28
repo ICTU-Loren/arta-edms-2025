@@ -23,27 +23,14 @@ class CreateNew extends Component
     public $selectedDepartment = null;
     public $selectedOffice = null;
     public $selectedDiv_unit = null;
-    public $selectedPersonnel = null;
 
-    public function mount($selectedPersonnel = null)
+    public function mount()
     {
         $this->departments = Department::all();
         $this->offices = collect();
         $this->div_units = collect();
-        $this->personnels = Personnel::all();
-        $this->selectedPersonnel = $selectedPersonnel;
 
-        if (!is_null($selectedPersonnel)) {
-            $personnels = Personnel::with('departments.offices.div_units')->find($selectedPersonnel);
-            if ($personnels) {
-                $this->personnels = Personnel::where('div_unit_id', $personnels->div_units_id)->get();
-                $this->div_units = Div_unit::where('office_id', $personnels->div_units->offices_id)->get();
-                $this->offices = Office::where('department_id', $personnels->div_units->offices->departments_id)->get();
-                $this->selectedDepartment = $personnels->div_units->offices->departments_id;
-                $this->selectedOffice = $personnels->div_units->offices_id;
-                $this->selectedDiv_unit = $personnel->div_units_id;
-            }
-        }
+        $this->personnels = User::all();
     }
 
     public function render()
@@ -62,13 +49,6 @@ class CreateNew extends Component
     {
         if (!is_null($offices)) {
             $this->div_units = Div_unit::where('office_id', $offices)->orderBy('name')->get();
-        }
-    }
-
-    public function updatedSelectedDiv_unit($div_units)
-    {
-        if (!is_null($div_units)) {
-            $this->personnels = Personnel::where('div_unit_id', $div_units)->orderBy('name')->get();
         }
     }
 
@@ -131,7 +111,7 @@ class CreateNew extends Component
     public $s_email;
     public $s_contact;
     public $received_by;
-    public $comment = '- ';
+    public $comment;
     public $date_received;
     public $time_received;
     public $created_by;

@@ -19,50 +19,63 @@
 
         <section class="content">
             <div class="container-fluid">
-
                 <div class="row">
 
                     <div class="col-12 mb-3">
                         <img src="{{ asset('/images/ARTA-OP.png') }}" style="top:-50px;width:250px;height:80px;float:right;margin-botton:30px;" alt="" title="">
                     </div>
 
-                    <div class="col-lg-8 col-md-12 col-sm-12 table-responsive">
-
-                        <table class="table table-bordered table-striped">
-                            <tr>
-                                <th width="25%">DTS No.</th>
-                                <td>DTS No. IN2021-00{{ $internals->id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Document Status</th>
-                                <td>{{ $internals->status }}</td>
-                            </tr>
-                        </table>
+                    <div class="col-7 table-responsive">
 
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                <p class="my-0 mb-0"><i class="fas fa-file-alt mr-2"></i> Document Details</p>
+                                <p class="my-0 mb-0">Document Details</p>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="25%">Addressed to</th>
+                                <th>DTS No.</th>
+                                <th>IN2022-00{{ $internals->id}}</th>
+                            </tr>
+                            <tr>
+                                <th width="20%">Addressed to</th>
                                 <td>
                                     @if($internals->personnel > 0)
                                         {{ $internals->personnel }} <br />
                                     @endif
-                                                                
-                                    @if($internals->div_unit > 0)
-                                        {{ $internals->div_unit }} <br />
-                                    @endif
-                                                                        
-                                    @if($internals->office > 0)
-                                        {{ $internals->office }} <br />
-                                    @endif
+                                    <span class="ml-0" style="font-size:14px;">
+                                        @if($internals->department > 0)
+                                            @if ($internals->department == '1')
+                                                    Office of the Director General (ODG)
+                                                @elseif ($internals->department == '2')
+                                                    Office of the Deputy Director General for Administration & Finance (ODDGAF)
+                                                @elseif ($internals->department == '3')
+                                                    Office of the Deputy Director General for Legal (ODDGL)
+                                                @else ($internals->department == '4')
+                                                    Office of the Deputy Director General for Operations (ODDGO)
+                                            @endif <br />
+                                        @endif
+                                                                    
+                                        @if($internals->office > 0)
+                                            @if ($internals->office == '1')
+                                                Special Project Management Office (SPMO)        
+                                                @elseif ($internals->office == '2')
+                                                    Finance and Administrative Office (FAO)
+                                                @elseif ($internals->office == '3')
+                                                    Investigation, Enforcement and Litigation Office (IELO)     
+                                                @elseif ($internals->office == '4')
+                                                    Legal and Public Assistance Office (LPAO)       
+                                                @elseif ($internals->office == '5')
+                                                    Better Regulations Office (BRO)     
+                                                @else ($internals->office == '6')
+                                                    Compliance Monitoring and Evaluation Office (CMEO)
+                                            @endif <br />
+                                        @endif
 
-                                    @if($internals->department > 0)
-                                        {{ $internals->department }}
-                                    @endif
+                                        @if($internals->div_unit > 0)
+                                            {{ $internals->div_unit }}
+                                        @endif
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -82,16 +95,17 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                   <p class="my-0 mb-0"><i class="fas fa-user-tie mr-2"></i> Sender's Details</p>
+                                   <p class="my-0 mb-0">Sending Details</p>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="25%">From</th>
-                                <td>{{ $internals->s_name }} <br \> {{ $internals->s_address }}</td>
+                                <th width="20%">From</th>
+                                <td>{{ $internals->s_name }} <br /> 
+                                    <span class="ml-0" style="font-size:14px;"> {{ $internals->created_by_div_unit }}</td>
                             </tr>
                             <tr>
-                                <th>Email</th>
-                                <td>{{ $internals->s_email }} <br /> {{ $internals->s_contact }}</td>
+                                <th>Email Address</th>
+                                <td>{{ $internals->s_email }}</td>
                             </tr>
                             <tr>
                                 <th>Date & Time Sent</th>
@@ -109,16 +123,26 @@
                                                         
                     </div>
 
-                    <div class="col-lg-4 col-md-12 col-sm-12 table-responsive">
+                    <div class="col-5 table-responsive">
 
                         <table class="table table-bordered table-striped">
                             <tr>
-                                <th width="25%">Modified by</th>
-                                <td>{{ $internals->modified_by }} <br /> {{ $internals->modified_by_div_unit }}</td>
+                                <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
+                                    <p class="my-0 mb-0">ARTA-EDTS Details</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Closed by</th>
+                                <td>{{ $internals->modified_by }}}<br /> 
+                                    <span class="ml-0" style="font-size:14px;">{{ $internals->modified_by_div_unit }}</td>
                             </tr>
                             <tr>
                                 <th>Date & Time modified</th>
                                 <td>{{ $internals->updated_at }}</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">URL</th>
+                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://127.0.0.1:8000/files/iv/'.$internals->id) !!}</span></td>
                             </tr>
                         </table>
                         
@@ -128,9 +152,7 @@
             </div>
         </section>
 
-        <!-- <div class="col-12">
-            <img src="{{ asset('/images/footer-logo.jpg') }}" style="margin:100px 0;left:0;right:0;height:30px;width:100%;" alt="" title="">
-        </div> -->
+        <br /><br /><br />
 
 <script>
     function goBack() {

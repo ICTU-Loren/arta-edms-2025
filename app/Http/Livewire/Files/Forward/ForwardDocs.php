@@ -18,56 +18,47 @@ use Livewire\WithFileUploads;
 use Carbon\Carbon;
 
 class ForwardDocs extends Component
-{
+{   
     public $departments;
     public $offices;
     public $div_units;
     public $personnels;
 
-    public $selectedDepartment = null;
-    public $selectedOffice = null;
-    public $selectedDiv_unit = null;
-    public $selectedPersonnel = null;
+    public $selectedDepartment = NULL;
+    public $selectedOffice = NULL;
+    public $selectedDivunit = NULL;
 
-    public function mount($selectedPersonnel = null)
+    public function mount()
     {
         $this->departments = Department::all();
         $this->offices = collect();
         $this->div_units = collect();
-        $this->personnels = Personnel::all();
-        $this->selectedPersonnel = $selectedPersonnel;
+        $this->personnels = collect();
+    }
 
-        if (!is_null($selectedPersonnel)) {
-            $personnels = Personnel::with('departments.offices.div_units')->find($selectedPersonnel);
-            if ($personnels) {
-                $this->personnels = Personnel::where('div_unit_id', $personnels->div_units_id)->get();
-                $this->div_units = Div_unit::where('office_id', $personnels->div_units->offices_id)->get();
-                $this->offices = Office::where('department_id', $personnels->div_units->offices->departments_id)->get();
-                $this->selectedDepartment = $personnels->div_units->offices->departments_id;
-                $this->selectedOffice = $personnels->div_units->offices_id;
-                $this->selectedDiv_unit = $personnel->div_units_id;
-            }
+    public function render()
+    {
+        return view('livewire.files.forward.forward-docs');
+    }
+
+    public function updatedSelectedDepartment($department)
+    {
+        if (!is_null($department)) {
+            $this->offices = Office::where('department_id', $department)->orderBy('name')->get();
         }
     }
 
-    public function updatedSelectedDepartment($departments)
+    public function updatedSelectedOffice($office)
     {
-        if (!is_null($departments)) {
-            $this->offices = Office::where('department_id', $departments)->orderBy('name')->get();
+        if (!is_null($office)) {
+            $this->div_units = Div_unit::where('office_id', $office)->orderBy('name')->get();
         }
     }
 
-    public function updatedSelectedOffice($offices)
+    public function updatedSelectedDivunit($div_unit)
     {
-        if (!is_null($offices)) {
-            $this->div_units = Div_unit::where('office_id', $offices)->orderBy('name')->get();
-        }
-    }
-
-    public function updatedSelectedDiv_unit($div_units)
-    {
-        if (!is_null($div_units)) {
-            $this->personnels = Personnel::where('div_unit_id', $div_units)->orderBy('name')->get();
+        if (!is_null($div_unit)) {
+            $this->personnels = User::where('div_unit_id', $div_unit)->orderBy('name')->get();
         }
     }
 
@@ -132,8 +123,9 @@ class ForwardDocs extends Component
     public $assigned_date;
     public $due_date;
     public $file_upload;
-    public $cc_email = '- ';
-    public $note_comment = '- ';
+    public $sharepoint_link;
+    public $note_comment_routed;
+    public $cc_email;
     public $doc_class;
     public $doc_type;
     public $sent_date;
@@ -145,7 +137,6 @@ class ForwardDocs extends Component
   
     public function submit()
     {
-
         $validatedData = $this->validate([
             'dts_no' => '',
             'status' => '',
@@ -162,13 +153,14 @@ class ForwardDocs extends Component
             'assigned_date' => '',
             'due_date' => '',
             'file_upload' => 'nullable|mimes:pdf,docx,jpg,jpeg,png|max:1024',
+            'sharepoint_link' => '',
+            'note_comment_routed' => '',
             'cc_email' => '',
-            'note_comment' => '',
             'doc_class' => '',
             'doc_type' => '',
             'sent_date'=> '',
             'sent_time'=> '',
-            'modeoftrans' => '',
+            'modeoftrans' => 'required',
             'routed_by' => '',
             'routed_by_div_unit' => '',
         ]);
@@ -185,7 +177,11 @@ class ForwardDocs extends Component
         $routed_by_div_unit = Auth::user()->div_unit;
         $validatedData['routed_by_div_unit']=$routed_by_div_unit;
 
-        $file_upload = $this->file_upload->store('files','public');
+        if ($this->file_upload == null) {
+            $file_upload ="";
+        }else {
+            $file_upload = $this->file_upload->store('files','public');
+        }
         $validatedData['file_upload'] = $file_upload;
   
         ExRoute::create($validatedData);
@@ -195,8 +191,4 @@ class ForwardDocs extends Component
         session()->flash('message', 'Document successfully routed to the assigned Office/Personnel!');
     }
 
-    public function render()
-    {
-        return view('livewire.files.forward.forward-docs');
-    }
 }

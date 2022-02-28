@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. EX2021-00{{ $externals->id }}</span></h5>
+                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. EX2022-00{{ $externals->id }}</span></h5>
                     </div><!-- /.col -->
 
                     <div class="col-sm-4" >
@@ -76,18 +76,39 @@
                                                             @if($externals->personnel > 0)
                                                                 {{ $externals->personnel }} <br />
                                                             @endif
-                                                        
-                                                            @if($externals->div_unit > 0)
-                                                                {{ $externals->div_unit }} <br />
-                                                            @endif
-                                                                
-                                                            <!-- @if($externals->office > 0)
-                                                                {{ $externals->office }} <br />
-                                                            @endif
+                                                            <span class="ml-0" style="font-size:14px;">
+                                                                @if($externals->department > 0)
+                                                                    @if ($externals->department == '1')
+                                                                            Office of the Director General (ODG)
+                                                                        @elseif ($externals->department == '2')
+                                                                            Office of the Deputy Director General for Administration & Finance (ODDGAF)
+                                                                        @elseif ($externals->department == '3')
+                                                                            Office of the Deputy Director General for Legal (ODDGL)
+                                                                        @else ($externals->department == '4')
+                                                                            Office of the Deputy Director General for Operations (ODDGO)
+                                                                    @endif <br />
+                                                                @endif
+                                                                    
+                                                                @if($externals->office > 0)
+                                                                    @if ($externals->office == '1')
+                                                                        Special Project Management Office (SPMO)        
+                                                                        @elseif ($externals->office == '2')
+                                                                            Finance and Administrative Office (FAO)
+                                                                        @elseif ($externals->office == '3')
+                                                                            Investigation, Enforcement and Litigation Office (IELO)     
+                                                                        @elseif ($externals->office == '4')
+                                                                            Legal and Public Assistance Office (LPAO)       
+                                                                        @elseif ($externals->office == '5')
+                                                                            Better Regulations Office (BRO)     
+                                                                        @else ($externals->office == '6')
+                                                                            Compliance Monitoring and Evaluation Office (CMEO)
+                                                                    @endif <br />
+                                                                @endif
 
-                                                            @if($externals->department > 0)
-                                                                {{ $externals->department }}
-                                                            @endif -->
+                                                                @if($externals->div_unit > 0)
+                                                                    {{ $externals->div_unit }}
+                                                                @endif
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -215,7 +236,8 @@
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
                                                         <th width="40%">Created by</th>
-                                                        <td>{{ $externals->created_by }} <br /> {{ $externals->created_by_div_unit }}</td>
+                                                        <td>{{ $externals->created_by }} <br /> 
+                                                        <span class="ml-0" style="font-size:14px;">{{ $externals->created_by_div_unit }}</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Date & Time created</th>
@@ -225,8 +247,9 @@
 
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
-                                                        <th width="40%">Modified by</th>
-                                                        <td>{{ $externals->modified_by }} <br /> {{ $externals->modified_by_div_unit }}</td>
+                                                        <th width="40%">Closed by</th>
+                                                        <td>{{ $externals->modified_by }} <br /> 
+                                                        <span class="ml-0" style="font-size:14px;">{{ $externals->modified_by_div_unit }}</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Date & Time modified</th>

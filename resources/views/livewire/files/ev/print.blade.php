@@ -21,47 +21,61 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-12 mb-3">
+                    <div class="col-12 mb-4">
                         <img src="{{ asset('/images/ARTA-OP.png') }}" style="top:-50px;width:250px;height:80px;float:right;margin-botton:30px;" alt="" title="">
                     </div>
 
-                    <div class="col-lg-8 col-md-12 col-sm-12 table-responsive">
-
-                        <table class="table table-bordered table-striped">
-                            <tr>
-                                <th width="25%">DTS No.</th>
-                                <td>DTS No. EX2021-00{{ $externals->id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Document Status</th>
-                                <td>{{ $externals->status }}</td>
-                            </tr>
-                        </table>
+                    <div class="col-7 table-responsive">
 
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                <p class="my-0 mb-0"><i class="fas fa-file-alt mr-2"></i> Document Details</p>
+                                <p class="my-0 mb-0">Document Details</p>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="25%">Addressed to</th>
+                                <th>DTS No.</th>
+                                <th>EX2022-00{{ $externals->id}}</th>
+                            </tr>
+                            <tr>
+                                <th width="20%">Addressed to</th>
                                 <td>
                                     @if($externals->personnel > 0)
                                         {{ $externals->personnel }} <br />
                                     @endif
-                                                                
-                                    @if($externals->div_unit > 0)
-                                        {{ $externals->div_unit }} <br />
-                                    @endif
-                                                                        
-                                    @if($externals->office > 0)
-                                        {{ $externals->office }} <br />
-                                    @endif
+                                    <span class="ml-0" style="font-size:14px;">
+                                        @if($externals->department > 0)
+                                            @if ($externals->department == '1')
+                                                    Office of the Director General (ODG)
+                                                @elseif ($externals->department == '2')
+                                                    Office of the Deputy Director General for Administration & Finance (ODDGAF)
+                                                @elseif ($externals->department == '3')
+                                                    Office of the Deputy Director General for Legal (ODDGL)
+                                                @else ($externals->department == '4')
+                                                    Office of the Deputy Director General for Operations (ODDGO)
+                                            @endif <br />
+                                        @endif
+                                                                    
+                                        @if($externals->office > 0)
+                                            @if ($externals->office == '1')
+                                                Special Project Management Office (SPMO)        
+                                                @elseif ($externals->office == '2')
+                                                    Finance and Administrative Office (FAO)
+                                                @elseif ($externals->office == '3')
+                                                    Investigation, Enforcement and Litigation Office (IELO)     
+                                                @elseif ($externals->office == '4')
+                                                    Legal and Public Assistance Office (LPAO)       
+                                                @elseif ($externals->office == '5')
+                                                    Better Regulations Office (BRO)     
+                                                @else ($externals->office == '6')
+                                                    Compliance Monitoring and Evaluation Office (CMEO)
+                                            @endif <br />
+                                        @endif
 
-                                    @if($externals->department > 0)
-                                        {{ $externals->department }}
-                                    @endif
+                                        @if($externals->div_unit > 0)
+                                            {{ $externals->div_unit }}
+                                        @endif
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -81,11 +95,11 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                <p class="my-0 mb-0"><i class="fas fa-user-tie mr-2"></i> Sender's Details</p>
+                                <p class="my-0 mb-0">Sender's Details</p>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="25%">Name</th>
+                                <th width="20%">Name</th>
                                 <td>{{ $externals->s_name }}</td>
                             </tr>
                             <tr>
@@ -109,11 +123,11 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                    <p class="my-0 mb-0"><i class="fas fa-user-edit mr-2"></i> Receiver's Details</p>
+                                    <p class="my-0 mb-0">Receiver's Details</p>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="25%">Received by</th>
+                                <th width="20%">Received by</th>
                                 <td>{{ $externals->received_by }} <br /> {{ $externals->received_by_div_unit }}</td>
                             </tr>
                             <tr>
@@ -128,27 +142,39 @@
                                                         
                     </div>
 
-                    <div class="col-lg-4 col-md-12 col-sm-12 table-responsive">
+                    <div class="col-5 table-responsive">
 
                         <table class="table table-bordered table-striped">
                             <tr>
-                                <th width="25%">Created by</th>
-                                <td>{{ $externals->created_by }} <br /> {{ $externals->created_by_div_unit }}</td>
+                                <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
+                                    <p class="my-0 mb-0">ARTA-EDTS Details</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Document Status</th>
+                                <td>{{ $externals->status }}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Created by</th>
+                                <td>{{ $externals->created_by }}<br /> 
+                                    <span class="ml-0" style="font-size:14px;"> {{ $externals->created_by_div_unit }}</td>
                             </tr>
                             <tr>
                                 <th>Date & Time created</th>
                                 <td>{{ $externals->created_at }}</td>
                             </tr>
-                        </table>
-
-                        <table class="table table-bordered table-striped">
                             <tr>
-                                <th width="25%">Modified by</th>
-                                <td>{{ $externals->modified_by }} <br /> {{ $externals->modified_by_div_unit }}</td>
+                                <th>Closed by</th>
+                                <td>{{ $externals->modified_by }}<br /> 
+                                    <span class="ml-0" style="font-size:14px;">{{ $externals->modified_by_div_unit }}</td>
                             </tr>
                             <tr>
                                 <th>Date & Time modified</th>
                                 <td>{{ $externals->updated_at }}</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">URL</th>
+                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://127.0.0.1:8000/files/ev/'.$externals->id) !!}</span></td>
                             </tr>
                         </table>
                         
@@ -156,6 +182,8 @@
                 </div>
             </div>
         </section>
+         
+        <br /><br /><br />
 
 <script>
     function goBack() {

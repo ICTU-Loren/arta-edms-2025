@@ -35,16 +35,16 @@ class DocIdInRouteController extends Controller
     {
         $request->validate([
             'status' => 'required',
-            'doc_class' => 'required',
-            'cc_email' => '',
+            'outgoing' => 'required',
+            'note_comment_personnel' => '',
             'modified_at' => '',
             // 'sent_date' => 'required',
             // 'sent_time' => 'required',
     ]);
             $inroute = InRoute::find($id);
             $inroute->status = $request->status;
-            $inroute->doc_class = $request->doc_class;
-            $inroute->cc_email = $request->cc_email;
+            $inroute->outgoing = $request->outgoing;
+            $inroute->note_comment_personnel = $request->note_comment_personnel;
             $inroute->modified_at = Carbon::now()->toDateTimeString();
             // $inroute->sent_date = $request->sent_date;
             // $inroute->sent_time = $request->sent_time;

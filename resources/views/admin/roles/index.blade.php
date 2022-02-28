@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <h4 class="m-1">Role Management</h4>
+                        <h5 class="m-1">Role Management</h5>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
-                        @hasanyrole('SuperAdmin')
-                            <a class="btn btn-primary" href="{{ route('roles.create') }}"><i class="fa fa-plus-circle mr-1"></i> Create New Role</a>
-                        @endhasanyrole
+                        @can('role-create')
+                            <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}"><i class="fa fa-plus-circle mr-1"></i> Create New Role</a>
+                        @endcan
                     </div>
                     <!-- /.col -->
 
@@ -55,15 +55,15 @@
                                             <td>{{ $role->name }}</td>
                                             <td>
                                                 <!-- <a class="btn btn-info btn-sm" href="{{ route('roles.show',$role->id) }}" title="View">View</i></a> -->
-                                                @hasanyrole('SuperAdmin|Admin')
+                                                @can('role-edit')
                                                     <a class="btn btn-primary btn-sm" href="{{ route('roles.edit',$role->id) }}" title="View / Edit">View / Edit</i></a>
-                                                @endhasanyrole
+                                                @endcan
 
-                                                @role('SuperAdmin')
+                                                @can('role-delete')
                                                     {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline', 'title'=>'Delete']) !!}
                                                         {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm'] ) !!}
                                                     {!! Form::close() !!}
-                                                @endrole
+                                                @endcan
                                             </td>
                                         </tr>
                                         @endforeach
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="goBack()">Back</button>
                             </div>
 
                         </div>

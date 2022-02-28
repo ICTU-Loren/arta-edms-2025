@@ -36,16 +36,16 @@ class DocIdExRouteController extends Controller
     {
         $request->validate([
             'status' => 'required',
-            'doc_class' => 'required',
-            'cc_email' => '',
+            'outgoing' => 'required',
+            'note_comment_personnel' => '',
             'modified_at' => '',
             // 'sent_date' => 'required',
             // 'sent_time' => 'required',
     ]);
             $exroute = ExRoute::find($id);
             $exroute->status = $request->status;
-            $exroute->doc_class = $request->doc_class;
-            $exroute->cc_email = $request->cc_email;
+            $exroute->outgoing = $request->outgoing;
+            $exroute->note_comment_personnel = $request->note_comment_personnel;
             $exroute->modified_at = Carbon::now()->toDateTimeString();
             // $exroute->sent_date = $request->sent_date;
             // $exroute->sent_time = $request->sent_time;

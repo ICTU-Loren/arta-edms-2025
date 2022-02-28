@@ -20,59 +20,62 @@
       <!-- Sidebar Menu -->
       <nav class="mt-3">
         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
-          
-          <li class="nav-item">
-            <a href="{{ url('dashboard')}}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p> Dashboard</p>
-            </a>
-          </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-                <p> Create New
+          @can('sidebar-view')
+          
+            <li class="nav-item">
+              <a href="{{ url('dashboard')}}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p> Dashboard</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                  <p> Create New
+                    <i class="right fas fa-caret-left"></i>
+                  </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ url('docs/e/create')}}" class="nav-link {{ request()->is('docs/e/create') ? 'active' : '' }}">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                    <p> External</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                <a href="{{ url('docs/i/create')}}" class="nav-link {{ request()->is('docs/i/create') ? 'active' : '' }}">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                    <p> Internal</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p> My Files
                   <i class="right fas fa-caret-left"></i>
                 </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('docs/e/create')}}" class="nav-link {{ request()->is('docs/e/create') ? 'active' : '' }}">
-                  <i class="fas fa-caret-right nav-icon"></i>
-                  <p> External</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ url('docs/i/create')}}" class="nav-link {{ request()->is('docs/i/create') ? 'active' : '' }}">
-                  <i class="fas fa-caret-right nav-icon"></i>
-                  <p> Internal</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p> My Files
-                <i class="right fas fa-caret-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('files/external') }}" class="nav-link {{ request()->is('files/external') ? 'active' : '' }}">
-                  <i class="fas fa-caret-right nav-icon"></i>
-                    <p> External</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('files/internal') }}" class="nav-link {{ request()->is('files/internal') ? 'active' : '' }}">
-                  <i class="fas fa-caret-right nav-icon"></i>
-                    <p> Internal</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ url('files/external') }}" class="nav-link {{ request()->is('files/external') ? 'active' : '' }}">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                      <p> External</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url('files/internal') }}" class="nav-link {{ request()->is('files/internal') ? 'active' : '' }}">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                      <p> Internal</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endcan
 
           @hasanyrole('SuperAdmin|Admin')
             <li class="nav-header">ADMIN MANAGEMENT</li>

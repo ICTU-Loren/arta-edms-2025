@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. IN2021-00{{ $internals->id }}</span></h5>
+                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. IN2022-00{{ $internals->id }}</span></h5>
                     </div><!-- /.col -->
 
                     <div class="col-sm-4" >
@@ -72,7 +72,40 @@
                                                     </tr>
                                                     <tr>
                                                         <th width="25%">Addressed to</th>
-                                                        <td>{{ $internals->personnel }} <br /> {{ $internals->div_unit }}</td>
+                                                        <td>{{ $internals->personnel }} <br />
+                                                        <span class="ml-0" style="font-size:14px;">
+                                                            @if($internals->department > 0)
+                                                                @if ($internals->department == '1')
+                                                                        Office of the Director General (ODG)
+                                                                    @elseif ($internals->department == '2')
+                                                                        Office of the Deputy Director General for Administration & Finance (ODDGAF)
+                                                                    @elseif ($internals->department == '3')
+                                                                        Office of the Deputy Director General for Legal (ODDGL)
+                                                                    @else ($internals->department == '4')
+                                                                        Office of the Deputy Director General for Operations (ODDGO)
+                                                                @endif <br />
+                                                            @endif
+                                                                
+                                                            @if($internals->office > 0)
+                                                                @if ($internals->office == '1')
+                                                                    Special Project Management Office (SPMO)        
+                                                                    @elseif ($internals->office == '2')
+                                                                        Finance and Administrative Office (FAO)
+                                                                    @elseif ($internals->office == '3')
+                                                                        Investigation, Enforcement and Litigation Office (IELO)     
+                                                                    @elseif ($internals->office == '4')
+                                                                        Legal and Public Assistance Office (LPAO)       
+                                                                    @elseif ($internals->office == '5')
+                                                                        Better Regulations Office (BRO)     
+                                                                    @else ($internals->office == '6')
+                                                                        Compliance Monitoring and Evaluation Office (CMEO)
+                                                                @endif <br />
+                                                            @endif
+
+                                                            @if($internals->div_unit > 0)
+                                                                {{ $internals->div_unit }}
+                                                            @endif
+                                                        </span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Subject</th>
@@ -90,16 +123,17 @@
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
                                                         <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
-                                                           <p class="my-0 mb-0"><i class="fas fa-user-tie mr-2"></i> Sender's Details</p>
+                                                           <p class="my-0 mb-0"><i class="fas fa-info-circle"></i> Sending Details</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th width="25%">From</th>
-                                                        <td>{{ $internals->s_name }} <br \> {{ $internals->s_address }}</td>
+                                                        <td>{{ $internals->s_name }} <br /> 
+                                                        <span class="ml-0" style="font-size:14px;">{{ $internals->created_by_div_unit }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Email</th>
-                                                        <td>{{ $internals->s_email }} <br /> {{ $internals->s_contact }}</td>
+                                                        <th>Email Address</th>
+                                                        <td>{{ $internals->s_email }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Date & Time Sent</th>
@@ -165,8 +199,9 @@
 
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
-                                                        <th width="40%">Modified by</th>
-                                                        <td>{{ $internals->title }}</td>
+                                                        <th width="40%">Closed by</th>
+                                                        <td>{{ $internals->modified_by }} <br /> 
+                                                        <span class="ml-0" style="font-size:14px;">{{ $internals->modified_by_div_unit }}</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Date & Time modified</th>

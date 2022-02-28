@@ -80,10 +80,10 @@
                                         <label>Department</label>
                                         <select name="department" id="department" class="form-control">
                                             <option value="{{ $user->department }}" selected>{{ $user->department }}</option>
-                                            <option value="Office of the Director General (ODG)">Office of the Director General (ODG)</option>
-                                            <option value="Office of the Deputy Director General for Administration & Finance (ODDGAF)">Office of the Deputy Director General for Administration & Finance (ODDGAF)</option>
-                                            <option value="Office of the Deputy Director General for Legal (ODDGL)">Office of the Deputy Director General for Legal (ODDGL)</option>
-                                            <option value="Office of the Deputy Director General for Operations (ODDGO)">Office of the Deputy Director General for Operations (ODDGO)</option>
+                                            <option value="Office of the Director General (ODG)">1. Office of the Director General (ODG)</option>
+                                            <option value="Office of the Deputy Director General for Administration & Finance (ODDGAF)">2. Office of the Deputy Director General for Administration & Finance (ODDGAF)</option>
+                                            <option value="Office of the Deputy Director General for Legal (ODDGL)">3. Office of the Deputy Director General for Legal (ODDGL)</option>
+                                            <option value="Office of the Deputy Director General for Operations (ODDGO)">4. Office of the Deputy Director General for Operations (ODDGO)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -92,12 +92,12 @@
                                         <label>Office</label>
                                         <select name="office" id="office" class="form-control">
                                             <option value="{{ $user->office }}" selected>{{ $user->office }}</option>
-                                            <option value="Better Regulations Office (BRO)">Better Regulations Office (BRO)</option>
-                                            <option value="Compliance Monitoring and Evaluation Office (CMEO)">Compliance Monitoring and Evaluation Office (CMEO)</option>
-                                            <option value="Finance and Administrative Office (FAO)">Finance and Administrative Office (FAO)</option>
-                                            <option value="Investigation, Enforcement and Litigation Office (IELO)">Investigation, Enforcement and Litigation Office (IELO)</option>
-                                            <option value="Legal and Public Assistance Office (LPAO)">Legal and Public Assistance Office (LPAO)</option>
-                                            <option value="Special Project Management Office (SPMO)">Special Project Management Office (SPMO)</option>
+                                            <option value="Special Project Management Office (SPMO)">1. Special Project Management Office (SPMO)</option>
+                                            <option value="Finance and Administrative Office (FAO)">2. Finance and Administrative Office (FAO)</option>
+                                            <option value="Investigation, Enforcement and Litigation Office (IELO)">3. Investigation, Enforcement and Litigation Office (IELO)</option>
+                                            <option value="Legal and Public Assistance Office (LPAO)">4. Legal and Public Assistance Office (LPAO)</option>
+                                            <option value="Better Regulations Office (BRO)">5. Better Regulations Office (BRO)</option>
+                                            <option value="Compliance Monitoring and Evaluation Office (CMEO)">6. Compliance Monitoring and Evaluation Office (CMEO)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -152,8 +152,8 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="goBack()">Back</button>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Save</button>
                         </div>
 
                         {!! Form::close() !!}

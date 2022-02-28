@@ -17,12 +17,12 @@ class RoleController extends Controller
      */
     function __construct()
     {
-        $this->middleware(['role_or_permission:SuperAdmin|role-list|role-create|role-edit|role-delete']);
-        $this->middleware(['role_or_permission:Admin|role-list|role-edit']);
-        //  $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        //  $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        //  $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        //  $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        // $this->middleware(['role_or_permission:SuperAdmin|role-list|role-create|role-edit|role-delete']);
+        // $this->middleware(['role_or_permission:Admin|role-list|role-edit']);
+         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:role-create', ['only' => ['create','store']]);
+         $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
     
     /**

@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="office">Office *</label>
+                    <label for="office">Office</label>
                     <select wire:model="selectedOffice" wire:model.defer="office" class="form-control rounded-0" >
                         <option value="" selected>-</option>
                         @if (!is_null($selectedDepartment))
@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="form-group col-md-3">
-                    <label for="div_unit">Division / Unit *</label>
+                    <label for="div_unit">Division / Unit</label>
                     <select wire:model="selectedDiv_unit" wire:model.defer="div_unit" class="form-control rounded-0">
                         <option value="" selected>-</option>
                         @if (!is_null($selectedOffice))
@@ -61,12 +61,14 @@
                             @endforeach
                         @endif
                     </select> -->
-                    <label for="personnel">Personnel</label>
+                    <label for="personnel">Personnel *</label>
                     <div class="input-group">
                         <input type="text" class="form-control rounded-0" id="personnel" wire:model="personnel">
-                            <div class="input-group-prepend"></div>
-                        @error('personnel') <span class="text-danger">{{ $message }}</span> @enderror
+                        <div class="input-group-prepend"></div>
                     </div>
+                        @error('personnel')
+                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                 </div>
             </div>
 
@@ -124,7 +126,7 @@
             <!-- MOD & Profile -->
             <div  class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="mode_of_trans">Mode of Transmittal</label>
+                    <label for="mode_of_trans">Mode of Transmittal *</label>
                     <select wire:model.defer="mode_of_trans" name="mode_of_trans" class="form-control rounded-0">
                         <option value="" selected>-</option>
                             @foreach ($modeoftrans as $mode_of_trans)

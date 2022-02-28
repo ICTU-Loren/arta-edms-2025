@@ -63,6 +63,8 @@ return [
 
     'home' => RouteServiceProvider::HOME,
 
+    'newemployee' => RouteServiceProvider::NEWEMPLOYEE,
+
     /*
     |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain

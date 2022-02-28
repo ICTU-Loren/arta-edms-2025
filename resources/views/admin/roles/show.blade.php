@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-3">
                     <div class="col-sm-6">
-                        <h4 class="m-1">Role Details <span class="ml-2" style="font-size:18px;color:#737373;">{{ $role->name }}</span></h4>
+                        <h5 class="m-1">Role Details <span class="ml-2" style="font-size:18px;color:#737373;">{{ $role->name }}</span></h5>
                     </div>
                     <!-- /.col -->
                 </div><!-- /.row -->

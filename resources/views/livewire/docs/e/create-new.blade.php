@@ -41,7 +41,7 @@
                 
                 <div class="form-group col-md-3">
                     <label for="div_unit">Division / Unit</label>
-                    <select wire:model="selectedDiv_unit" wire:model.defer="div_unit" class="form-control rounded-0">
+                    <select wire:model.defer="div_unit" class="form-control rounded-0">
                         <option value="" selected>-</option>
                         @if (!is_null($selectedOffice))
                             @foreach($div_units as $div_unit)
@@ -240,7 +240,7 @@
                     <select type="text" class="form-control rounded-0" id="received_by" rows="1" wire:model="received_by"></textarea>
                         <option value="" selected>-</option>    
                             @foreach($personnels as $personnel)
-                                <option value="{{ $personnel->name }}">{{ $personnel->name }}</option>
+                                <option value="{{ $personnel->name }} ({{ $personnel->div_unit }})">{{ $personnel->name }} ({{ $personnel->div_unit }})</option>
                             @endforeach
                     </select>
                         @error('received_by')

@@ -7,13 +7,16 @@
                 <!-- Addressed to --> 
                 <p class="text-primary mb-3">ASSIGNED TO</p>
                     <div class="form-row">
+                        
                         <div class="form-group col-md-3">
-                            <label for="departments">Department *</label>
-                            <select wire:model="selectedDepartment" wire:model.defer="department" class="form-control rounded-0" >
+                            <label for="department">Department *</label>
+                            <select wire:model="selectedDepartment" wire:model.defer="department" class="form-control rounded-0">
                                 <option value="" selected>-</option>
-                                @foreach($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                @endforeach
+                                
+                                    @foreach($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    @endforeach
+                                
                             </select>
                             @error('department')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -22,7 +25,7 @@
 
                         <div class="form-group col-md-3">
                             <label for="office">Office *</label>
-                            <select wire:model="selectedOffice" wire:model.defer="office" class="form-control rounded-0" >
+                            <select wire:model="selectedOffice" wire:model.defer="office" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedDepartment))
                                     @foreach($offices as $office)
@@ -37,11 +40,11 @@
                         
                         <div class="form-group col-md-3">
                             <label for="div_unit">Division / Unit *</label>
-                            <select wire:model="selectedDiv_unit" wire:model.defer="div_unit" name="div_units_id" class="form-control rounded-0">
+                            <select wire:model="selectedDivunit" wire:model.defer="div_unit" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedOffice))
                                     @foreach($div_units as $div_unit)
-                                        <option value="{{ $div_unit->name }}">{{ $div_unit->name }}</option>
+                                        <option value="{{ $div_unit->id }}">{{ $div_unit->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -52,9 +55,9 @@
 
                         <div class="form-group col-md-3">
                             <label for="personnel">Personnel *</label>
-                            <select wire:model="selectedPersonnel" wire:model.defer="personnel" name="personnels_id" class="form-control rounded-0">
+                            <select wire:model.defer="personnel" name="personnels_id" class="form-control rounded-0">
                                 <option value="" selected>-</option>
-                                @if (!is_null($selectedDiv_unit))
+                                @if (!is_null($selectedDivunit))
                                     @foreach($personnels as $personnel)
                                         <option value="{{ $personnel->name }}">{{ $personnel->name }}</option>
                                     @endforeach
@@ -64,6 +67,7 @@
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
                         </div>
+                        
                     </div>
 
                     <!-- Subject -->
@@ -108,7 +112,7 @@
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="modeoftrans">Mode of Transmittal</label>
+                            <label for="modeoftrans">Mode of Transmittal *</label>
                             <select wire:model.defer="modeoftrans" name="modeoftrans" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                     @foreach ($exmodeoftrans as $modeoftrans)
@@ -129,22 +133,35 @@
 
                     <!-- Comments, File -->
                     <div class="form-row">
-                        <div class="form-group col-md-8">
-                            <label for="file_upload">Upload file * </label> <div wire:loading wire:target="file_upload"><span style="color:#007bff; font-weight:500;"><i class="fas fa-upload"></i> Uploading...</i></span></div>
-                                <input type="file" class="form-control rounded-0" name="file_upload" wire:model="file_upload">
-                                    <ul class="text-muted well well-sm shadow-none">
-                                        <li>- Allowed formats: PDF, DOCX, JPG, PNG</li>
-                                        <li>- Maximum Size: 10MB</li>
-                                        <li>- You can upload larger files via <a href="#">SharePoint</a> and then include the link in the notes/comments.</li>
-                                    </ul>
-                                    @error('file_upload')
-                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
+                        <div class="form-group col-md-4">
+                            <label for="file_upload">Upload file </label> <div wire:loading wire:target="file_upload"><span style="color:#007bff; font-weight:500;"><i class="fas fa-upload"></i> Uploading...</i></span></div>
+                            <input type="file" class="form-control rounded-0" name="file_upload" wire:model="file_upload">
+                                <ul class="text-muted well well-sm shadow-none">
+                                    <li>- Allowed formats: PDF, DOCX, JPG, PNG</li>
+                                    <li>- Maximum Size: 10MB</li>
+                                </ul>
+                                @error('file_upload')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="note_comment">Notes / Comments</label>
-                            <textarea class="form-control rounded-0" name="note_comment" id="note_comment" wire:model="note_comment" rows="3"></textarea>
+                            <label for="note_comment">SharePoint Link</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-0" id="sharepoint_link" wire:model="sharepoint_link">
+                                <div class="input-group-prepend"></div>
+                                    <ul class="text-muted well well-sm shadow-none">
+                                        <li>- You can upload files via <a href="#">SharePoint</a> and then input the link here.</li>
+                                    </ul>
+                            </div>
+                                @error('sharepoint_link')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="note_comment_routed">Notes / Comments</label>
+                            <textarea class="form-control rounded-0" name="note_comment_routed" id="note_comment_routed" wire:model="note_comment_routed" rows="3"></textarea>
                                 <ul class="text-muted well well-sm shadow-none">
                                     <li>- Max Length: 500 characters</li>
                                 </ul>
@@ -152,8 +169,8 @@
                     </div>
                     
                     <div class="card-footer mt-6">
-                        <button type="reset" class="btn btn-secondary">Clear all</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-share-square"></i> Submit</button>
+                        <button type="reset" class="btn btn-secondary btn-sm">Clear all</button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-share-square"></i> Submit</button>
                     </div>
             </form>
 

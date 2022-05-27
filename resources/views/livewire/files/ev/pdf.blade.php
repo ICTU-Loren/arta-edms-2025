@@ -29,9 +29,9 @@
                                 <th>ARTA-EDTS URL</th>
                             </tr>
                             <tr>
-                                <td>EX2022-00{{ $externals->id }}</td>
+                                <td>{{ $externals->dts }}{{ $externals->id }}</td>
                                 <td>{{ $externals->status }}</td>
-                                <td>127.0.0.1:8000/files/ev/{{ $externals->id }}</td>
+                                <td>http://doctracker.arta.gov.ph/files/ev/{{ $externals->id }}</td>
                             </tr>
                         </table>
 

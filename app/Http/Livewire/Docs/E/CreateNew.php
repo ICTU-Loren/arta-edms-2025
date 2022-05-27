@@ -30,7 +30,7 @@ class CreateNew extends Component
         $this->offices = collect();
         $this->div_units = collect();
 
-        $this->personnels = User::all();
+        $this->personnels = User::orderBy('div_unit')->get();
     }
 
     public function render()
@@ -97,6 +97,7 @@ class CreateNew extends Component
 
     use WithFileUploads;
 
+    public $dts = 'EX2022-000';
     public $department;
     public $office;
     public $div_unit;
@@ -123,6 +124,7 @@ class CreateNew extends Component
     public function submit()
     {
         $data = $this->validate([
+            'dts' => '',
             'department' => 'required',
             'office' => '',
             'div_unit' => '',

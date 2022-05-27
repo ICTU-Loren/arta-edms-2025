@@ -35,7 +35,7 @@
                             </tr>
                             <tr>
                                 <th>DTS No.</th>
-                                <th>IN2022-00{{ $internals->id}}</th>
+                                <th>{{ $internals->dts }}{{ $internals->id}}</th>
                             </tr>
                             <tr>
                                 <th width="20%">Addressed to</th>
@@ -133,7 +133,7 @@
                             </tr>
                             <tr>
                                 <th width="30%">Closed by</th>
-                                <td>{{ $internals->modified_by }}}<br /> 
+                                <td>{{ $internals->modified_by }}<br /> 
                                     <span class="ml-0" style="font-size:14px;">{{ $internals->modified_by_div_unit }}</td>
                             </tr>
                             <tr>
@@ -142,7 +142,7 @@
                             </tr>
                             <tr>
                                 <th rowspan="2">URL</th>
-                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://127.0.0.1:8000/files/iv/'.$internals->id) !!}</span></td>
+                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://doctracker.arta.gov.ph/files/iv/'.$internals->id) !!}</span></td>
                             </tr>
                         </table>
                         

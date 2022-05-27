@@ -61,8 +61,8 @@
 
                             <tr>
                               <td hidden>{{ ++$i }}</td>
-                              <td>EX2021-000{{ $externals->id }}</td>
-                              <td>{{ $externals->personnel }} <br />{{ $externals->div_unit }}</td>
+                              <td>{{ $externals->dts }}{{ $externals->id }}</td>
+                              <td>{{ $externals->personnel }}</td>
                               <td>{{ $externals->doc_class }}</td>
                               <td>{{ $externals->subject }}</td>
                               <td>

@@ -61,7 +61,7 @@
 
                             <tr>
                               <td hidden>{{ ++$i }}</td>
-                              <td>IN2021-000{{ $internals->id }}</td>
+                              <td>{{ $internals->dts }}{{ $internals->id }}</td>
                               <td>{{ $internals->personnel }} <br />{{ $internals->div_unit }}</td>
                               <td>{{ $internals->doc_class }}</td>
                               <td>{{ $internals->subject }}</td>

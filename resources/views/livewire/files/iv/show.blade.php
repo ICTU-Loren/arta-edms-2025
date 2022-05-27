@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. IN2022-00{{ $internals->id }}</span></h5>
+                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. {{ $internals->dts }}{{ $internals->id }}</span></h5>
                     </div><!-- /.col -->
 
                     <div class="col-sm-4" >
@@ -97,8 +97,16 @@
                                                                         Legal and Public Assistance Office (LPAO)       
                                                                     @elseif ($internals->office == '5')
                                                                         Better Regulations Office (BRO)     
-                                                                    @else ($internals->office == '6')
+                                                                    @elseif ($internals->office == '6')
                                                                         Compliance Monitoring and Evaluation Office (CMEO)
+                                                                    @elseif ($internals->office == '7')
+                                                                        
+                                                                    @elseif ($internals->office == '8')
+                                                                        
+                                                                    @elseif ($internals->office == '9')
+                                                                        
+                                                                    @else ($internals->office == '10')
+                                                                        
                                                                 @endif <br />
                                                             @endif
 

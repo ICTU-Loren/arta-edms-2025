@@ -16,6 +16,7 @@ class ExRoute extends Model
     ];
     protected $fillable = [
         'id',
+        'dts',
         'dts_no',
         'status',
         'department',
@@ -26,6 +27,7 @@ class ExRoute extends Model
         'div_unit_id',
         'personnel',
         'personnel_id',
+        'email',
         'subject',
         'action_req',
         'file_upload',

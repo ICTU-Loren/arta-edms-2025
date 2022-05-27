@@ -38,7 +38,7 @@
                                         <th>Email Address</th>
                                         <th>Department</th>
                                         <th>Office</th>
-                                        <th>Division / Unit</th>
+                                        <th>Division/Unit/HEA/EA/AO</th>
                                         <th>Role</th>
                                         <th>Status</th>
                                     </tr>

@@ -14,6 +14,7 @@ class Internals extends Model
     ];
     protected $fillable = [
         'id',
+        'dts',
         'status',
         'department',
         'office',

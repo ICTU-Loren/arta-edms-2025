@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="form-group col-md-3">
-                    <label for="div_unit">Division / Unit</label>
+                    <label for="div_unit">Director / Division / Unit / HEA / EA / AO</label>
                     <select wire:model.defer="div_unit" class="form-control rounded-0">
                         <option value="" selected>-</option>
                         @if (!is_null($selectedOffice))
@@ -62,7 +62,7 @@
                         @endif
                     </select> -->
 
-                    <label for="personnel">Personnel *</label>
+                    <label for="personnel">Name *</label>
                     <div class="input-group">
                         <input type="text" class="form-control rounded-0" id="personnel" wire:model="personnel">
                         <div class="input-group-prepend"></div>
@@ -240,7 +240,7 @@
                     <select type="text" class="form-control rounded-0" id="received_by" rows="1" wire:model="received_by"></textarea>
                         <option value="" selected>-</option>    
                             @foreach($personnels as $personnel)
-                                <option value="{{ $personnel->name }} ({{ $personnel->div_unit }})">{{ $personnel->name }} ({{ $personnel->div_unit }})</option>
+                                <option value="{{ $personnel->name }} ({{ $personnel->div_unit }})">{{ $personnel->div_unit }} - {{ $personnel->name }}</option>
                             @endforeach
                     </select>
                         @error('received_by')

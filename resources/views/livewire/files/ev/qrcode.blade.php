@@ -7,7 +7,7 @@
             <div class="card-body">
                 {!! QrCode::size(400)->backgroundColor(255,255,255)->generate(
                    'DOCUMENT DETAILS' .'
-DTS No: EX2022-00'.$externals->id.'
+DTS No: '.$externals->dts.''.$externals->id.'
 Status: '.$externals->status.'
 Addressed to: '.$externals->personnel.'
 Subject: '.$externals->subject.' 

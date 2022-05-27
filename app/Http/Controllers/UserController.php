@@ -61,11 +61,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'department' => '',
-            'office' => '',
-            'div_unit' => '',
-            'roles' => 'required',
-            'approved' => ''
+            'department' => 'required',
+            'office' => 'required',
+            'div_unit' => 'required',
+            'department_id' => 'required',
+            'office_id' => 'required',
+            'div_unit_id' => 'required',
+            'roles_id' => '',
+            'approved' => 'required'
         ]);
     
         $input = $request->all();
@@ -121,6 +124,10 @@ class UserController extends Controller
             'department' => 'required',
             'office' => 'required',
             'div_unit' => 'required',
+            'department_id' => 'required',
+            'office_id' => 'required',
+            'div_unit_id' => 'required',
+            'roles_id' => '',
             'roles' => 'required',
             'approved' => 'required',
         ]);

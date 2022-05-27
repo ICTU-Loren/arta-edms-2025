@@ -66,7 +66,7 @@ class InternalStatusController extends Controller
 
     public function inroute_div_unit(Request $request)
     {
-        $inroute = InRoute::where('div_unit', '=', auth()->user()->div_unit)
+        $inroute = InRoute::where('div_unit', '=', auth()->user()->div_unit_id)
             ->orderBy('created_at','DESC')
             ->paginate(10);
 

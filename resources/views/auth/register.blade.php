@@ -30,33 +30,38 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="department_id" value="{{ __('Department') }}" />
-                <select name="department_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <x-jet-label for="department" value="{{ __('Department') }}" />
+                <select name="department" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="-" selected>-</option>    
-                    <option value="1">Office of the Director General (ODG)</option>
-                    <option value="2">Office of the Deputy Director General for Administration & Finance (ODDGAF)</option>
-                    <option value="3">Office of the Deputy Director General for Legal (ODDGL)</option>
-                    <option value="4">Office of the Deputy Director General for Operations (ODDGO)</option>
+                    <option value="Office of the Director General (ODG)">Office of the Director General (ODG)</option>
+                    <option value="Office of the Deputy Director General for Administration & Finance (ODDGAF)">Office of the Deputy Director General for Administration & Finance (ODDGAF)</option>
+                    <option value="Office of the Deputy Director General for Legal (ODDGL)">Office of the Deputy Director General for Legal (ODDGL)</option>
+                    <option value="Office of the Deputy Director General for Operations (ODDGO)">Office of the Deputy Director General for Operations (ODDGO)</option>
                 </select>
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="office_id" value="{{ __('Office') }}" />
-                <select name="office_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <x-jet-label for="office" value="{{ __('Office') }}" />
+                <select name="office" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="-" selected>-</option>  
-                    <option value="3">Better Regulations Office (BRO)</option>
-                    <option value="4">Compliance Monitoring and Evaluation Office (CMEO)</option>
-                    <option value="2">Finance and Administrative Office (FAO)</option>
-                    <option value="5">Investigation, Enforcement and Litigation Office (IELO)</option>
-                    <option value="6">Legal and Public Assistance Office (LPAO)</option>
-                    <option value="1">Special Project Management Office (SPMO)</option>
+                    <option value="Better Regulations Office (BRO)">Better Regulations Office (BRO)</option>
+                    <option value="Compliance Monitoring and Evaluation Office (CMEO)">Compliance Monitoring and Evaluation Office (CMEO)</option>
+                    <option value="Finance and Administrative Office (FAO)">Finance and Administrative Office (FAO)</option>
+                    <option value="Investigation, Enforcement and Litigation Office (IELO)">Investigation, Enforcement and Litigation Office (IELO)</option>
+                    <option value="Legal and Public Assistance Office (LPAO)">Legal and Public Assistance Office (LPAO)</option>
+                    <option value="Office of the Director General (ODG)">Office of the Director General (ODG)</option>
+                    <option value="Office of the Deputy Director General for Administration & Finance (ODDGAF)">Office of the Deputy Director General for Administration & Finance (ODDGAF)</option>
+                    <option value="Office of the Deputy Director General for Legal (ODDGL)">Office of the Deputy Director General for Legal (ODDGL)</option>
+                    <option value="Office of the Deputy Director General for Operations (ODDGO)">Office of the Deputy Director General for Operations (ODDGO)</option>
+                    <option value="Special Project Management Office (SPMO)">Special Project Management Office (SPMO)</option>
                 </select>
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="div_unit" value="{{ __('Division / Unit') }}" />
+                <x-jet-label for="div_unit" value="{{ __('Division / Unit / HEA / EA / AO') }}" />
                 <select name="div_unit" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="-" selected>-</option>    
+                    <option value="-" selected>-</option>
+                    <option value="Administrative Officer">Administrative Officer</option>
                     <option value="Better Regulation Division A (BRO A)">Better Regulation Division A (BRO A)</option>
                     <option value="Better Regulation Division B (BRO B)">Better Regulation Division B (BRO B)</option>
                     <option value="Better Regulation Division C (BRO C)">Better Regulation Division C (BRO C)</option>
@@ -64,16 +69,26 @@
                     <option value="Compliance Monitoring and Evaluation Division A (CMED A)">Compliance Monitoring and Evaluation Division A (CMED A)</option> 
                     <option value="Compliance Monitoring and Evaluation Division B (CMED B)">Compliance Monitoring and Evaluation Division B (CMED B)</option> 
                     <option value="Compliance Monitoring and Evaluation Division C (CMED C)">Compliance Monitoring and Evaluation Division C (CMED C)</option> 
-                    <option value="Compliance Monitoring and Evaluation Division D (CMED D)">Compliance Monitoring and Evaluation Division D (CMED D)</option> 
+                    <option value="Compliance Monitoring and Evaluation Division D (CMED D)">Compliance Monitoring and Evaluation Division D (CMED D)</option>
+                    <option value="Community and Multi-Sector Affairs Unit (CMSAU)">Community and Multi-Sector Affairs Unit (CMSAU)</option>
+                    <option value="Director">Director</option>
+                    <option value="Doing Business Division (DBD)">Doing Business Division (DBD)</option>
+                    <option value="Executive Assistant (EA)">ODG Executive Assistant (EA)</option>
+                    <option value="Executive Assistant (EA)">ODDGAF Executive Assistant (EA)</option>
+                    <option value="Executive Assistant (EA)">ODDGL Executive Assistant (EA)</option>
+                    <option value="Executive Assistant (EA)">ODDGO Executive Assistant (EA)</option>
                     <option value="Finance Division">Finance Division</option>
-                    <option value="General Services Division (GSD)">General Services Division (GSD)</option> 
+                    <option value="General Services Division (GSD)">General Services Division (GSD)</option>
+                    <option value="Head Executive Assistant (HEA)">Head Executive Assistant (HEA)</option>
                     <option value="Human Resource Development Division (HRDD)">Human Resource Development Division (HRDD)</option> 
                     <option value="Information and Communications Technology Unit (ICTU)">Information and Communications Technology Unit (ICTU)</option> 
                     <option value="Investigation and Enforcement Division (IED)">Investigation and Enforcement Division (IED)</option>
                     <option value="Legal Division">Legal Division</option>
                     <option value="Litigation Division">Litigation Division</option>
+                    <option value="Planning Unit">Planning Unit</option>
                     <option value="Public Assistance Division (PAD)">Public Assistance Division (PAD)</option>
                     <option value="Public Relations Unit (PRU)">Public Relations Unit (PRU)</option>
+                    <option value="Regulatory Management and Training Division (RMTD)">Regulatory Management and Training Division (RMTD)</option>
                     <option value="Security and Intelligence">Security and Intelligence</option>
                     <option value="Special Project Management Teams (SPMT)">Special Project Management Teams (SPMT)</option>
                 </select>

@@ -132,6 +132,7 @@ Route::group(['middleware' => ['can:user-view']], function () {
     // Files Route - View //
     Route::get('/files/ev/{dts_no}', [ExternalRouteController::class], 'displayroute')->name('ev.index');
     Route::get('/files/forward/exroute/edit/{id}', [DocIdExRouteController::class, 'edit'])->name('edit.exroute.edit');
+    Route::put('/files/forward/exroute/updateroute/{id}', [DocIdExRouteController::class, 'updateroute'])->name('forward.exroute.updateroute');
     Route::put('/files/forward/exroute/update/{id}', [DocIdExRouteController::class, 'update'])->name('forward.exroute.update');
     Route::put('/files/forward/exroute/open/{id}', [DocIdExRouteController::class, 'open'])->name('forward.exroute.open');
     Route::get('/files/forward/exroute/print/{id}', [DocIdExRouteController::class, 'print'])->name('print.print');
@@ -139,6 +140,7 @@ Route::group(['middleware' => ['can:user-view']], function () {
 
     Route::get('/files/iv/{dts_no}', [InternalRouteController::class], 'displayroute')->name('iv.index');
     Route::get('/files/forward/inroute/edit/{id}', [DocIdInRouteController::class, 'edit'])->name('edit.inroute.edit');
+    Route::put('/files/forward/inroute/updateroute/{id}', [DocIdInRouteController::class, 'updateroute'])->name('forward.inroute.updateroute');
     Route::put('/files/forward/inroute/update/{id}', [DocIdInRouteController::class, 'update'])->name('forward.inroute.update');
     Route::put('/files/forward/inroute/open/{id}', [DocIdInRouteController::class, 'open'])->name('forward.inroute.open');
     Route::get('/files/forward/inroute/print/{id}', [DocIdInRouteController::class, 'print'])->name('print.print');

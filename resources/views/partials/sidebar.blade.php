@@ -75,6 +75,13 @@
                 </li>
               </ul>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ asset('manual/ARTA-EDTS User Manual 04-04-22.pdf') }}" class="nav-link" target="_blank">
+              <i class="nav-icon fas fa-question-circle"></i>
+                <p> User Manual</p>
+              </a>
+            </li>
           @endcan
 
           @hasanyrole('SuperAdmin|Admin')

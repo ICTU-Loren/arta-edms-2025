@@ -82,7 +82,7 @@
                                                     <li><b>office-status</b> - have access to External and Internal Office Status.</li>
                                                     <li><b>div_unit-status</b> - have access to External and Internal Divsion/Unit Status.</li>
                                                 <span class="mb-2" style="font-size:13px;color:#737373;">APP LAYOUT</span>
-                                                    <li><b>guest-view</b> - <i>not in use.</i></li>
+                                                    <li><b>guest-view</b> - have access only in /guest.</li>
                                             </ul>
                                         </div>
                                     </div>

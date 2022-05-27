@@ -39,7 +39,7 @@
                         </div>
                         
                         <div class="form-group col-md-3">
-                            <label for="div_unit">Division / Unit *</label>
+                            <label for="div_unit">Division/Unit/HEA/EA/AO *</label>
                             <select wire:model="selectedDivunit" wire:model.defer="div_unit" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedOffice))
@@ -55,7 +55,7 @@
 
                         <div class="form-group col-md-3">
                             <label for="personnel">Personnel *</label>
-                            <select wire:model.defer="personnel" name="personnels_id" class="form-control rounded-0">
+                            <select wire:model="selectedPersonnel" wire:model.defer="personnel" name="personnels_id" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedDivunit))
                                     @foreach($personnels as $personnel)
@@ -64,6 +64,20 @@
                                 @endif
                             </select>
                             @error('personnel')
+                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group col-md-3" hidden>
+                            <label for="email">Email Address*</label>
+                            <select wire:model.defer="email" name="emails_id" class="form-control rounded-0">
+                                @if (!is_null($selectedPersonnel))
+                                    @foreach($emails as $email)
+                                        <option value="{{ $email->email }}">{{ $email->email }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            @error('email')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
                         </div>

@@ -36,7 +36,7 @@
                                 <table class="table table-bordered table-striped">
                                     <tr>
                                         <th width="25%">DTS No.</th>
-                                        <td>IN2022-00{{ $inroute->dts_no }}</td>
+                                        <td>{{ $inroute->dts }}{{ $inroute->dts_no }}</td>
                                     </tr>
                                     <tr>
                                         <th width="30%">Assigned to</th>
@@ -65,8 +65,16 @@
                                                         LPAO
                                                     @elseif ($inroute->office == '5')
                                                         BRO
-                                                    @else ($inroute->office == '6')
+                                                    @elseif ($inroute->office == '6')
                                                         CMEO
+                                                    @elseif ($inroute->office == '7')
+                                                        ODG
+                                                    @elseif ($inroute->office == '8')
+                                                        ODDGAF
+                                                    @elseif ($inroute->office == '9')
+                                                        ODDGL
+                                                    @else ($inroute->office == '10')
+                                                        ODDGO
                                                 @endif /
                                             @endif
 
@@ -107,8 +115,40 @@
                                                         Compliance Monitoring and Evaluation Division B (CMED B)
                                                     @elseif ($inroute->div_unit == '18')
                                                         Compliance Monitoring and Evaluation Division C (CMED C)
-                                                    @else ($inroute->div_unit == '19')
+                                                    @elseif ($inroute->div_unit == '19')
                                                         Compliance Monitoring and Evaluation Division D (CMED D)
+                                                    @elseif ($inroute->div_unit == '20')
+                                                        Head Executive Assistant (HEA)
+                                                    @elseif ($inroute->div_unit == '21')
+                                                        Executive Assistant (EA)
+                                                    @elseif ($inroute->div_unit == '22')
+                                                        Executive Assistant (EA)
+                                                    @elseif ($inroute->div_unit == '23')
+                                                        Executive Assistant (EA)
+                                                    @elseif ($inroute->div_unit == '24')
+                                                        Executive Assistant (EA)
+                                                    @elseif ($inroute->div_unit == '25')
+                                                        Doing Business Division (DBD)
+                                                    @elseif ($inroute->div_unit == '26')
+                                                        Regulatory Management and Training Division (RMTD)
+                                                    @elseif ($inroute->div_unit == '27')
+                                                        Community and Multi-Sector Affairs Unit (CMSAU)
+                                                    @elseif ($inroute->div_unit == '28')
+                                                        Planning Unit
+                                                    @elseif ($inroute->div_unit == '29')
+                                                        Administrative Officer
+                                                    @elseif ($inroute->div_unit == '30')
+                                                        Director
+                                                    @elseif ($inroute->div_unit == '31')
+                                                        Director
+                                                    @elseif ($inroute->div_unit == '32')
+                                                        Director
+                                                    @elseif ($inroute->div_unit == '33')
+                                                        Director
+                                                    @elseif ($inroute->div_unit == '34')
+                                                        Director
+                                                    @else ($inroute->div_unit == '35')
+                                                        Director
                                                 @endif
                                             @endif
                                             </span>

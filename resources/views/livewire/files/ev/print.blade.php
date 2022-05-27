@@ -35,7 +35,7 @@
                             </tr>
                             <tr>
                                 <th>DTS No.</th>
-                                <th>EX2022-00{{ $externals->id}}</th>
+                                <th>{{ $externals->dts }}{{ $externals->id}}</th>
                             </tr>
                             <tr>
                                 <th width="20%">Addressed to</th>
@@ -174,7 +174,7 @@
                             </tr>
                             <tr>
                                 <th rowspan="2">URL</th>
-                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://127.0.0.1:8000/files/ev/'.$externals->id) !!}</span></td>
+                                <td><span class="">{!! QrCode::size(70)->backgroundColor(255,255,255)->generate('ARTA-EDTS URL:' .' http://doctracker.arta.gov.ph/files/ev/'.$externals->id) !!}</span></td>
                             </tr>
                         </table>
                         

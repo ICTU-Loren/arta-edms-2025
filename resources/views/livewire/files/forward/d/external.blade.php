@@ -62,7 +62,7 @@
 
                             <tr>
                               <td hidden>{{ ++$i }}</td>
-                              <td>EX2022-000{{ $exroute->dts_no }}</td>
+                              <td>{{ $exroute->dts }}{{ $exroute->dts_no }}</td>
                               <td>{{ $exroute->assigned_date }}</td>
                               <td>{{ $exroute->routed_by }} <br />{{ $exroute->routed_by_div_unit }}</td>
                               <td>{{ $exroute->subject }}</td>

@@ -18,6 +18,7 @@ class Externals extends Model
     ];
     protected $fillable = [
         'id',
+        'dts',
         'status',
         'department',
         'office',

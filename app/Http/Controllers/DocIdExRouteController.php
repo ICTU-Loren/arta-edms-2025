@@ -29,7 +29,30 @@ class DocIdExRouteController extends Controller
     public function edit($id)
     {
         $exroute = ExRoute::find($id);
-        return view('livewire.files.forward.edit', ['exroute' => $exroute], compact('exroute'));
+        return view('livewire.files.forward.exroute.edit', ['exroute' => $exroute], compact('exroute'));
+    }
+
+    public function updateroute(Request $request, $id)
+    {
+        $request->validate([
+            'action_req' => '',
+            'due_date' => '',
+            'modeoftrans' => '',
+            'file_upload' => '',
+            'sharepoint_link' => '',
+            'note_comment_routed' => '',
+    ]);
+            $exroute = ExRoute::find($id);
+            $exroute->action_req = $request->action_req;
+            $exroute->due_date = $request->due_date;
+            $exroute->modeoftrans = $request->modeoftrans;
+            $exroute->file_upload = $request->file_upload;
+            $exroute->sharepoint_link = $request->sharepoint_link;
+            $exroute->note_comment_routed = $request->note_comment_routed;
+            $exroute->save();
+
+            return redirect()->route('ev.index', $exroute->dts_no)
+            ->with('success','Route Details updated successfully!');
     }
 
     public function update(Request $request, $id)

@@ -28,7 +28,30 @@ class DocIdInRouteController extends Controller
     public function edit($id)
     {
         $inroute = InRoute::find($id);
-        return view('livewire.files.forward.edit', ['inroute' => $inroute], compact('inroute'));
+        return view('livewire.files.forward.inroute.edit', ['inroute' => $inroute], compact('inroute'));
+    }
+
+    public function updateroute(Request $request, $id)
+    {
+        $request->validate([
+            'action_req' => '',
+            'due_date' => '',
+            'modeoftrans' => '',
+            'file_upload' => '',
+            'sharepoint_link' => '',
+            'note_comment_routed' => '',
+    ]);
+            $inroute = InRoute::find($id);
+            $inroute->action_req = $request->action_req;
+            $inroute->due_date = $request->due_date;
+            $inroute->modeoftrans = $request->modeoftrans;
+            $inroute->file_upload = $request->file_upload;
+            $inroute->sharepoint_link = $request->sharepoint_link;
+            $inroute->note_comment_routed = $request->note_comment_routed;
+            $inroute->save();
+
+            return redirect()->route('iv.index', $inroute->dts_no)
+            ->with('success','Route Details updated successfully!');
     }
 
     public function update(Request $request, $id)

@@ -39,8 +39,16 @@
                                             LPAO
                                         @elseif ($exroute->office == '5')
                                             BRO
-                                        @else ($exroute->office == '6')
+                                        @elseif ($exroute->office == '6')
                                             CMEO
+                                        @elseif ($exroute->office == '7')
+                                            ODG
+                                        @elseif ($exroute->office == '8')
+                                            ODDGAF
+                                        @elseif ($exroute->office == '9')
+                                            ODDGL
+                                        @else ($exroute->office == '10')
+                                            ODDGO
                                     @endif /
                                 @endif
 
@@ -81,8 +89,40 @@
                                             Compliance Monitoring and Evaluation Division B (CMED B)
                                         @elseif ($exroute->div_unit == '18')
                                             Compliance Monitoring and Evaluation Division C (CMED C)
-                                        @else ($exroute->div_unit == '19')
+                                        @elseif ($exroute->div_unit == '19')
                                             Compliance Monitoring and Evaluation Division D (CMED D)
+                                        @elseif ($exroute->div_unit == '20')
+                                            Head Executive Assistant (HEA)
+                                        @elseif ($exroute->div_unit == '21')
+                                            Executive Assistant (EA)
+                                        @elseif ($exroute->div_unit == '22')
+                                            Executive Assistant (EA)
+                                        @elseif ($exroute->div_unit == '23')
+                                            Executive Assistant (EA)
+                                        @elseif ($exroute->div_unit == '24')
+                                            Executive Assistant (EA)
+                                        @elseif ($exroute->div_unit == '25')
+                                            Doing Business Division (DBD)
+                                        @elseif ($exroute->div_unit == '26')
+                                            Regulatory Management and Training Division (RMTD)
+                                        @elseif ($exroute->div_unit == '27')
+                                            Community and Multi-Sector Affairs Unit (CMSAU)
+                                        @elseif ($exroute->div_unit == '28')
+                                            Planning Unit
+                                        @elseif ($exroute->div_unit == '29')
+                                            Administrative Officer
+                                        @elseif ($exroute->div_unit == '30')
+                                            Director
+                                        @elseif ($exroute->div_unit == '31')
+                                            Director
+                                        @elseif ($exroute->div_unit == '32')
+                                            Director
+                                        @elseif ($exroute->div_unit == '33')
+                                            Director
+                                        @elseif ($exroute->div_unit == '34')
+                                            Director
+                                        @else ($exroute->div_unit == '35')
+                                            Director
                                     @endif
                                 @endif
                             </span>
@@ -354,11 +394,48 @@
                                                 Compliance Monitoring and Evaluation Division B (CMED B)
                                             @elseif ($exroute->div_unit == '18')
                                                 Compliance Monitoring and Evaluation Division C (CMED C)
-                                            @else ($exroute->div_unit == '19')
+                                            @elseif ($exroute->div_unit == '19')
                                                 Compliance Monitoring and Evaluation Division D (CMED D)
+                                            @elseif ($exroute->div_unit == '20')
+                                                Head Executive Assistant (HEA)
+                                            @elseif ($exroute->div_unit == '21')
+                                                Executive Assistant (EA)
+                                            @elseif ($exroute->div_unit == '22')
+                                                Executive Assistant (EA)
+                                            @elseif ($exroute->div_unit == '23')
+                                                Executive Assistant (EA)
+                                            @elseif ($exroute->div_unit == '24')
+                                                Executive Assistant (EA)
+                                            @elseif ($exroute->div_unit == '25')
+                                                Doing Business Division (DBD)
+                                            @elseif ($exroute->div_unit == '26')
+                                                Regulatory Management and Training Division (RMTD)
+                                            @elseif ($exroute->div_unit == '27')
+                                                Community and Multi-Sector Affairs Unit (CMSAU)
+                                            @elseif ($exroute->div_unit == '28')
+                                                Planning Unit
+                                            @elseif ($exroute->div_unit == '29')
+                                                Administrative Officer
+                                            @elseif ($exroute->div_unit == '30')
+                                                Director
+                                            @elseif ($exroute->div_unit == '31')
+                                                Director
+                                            @elseif ($exroute->div_unit == '32')
+                                                Director
+                                            @elseif ($exroute->div_unit == '33')
+                                                Director
+                                            @elseif ($exroute->div_unit == '34')
+                                                Director
+                                            @else ($exroute->div_unit == '35')
+                                                Director
                                         @endif
                                     @endif)
                                 </span></p>
+                                @if(Auth::check() && (Auth::user()->name == $exroute->routed_by))
+                                    <div class="col-lg-2 col-md-6 col-sm-6 mt-0">
+                                        <a href="{{ url('files/forward/exroute/edit',$exroute->id) }}"><button class="btn btn-primary btn-sm"><i class="fas fa-edit mr-1"></i> View/Edit</button></a>
+                                    </div>
+                                @endif
                         </div>
                 @endif
 

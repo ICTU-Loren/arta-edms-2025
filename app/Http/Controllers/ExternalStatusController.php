@@ -66,7 +66,7 @@ class ExternalStatusController extends Controller
 
     public function exroute_div_unit(Request $request)
     {
-        $exroute = ExRoute::where('div_unit', '=', auth()->user()->div_unit)
+        $exroute = ExRoute::where('div_unit', '=', auth()->user()->div_unit_id)
             ->orderBy('created_at','DESC')
             ->paginate(10);
 

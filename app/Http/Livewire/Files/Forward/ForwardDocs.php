@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Carbon\Carbon;
+use App\Mail\Email;
+use Mail;
+use File;
 
 class ForwardDocs extends Component
 {   
@@ -23,10 +26,12 @@ class ForwardDocs extends Component
     public $offices;
     public $div_units;
     public $personnels;
+    public $emails;
 
     public $selectedDepartment = NULL;
     public $selectedOffice = NULL;
     public $selectedDivunit = NULL;
+    public $selectedPersonnel = NULL;
 
     public function mount()
     {
@@ -34,6 +39,7 @@ class ForwardDocs extends Component
         $this->offices = collect();
         $this->div_units = collect();
         $this->personnels = collect();
+        $this->emails = collect();
     }
 
     public function render()
@@ -59,6 +65,13 @@ class ForwardDocs extends Component
     {
         if (!is_null($div_unit)) {
             $this->personnels = User::where('div_unit_id', $div_unit)->orderBy('name')->get();
+        }
+    }
+
+    public function updatedSelectedPersonnel($personnel)
+    {
+        if (!is_null($personnel)) {
+            $this->emails = User::where('name', $personnel)->orderBy('name')->get();
         }
     }
 
@@ -108,6 +121,7 @@ class ForwardDocs extends Component
 
     use WithFileUploads;
 
+    public $dts = 'EX2022-000';
     public $dts_no;
     public $status = 'New';
     public $department;
@@ -118,6 +132,7 @@ class ForwardDocs extends Component
     public $div_unit_id;
     public $personnel;
     public $personnel_id;
+    public $email;
     public $action_req;
     public $subject;
     public $assigned_date;
@@ -138,6 +153,7 @@ class ForwardDocs extends Component
     public function submit()
     {
         $validatedData = $this->validate([
+            'dts' => '',
             'dts_no' => '',
             'status' => '',
             'department' => 'required',
@@ -148,6 +164,7 @@ class ForwardDocs extends Component
             'div_unit_id' => '',
             'personnel' => 'required',
             'personnel_id' => '',
+            'email' => '',
             'action_req' => 'required',
             'subject' => 'required',
             'assigned_date' => '',
@@ -165,7 +182,7 @@ class ForwardDocs extends Component
             'routed_by_div_unit' => '',
         ]);
 
-        $dts_no = str_replace(('http://127.0.0.1:8000/files/ev/'), '', url()->previous());
+        $dts_no = str_replace(('http://doctracker.arta.gov.ph/files/ev/'), '', url()->previous());
         $validatedData['dts_no']=$dts_no;
 
         $assigned_date = Carbon::now()->toDateTimeString();
@@ -183,7 +200,9 @@ class ForwardDocs extends Component
             $file_upload = $this->file_upload->store('files','public');
         }
         $validatedData['file_upload'] = $file_upload;
-  
+
+        Mail::to($this->emails)->send(new Email($validatedData));
+        
         ExRoute::create($validatedData);
         
         // return redirect()->back();
@@ -191,4 +210,5 @@ class ForwardDocs extends Component
         session()->flash('message', 'Document successfully routed to the assigned Office/Personnel!');
     }
 
+ 
 }

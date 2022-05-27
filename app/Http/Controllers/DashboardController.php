@@ -43,12 +43,22 @@ class DashboardController extends Controller
         $extopen = Externals::where('created_by', '=', auth()->user()->name)->where('status', '=', 'Open')->count();
         $extclosed = Externals::where('created_by', '=', auth()->user()->name)->where('status', '=', 'Closed')->count();
 
+        $allextcounts = ExRoute::where('status', '=', 'New')->count();
+        $allextprocounts = ExRoute::where('status', '=', 'In-progress')->count();
+        $allextholdcounts = ExRoute::where('status', '=', 'Hold')->count();
+        $allextdonecounts = ExRoute::where('status', '=', 'Done')->count();
+
         $intcounts = InRoute::where('personnel', '=', auth()->user()->name)->where('status', '=', 'New')->count();
         $intprocounts = InRoute::where('personnel', '=', auth()->user()->name)->where('status', '=', 'In-progress')->count();
         $intholdcounts = InRoute::where('personnel', '=', auth()->user()->name)->where('status', '=', 'Hold')->count();
         $intdonecounts = InRoute::where('personnel', '=', auth()->user()->name)->where('status', '=', 'Done')->count();
         $intopen = Internals::where('created_by', '=', auth()->user()->name)->where('status', '=', 'Open')->count();
         $intclosed = Internals::where('created_by', '=', auth()->user()->name)->where('status', '=', 'Closed')->count();
+
+        $allintcounts = InRoute::where('status', '=', 'New')->count();
+        $allintprocounts = InRoute::where('status', '=', 'In-progress')->count();
+        $allintholdcounts = InRoute::where('status', '=', 'Hold')->count();
+        $allintdonecounts = InRoute::where('status', '=', 'Done')->count();
 
         // My Files External Chart
         $my_ex_data = DB::table('externals')
@@ -173,7 +183,7 @@ class DashboardController extends Controller
 
         // Div_Unit External Route Chart
         $exroute_div_unit_data = DB::table('ex_route')
-            ->where('div_unit', '=', auth()->user()->div_unit)
+            ->where('div_unit', '=', auth()->user()->div_unit_id)
             ->select(
                 DB::raw('status as exroute_div_unit_status'),
                 DB::raw('count(*) as number'))
@@ -265,7 +275,7 @@ class DashboardController extends Controller
 
         // Div_Unit Internal Route Chart
         $inroute_div_unit_data = DB::table('in_route')
-            ->where('div_unit', '=', auth()->user()->div_unit)
+            ->where('div_unit', '=', auth()->user()->div_unit_id)
             ->select(
                 DB::raw('status as inroute_div_unit_status'),
                 DB::raw('count(*) as number'))
@@ -312,7 +322,10 @@ class DashboardController extends Controller
             'inroute_office_status' => json_encode($inroute_office_array),
             'inroute_div_unit_status' => json_encode($inroute_div_unit_array)
         ], compact(
-            'extcounts', 'extprocounts', 'extholdcounts', 'extdonecounts', 'extopen', 'extclosed', 
+            'extcounts', 'extprocounts', 'extholdcounts', 'extdonecounts', 
+            'extopen', 'extclosed',
+            'allextcounts', 'allextprocounts', 'allextholdcounts', 'allextdonecounts',
+            'allintcounts', 'allintprocounts', 'allintholdcounts', 'allintdonecounts', 
             'intcounts','intprocounts', 'intholdcounts', 'intdonecounts', 'intopen', 'intclosed', ));
     }
 }

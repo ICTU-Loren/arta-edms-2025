@@ -62,7 +62,7 @@
 
                             <tr>
                               <td hidden>{{ ++$i }}</td>
-                              <td>IN2022-000{{ $inroute->dts_no }}</td>
+                              <td>{{ $inroute->dts }}{{ $inroute->dts_no }}</td>
                               <td>{{ $inroute->assigned_date }}</td>
                               <td>{{ $inroute->routed_by }} <br />{{ $inroute->routed_by_div_unit }}</td>
                               <td>{{ $inroute->subject }}</td>

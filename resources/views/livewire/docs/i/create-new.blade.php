@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="form-group col-md-3">
-                    <label for="div_unit">Division / Unit</label>
+                    <label for="div_unit">Director / Division / Unit / HEA / EA / AO</label>
                     <select wire:model="selectedDiv_unit" wire:model.defer="div_unit" class="form-control rounded-0">
                         <option value="" selected>-</option>
                         @if (!is_null($selectedOffice))
@@ -61,7 +61,7 @@
                             @endforeach
                         @endif
                     </select> -->
-                    <label for="personnel">Personnel *</label>
+                    <label for="personnel">Signatory *</label>
                     <div class="input-group">
                         <input type="text" class="form-control rounded-0" id="personnel" wire:model="personnel">
                         <div class="input-group-prepend"></div>

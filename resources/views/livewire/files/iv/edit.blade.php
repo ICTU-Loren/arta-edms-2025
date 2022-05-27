@@ -8,7 +8,7 @@
                 <div class="row mb-3">
                 <div class="col-sm-6">
                     <h4 class="m-0">Edit Document</h4>
-                    <span>DTS No. IN2021-00{{ $documents->id }}</span>
+                    <span>DTS No. {{ $internals->dts }}{{ $documents->id }}</span>
                 </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->

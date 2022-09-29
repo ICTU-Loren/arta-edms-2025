@@ -542,6 +542,6 @@ function extendingValidatorMessages () {
 
     public function getSourceContext()
     {
-        return new Source("", "javascript/variables.twig", "C:\\www\\arta-edts\\public\\phpmyadmin\\templates\\javascript\\variables.twig");
+        return new Source("", "javascript/variables.twig", "C:\\xampp\\htdocs\\laravel\\arta-edts\\public\\phpmyadmin\\templates\\javascript\\variables.twig");
     }
 }

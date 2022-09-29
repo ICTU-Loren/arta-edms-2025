@@ -51,7 +51,7 @@
                               <th width="10%">DTS No.</th>
                               <th width="10%">Assigned date</th>
                               <th width="20%">Assigned by</th>
-                              <th width="20%">Subject</th>
+                              <th width="20%">Title</th>
                               <th width="15%">Action Required</th>
                               <th width="5%">Status</th>
                               <th width="5%">Action</th>

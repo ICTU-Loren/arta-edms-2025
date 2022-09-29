@@ -8,7 +8,7 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
             <div class="mt-6">
-                <h3 class="box-title text-center text-lg"><strong>Electronic Document Tracking System</strong> <sup class="text-sm font-weight-lighter">&beta;eta</sup></h3>
+                <h3 class="box-title text-center text-lg"><strong>Electronic Document Tracking System</strong></h3>
             </div> 
         </x-slot>
 
@@ -49,11 +49,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-2" role="group" aria-label="Button group">
-                <x-jet-danger-button class="mr-2 mt-2 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition">
+                <!-- <x-jet-danger-button class="mr-2 mt-2 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition">
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}">Register</a>
                     @endif
-                </x-jet-button>
+                </x-jet-button> -->
 
                 <x-jet-button class="mt-2 inline-flex items-center justify-center px-4 py-2 bg-blue-800 hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-700 active:bg-blue-700">
                         {{ __('Log in') }}

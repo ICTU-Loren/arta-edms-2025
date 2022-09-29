@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $externals->dts }}{{ $externals->id }}</td>
                                 <td>{{ $externals->status }}</td>
-                                <td>http://doctracker.arta.gov.ph/files/ev/{{ $externals->id }}</td>
+                                <td>http://127.0.0.1:8000/files/ev/{{ $externals->id }}</td>
                             </tr>
                         </table>
 
@@ -62,16 +62,28 @@
                                                                     
                                     @if($externals->office > 0)
                                         @if ($externals->office == '1')
-                                            Special Project Management Office (SPMO)        
+                                            ODG - Personnel
                                             @elseif ($externals->office == '2')
-                                                Finance and Administrative Office (FAO)
+                                                Public Relations Unit (PRU)
                                             @elseif ($externals->office == '3')
-                                                Investigation, Enforcement and Litigation Office (IELO)     
+                                                ODDGAF - Personnel
                                             @elseif ($externals->office == '4')
-                                                Legal and Public Assistance Office (LPAO)       
+                                                Finance and Administrative Office (FAO)
                                             @elseif ($externals->office == '5')
-                                                Better Regulations Office (BRO)     
-                                            @else ($externals->office == '6')
+                                                Information and Communications Technology Unit (ICTU)
+                                            @elseif ($externals->office == '6')
+                                                Planning Unit (PU)
+                                            @elseif ($externals->office == '7')
+                                                ODDGL - Personnel
+                                            @elseif ($externals->office == '8')
+                                                Investigation, Enforcement and Litigation Office (IELO)
+                                            @elseif ($externals->office == '9')
+                                                Legal and Public Assistance Office (LPAO)
+                                            @elseif ($externals->office == '10')
+                                                ODDGO - Personnel
+                                            @elseif ($externals->office == '11')
+                                                Better Regulations Office (BRO)
+                                            @else ($externals->office == '12')
                                                 Compliance Monitoring and Evaluation Office (CMEO)
                                         @endif <br />
                                     @endif
@@ -81,6 +93,10 @@
                                     @endif
                                 </span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <td>{{ $externals->title }}</td>
                             </tr>
                             <tr>
                                 <th>Subject</th>

@@ -10,6 +10,7 @@
 DTS No: '.$externals->dts.''.$externals->id.'
 Status: '.$externals->status.'
 Addressed to: '.$externals->personnel.'
+Title: '.$externals->title.' 
 Subject: '.$externals->subject.' 
 Classification: '.$externals->doc_class.' 
 Type: '.$externals->doc_type.'

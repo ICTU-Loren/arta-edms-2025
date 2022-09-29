@@ -51,7 +51,7 @@
                               <th width="8%">DTS No.</th>
                               <th width="15%">Addressed to</th>
                               <th width="10%">Classification</th>
-                              <th width="30%">Subject</th>
+                              <th width="30%">Title</th>
                               <th width="5%">Status</th>
                               <th width="5%">Action</th>
                             </tr>

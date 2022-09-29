@@ -110,7 +110,7 @@ class ForwardInDocs extends Component
 
     public $inmodeoftrans = [
         'Courier',
-        'E-DTS',
+        'EDTS',
         'E-mail',
         'Messenger',
         'Personal / Walk-in',
@@ -184,7 +184,7 @@ class ForwardInDocs extends Component
             'routed_by_div_unit' => '',
         ]);
 
-        $dts_no = str_replace(('http://doctracker.arta.gov.ph/files/iv/'), '', url()->previous());
+        $dts_no = str_replace(('http://127.0.0.1:8000/files/iv/'), '', url()->previous());
         $validatedData['dts_no']=$dts_no;
 
         $assigned_date = Carbon::now()->toDateTimeString();

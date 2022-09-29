@@ -61,6 +61,6 @@ class __TwigTemplate_401368d003750328e46f43efc15737ed extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "login/footer.twig", "C:\\www\\arta-edts\\public\\phpmyadmin\\templates\\login\\footer.twig");
+        return new Source("", "login/footer.twig", "C:\\xampp\\htdocs\\laravel\\arta-edts\\public\\phpmyadmin\\templates\\login\\footer.twig");
     }
 }

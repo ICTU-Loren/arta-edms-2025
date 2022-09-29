@@ -188,7 +188,7 @@
                                             <select name="modeoftrans" id="modeoftrans" class="form-control">
                                                 <option value="{{ $inroute->modeoftrans }}" selected>{{ $inroute->modeoftrans }}</option>
                                                 <option value="Courier">Courier</option>
-                                                <option value="E-DTS">E-DTS</option>
+                                                <option value="E-DTS">EDTS</option>
                                                 <option value="E-mail">E-mail</option>
                                                 <option value="Messenger">Messenger</option>
                                                 <option value="Personal / Walk-in">Personal / Walk-in</option>

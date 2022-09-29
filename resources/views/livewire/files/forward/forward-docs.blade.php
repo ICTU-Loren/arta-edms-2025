@@ -9,7 +9,7 @@
                     <div class="form-row">
                         
                         <div class="form-group col-md-3">
-                            <label for="department">Department *</label>
+                            <label for="department">Head Office *</label>
                             <select wire:model="selectedDepartment" wire:model.defer="department" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="office">Office *</label>
+                            <label for="office">Office/Unit *</label>
                             <select wire:model="selectedOffice" wire:model.defer="office" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedDepartment))
@@ -39,7 +39,7 @@
                         </div>
                         
                         <div class="form-group col-md-3">
-                            <label for="div_unit">Division/Unit/HEA/EA/AO *</label>
+                            <label for="div_unit">Director/Division/Personnel *</label>
                             <select wire:model="selectedDivunit" wire:model.defer="div_unit" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedOffice))
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="personnel">Personnel *</label>
+                            <label for="personnel">Name *</label>
                             <select wire:model="selectedPersonnel" wire:model.defer="personnel" name="personnels_id" class="form-control rounded-0">
                                 <option value="" selected>-</option>
                                 @if (!is_null($selectedDivunit))
@@ -87,12 +87,12 @@
                     <!-- Subject -->
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="subject">Subject *</label>
+                            <label for="subject">Title *</label>
                             <textarea class="form-control rounded-0" id="subject" rows="2" wire:model="subject"></textarea>
-                                <ul class="text-muted well well-sm shadow-none">
+                                <!-- <ul class="text-muted well well-sm shadow-none">
                                     <li>- You may remove any sensitive information (monetary amounts, names, etc.) if they are not necessary in tracking the document.</li>
                                     <li>- Max Length: 1000 characters</li>
-                                </ul>
+                                </ul> -->
                                 @error('subject')
                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror

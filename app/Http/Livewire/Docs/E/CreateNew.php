@@ -104,6 +104,7 @@ class CreateNew extends Component
     public $personnel;
     public $doc_class;
     public $doc_type;
+    public $title;
     public $subject;
     public $mode_of_trans;
     public $s_profile;
@@ -131,6 +132,7 @@ class CreateNew extends Component
             'personnel' => 'required',
             'doc_class' => 'required',
             'doc_type' => 'required',
+            'title' => 'required',
             'subject' => 'required',
             'mode_of_trans' => '',
             's_profile' => '',

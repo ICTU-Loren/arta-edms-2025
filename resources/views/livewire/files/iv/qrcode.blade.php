@@ -10,6 +10,7 @@
 DTS No: '.$internals->dts.''.$internals->id.'
 Status: '.$internals->status.'
 Addressed to: '.$internals->personnel.'
+Title: '.$internals->title.' 
 Subject: '.$internals->subject.' 
 Classification: '.$internals->doc_class.' 
 Type: '.$internals->doc_type.'

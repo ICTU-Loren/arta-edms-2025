@@ -52,7 +52,7 @@
                               <th width="10%">Assigned date</th>
                               <th width="20%">Assigned by</th>
                               <th width="20%">Assigned to</th>
-                              <th width="20%">Subject</th>
+                              <th width="20%">Title</th>
                               <th width="15%">Action Required</th>
                               <th width="5%">Status</th>
                               <th width="5%">Action</th>
@@ -70,75 +70,83 @@
                             
                                 @if($inroute->div_unit > 0)
                                     @if ($inroute->div_unit == '1')
-                                        Security and Intelligence
+                                    Head Executive Assistant (HEA)
                                         @elseif ($inroute->div_unit == '2')
-                                            Special Project Management Teams (SPMT)
+                                            Executive Assistant (EA)
                                         @elseif ($inroute->div_unit == '3')
-                                            Finance Division
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '4')
-                                            General Services Division (GSD)
+                                            PRU - Personnel
                                         @elseif ($inroute->div_unit == '5')
-                                            Human Resource Development Division (HRDD)
+                                            Executive Assistant (EA)
                                         @elseif ($inroute->div_unit == '6')
-                                            Information and Communications Technology Unit (ICTU)
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '7')
-                                            Public Relations Unit (PRU)
+                                            Director
                                         @elseif ($inroute->div_unit == '8')
-                                            Investigation and Enforcement Division (IED)
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '9')
-                                            Litigation Division
+                                            Finance Division
                                         @elseif ($inroute->div_unit == '10')
-                                            Legal Division
+                                            General Services Division (GSD)
                                         @elseif ($inroute->div_unit == '11')
-                                            Public Assistance Division (PAD)
+                                            Human Resource Development Division (HRDD)
                                         @elseif ($inroute->div_unit == '12')
-                                            Better Regulation Division A (BRD A)
+                                            ICTU - Personnel
                                         @elseif ($inroute->div_unit == '13')
-                                            Better Regulation Division B (BRD B)
+                                            PU - Personnel
                                         @elseif ($inroute->div_unit == '14')
-                                            Better Regulation Division C (BRD C)
+                                            Executive Assistant (EA)
                                         @elseif ($inroute->div_unit == '15')
-                                            Better Regulation Division D (BRD D)
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '16')
-                                            Compliance Monitoring and Evaluation Division A (CMED A)
+                                            Director
                                         @elseif ($inroute->div_unit == '17')
-                                            Compliance Monitoring and Evaluation Division B (CMED B)
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '18')
-                                            Compliance Monitoring and Evaluation Division C (CMED C)
+                                            Investigation and Enforcement Division (IED)
                                         @elseif ($inroute->div_unit == '19')
-                                            Compliance Monitoring and Evaluation Division D (CMED D)
+                                            Litigation Division
                                         @elseif ($inroute->div_unit == '20')
-                                            Head Executive Assistant (HEA)
+                                            Director
                                         @elseif ($inroute->div_unit == '21')
-                                            Executive Assistant (EA)
+                                            Administrative Officer
                                         @elseif ($inroute->div_unit == '22')
-                                            Executive Assistant (EA)
+                                            Legal Division
                                         @elseif ($inroute->div_unit == '23')
-                                            Executive Assistant (EA)
+                                            Public Assistance Division (PAD)
                                         @elseif ($inroute->div_unit == '24')
                                             Executive Assistant (EA)
                                         @elseif ($inroute->div_unit == '25')
-                                            Doing Business Division (DBD)
-                                        @elseif ($inroute->div_unit == '26')
-                                            Regulatory Management and Training Division (RMTD)
-                                        @elseif ($inroute->div_unit == '27')
-                                            Community and Multi-Sector Affairs Unit (CMSAU)
-                                        @elseif ($inroute->div_unit == '28')
-                                            Planning Unit
-                                        @elseif ($inroute->div_unit == '29')
                                             Administrative Officer
+                                        @elseif ($inroute->div_unit == '26')
+                                            Director
+                                        @elseif ($inroute->div_unit == '27')
+                                            Administrative Officer
+                                        @elseif ($inroute->div_unit == '28')
+                                            Better Regulation Division A (BRD A)
+                                        @elseif ($inroute->div_unit == '29')
+                                            Better Regulation Division B (BRD B)
                                         @elseif ($inroute->div_unit == '30')
-                                            Director
+                                            Better Regulation Division C (BRD C)
                                         @elseif ($inroute->div_unit == '31')
-                                            Director
+                                            Better Regulation Division D (BRD D)
                                         @elseif ($inroute->div_unit == '32')
-                                            Director
+                                            Doing Business Division (DBD)
                                         @elseif ($inroute->div_unit == '33')
-                                            Director
+                                            Regulatory Management and Training Division (RMTD)
                                         @elseif ($inroute->div_unit == '34')
                                             Director
-                                        @else ($inroute->div_unit == '35')
-                                          Director
+                                        @elseif ($inroute->div_unit == '35')
+                                            Administrative Officer
+                                        @elseif ($inroute->div_unit == '36')
+                                            Compliance Monitoring and Evaluation Division A (CMED A)
+                                        @elseif ($inroute->div_unit == '37')
+                                            Compliance Monitoring and Evaluation Division B (CMED B)
+                                        @elseif ($inroute->div_unit == '38')
+                                            Compliance Monitoring and Evaluation Division C (CMED C)
+                                        @else ($inroute->div_unit == '39')
+                                            Compliance Monitoring and Evaluation Division D (CMED D)
                                     @endif
                                 @endif
 

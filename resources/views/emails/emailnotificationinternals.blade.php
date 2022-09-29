@@ -116,7 +116,7 @@
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>DTS No:</strong> IN2022-000{{ $data['dts_no'] }}</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>Status:</strong> New</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>Subject:</strong> {{ $data['subject'] }}</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>Title:</strong> {{ $data['subject'] }}</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>Routed by:</strong> {{ $data['routed_by']}} / {{ $data['routed_by_div_unit']}}</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
                           <tbody>
@@ -125,7 +125,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                                   <tbody>
                                     <tr>
-                                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> <a href="http://doctracker.arta.gov.ph/dashboard" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 12px; font-weight: bold; margin: 0; padding: 8px 20px; text-decoration: none; text-transform: capitalize; background-color: #0038A8; border-color: #0038A8; color: #ffffff;">Go to dashboard</a> </td>
+                                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #3498db;" valign="top" align="center" bgcolor="#3498db"> <a href="http://127.0.0.1:8000/dashboard" target="_blank" style="border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 12px; font-weight: bold; margin: 0; padding: 8px 20px; text-decoration: none; text-transform: capitalize; background-color: #0038A8; border-color: #0038A8; color: #ffffff;">Go to dashboard</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>

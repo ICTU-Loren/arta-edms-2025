@@ -223,6 +223,6 @@ class __TwigTemplate_1bd94389fe13e3119a4476bcc7557b95 extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "header.twig", "C:\\www\\arta-edts\\public\\phpmyadmin\\templates\\header.twig");
+        return new Source("", "header.twig", "C:\\xampp\\htdocs\\laravel\\arta-edts\\public\\phpmyadmin\\templates\\header.twig");
     }
 }

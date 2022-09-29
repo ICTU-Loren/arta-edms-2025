@@ -88,25 +88,30 @@
                                                                 
                                                             @if($internals->office > 0)
                                                                 @if ($internals->office == '1')
-                                                                    Special Project Management Office (SPMO)        
+                                                                    ODG - Personnel
                                                                     @elseif ($internals->office == '2')
-                                                                        Finance and Administrative Office (FAO)
+                                                                        Public Relations Unit (PRU)
                                                                     @elseif ($internals->office == '3')
-                                                                        Investigation, Enforcement and Litigation Office (IELO)     
+                                                                        ODDGAF - Personnel
                                                                     @elseif ($internals->office == '4')
-                                                                        Legal and Public Assistance Office (LPAO)       
+                                                                        Finance and Administrative Office (FAO)
                                                                     @elseif ($internals->office == '5')
-                                                                        Better Regulations Office (BRO)     
+                                                                        Information and Communications Technology Unit (ICTU)
                                                                     @elseif ($internals->office == '6')
-                                                                        Compliance Monitoring and Evaluation Office (CMEO)
+                                                                        Planning Unit (PU)
                                                                     @elseif ($internals->office == '7')
-                                                                        
+                                                                        ODDGL - Personnel
                                                                     @elseif ($internals->office == '8')
-                                                                        
+                                                                        Investigation, Enforcement and Litigation Office (IELO)
                                                                     @elseif ($internals->office == '9')
-                                                                        
-                                                                    @else ($internals->office == '10')
-                                                                        
+                                                                        Legal and Public Assistance Office (LPAO)
+                                                                    @elseif ($internals->office == '10')
+                                                                        ODDGO - Personnel
+                                                                    @elseif ($internals->office == '11')
+                                                                        Better Regulations Office (BRO)
+                                                                    @else ($internals->office == '12')
+                                                                        Compliance Monitoring and Evaluation Office (CMEO)
+                                                                    
                                                                 @endif <br />
                                                             @endif
 
@@ -114,6 +119,10 @@
                                                                 {{ $internals->div_unit }}
                                                             @endif
                                                         </span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <td>{{ $internals->title }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Subject</th>

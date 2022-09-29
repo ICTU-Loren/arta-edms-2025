@@ -15,7 +15,7 @@
             <p class="text-primary my-3"> ADDRESS TO</p>
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label for="departments">Department *</label>
+                    <label for="departments">Head Office *</label>
                     <select wire:model="selectedDepartment" wire:model.defer="department" class="form-control rounded-0" >
                         <option value="" selected>-</option>
                         @foreach($departments as $department)
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="office">Office</label>
+                    <label for="office">Office/Unit</label>
                     <select wire:model="selectedOffice" wire:model.defer="office" class="form-control rounded-0" >
                         <option value="" selected>-</option>
                         @if (!is_null($selectedDepartment))
@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="form-group col-md-3">
-                    <label for="div_unit">Director / Division / Unit / HEA / EA / AO</label>
+                    <label for="div_unit">Director/Division/Personnel</label>
                     <select wire:model="selectedDiv_unit" wire:model.defer="div_unit" class="form-control rounded-0">
                         <option value="" selected>-</option>
                         @if (!is_null($selectedOffice))
@@ -61,7 +61,7 @@
                             @endforeach
                         @endif
                     </select> -->
-                    <label for="personnel">Signatory *</label>
+                    <label for="personnel">Name *</label>
                     <div class="input-group">
                         <input type="text" class="form-control rounded-0" id="personnel" wire:model="personnel">
                         <div class="input-group-prepend"></div>
@@ -101,14 +101,23 @@
                 </div>
             </div>
 
-            <!-- Subject -->
+            <!-- Title & Subject -->
             <div class="form-row">
-                <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
+                    <label for="title">Title *</label>
+                    <textarea class="form-control rounded-0" id="title" rows="3" wire:model="title"></textarea>
+                        @error('title')
+                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                </div>
+
+                <div class="form-group col-md-6">
                     <label for="subject">Subject *</label>
                     <textarea class="form-control rounded-0" id="subject" rows="3" wire:model="subject"></textarea>
                         <ul class="text-muted well well-sm shadow-none">
-                            <li>- You may remove any sensitive information (monetary amounts, names, etc.) if they are not necessary in tracking the document.</li>
                             <li>- Max Length: 1000 characters</li>
+                            <li>- You may remove any sensitive information (monetary amounts, names, etc.)</li>                            
+                            <li>* if they are not necessary in tracking the document.<li>
                         </ul>
                         @error('subject')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

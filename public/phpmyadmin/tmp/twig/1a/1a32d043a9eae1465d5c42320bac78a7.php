@@ -128,6 +128,6 @@ class __TwigTemplate_03016a827a25f958c2006c6b7a3de340 extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "scripts.twig", "C:\\www\\arta-edts\\public\\phpmyadmin\\templates\\scripts.twig");
+        return new Source("", "scripts.twig", "C:\\xampp\\htdocs\\laravel\\arta-edts\\public\\phpmyadmin\\templates\\scripts.twig");
     }
 }

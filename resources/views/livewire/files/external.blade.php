@@ -48,7 +48,7 @@
                           <thead>
                             <tr>
                               <th hidden>ID</th>
-                              <th width="8%">DTS No.</th>
+                              <th width="8%">EDMS No.</th>
                               <th width="15%">Addressed to</th>
                               <th width="5%">Classification</th>
                               <th width="20%">Title</th>

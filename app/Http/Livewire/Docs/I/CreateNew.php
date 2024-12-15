@@ -30,7 +30,7 @@ class CreateNew extends Component
         $this->departments = Department::all();
         $this->offices = collect();
         $this->div_units = collect();
-        $this->personnels = Personnel::all();
+        $this->personnels = User::orderBy('name')->get();
         $this->selectedPersonnel = $selectedPersonnel;
 
         if (!is_null($selectedPersonnel)) {
@@ -54,21 +54,21 @@ class CreateNew extends Component
     public function updatedSelectedDepartment($departments)
     {
         if (!is_null($departments)) {
-            $this->offices = Office::where('department_id', $departments)->orderBy('name')->get();
+            $this->offices = Office::where('department_id', $departments)->orderBy('id')->get();
         }
     }
 
     public function updatedSelectedOffice($offices)
     {
         if (!is_null($offices)) {
-            $this->div_units = Div_unit::where('office_id', $offices)->orderBy('name')->get();
+            $this->div_units = Div_unit::where('office_id', $offices)->orderBy('id')->get();
         }
     }
 
     public function updatedSelectedDiv_unit($div_units)
     {
         if (!is_null($div_units)) {
-            $this->personnels = Personnel::where('div_unit_id', $div_units)->orderBy('name')->get();
+            $this->personnels = Personnel::where('div_unit_id', $div_units)->orderBy('id')->get();
         }
     }
 
@@ -78,45 +78,60 @@ class CreateNew extends Component
     ];
 
     public $docclass = [
-        'Complaints',
+        'Administrative Order',
+        'Administrative Circular',
+        'Advisory',
+        'Circular',
+        'Complaint',
         'Confidential',
         'Department Order',
-        'E-mail',
-        'Forms',
+        'Form',
         'Invitation',
         'Joint Memorandum Circular',
         'Letter',
         'Magazine',
         'Memorandum Circular',
+        'Memorandum of Agreement',
+        'Memorandum of Understanding',
+        'Memorandum Order',
         'News Print',
         'Office Order',
+        'Ordinance',
         'Payable',
         'Payroll',
         'Procurement',
+        'Project Procurement Management Plan',
+        'Regulation',
+        'Report',
         'Restricted',
         'Sealed',
-        'Unclassified'
+        'Travel Order',
+        'Unclassified',
+        'Work and Financial Plan'
     ];
 
     public $modeoftrans = [
         'Courier',
-        'E-DTS',
-        'E-mail',
-        'Messenger',
-        'Personal / Walk-in',
-        'Snail Mail'
+        'Email',
+        'In person',
+        'PhilPost',
+        'Social Media',
+        'Website'
     ];
 
     public $sprofile = [
         'Government-Owned and Controlled Corporation (GOCC)',
         'Local Government Unit (LGU)',
         'National Government Agency (NGA)',
-        'Private'
+        'General Public',
+        'Private Sector',
+        'State Universities and Colleges (SUC)',
+        'Water District (WD)'
     ];
 
     use WithFileUploads;
 
-    public $dts = 'IN2022-000';
+    public $dts = 'IN2025-01-000';
     public $department;
     public $office;
     public $div_unit;
@@ -145,13 +160,13 @@ class CreateNew extends Component
     {
         $data = $this->validate([
             'dts' => '',
-            'department' => 'required',
+            'department' => '',
             'office' => '',
             'div_unit' => '',
-            'personnel' => 'required',
+            'personnel' => '',
             'doc_class' => 'required',
             'doc_type' => 'required',
-            'title' => 'required',
+            'title' => '',
             'subject' => 'required',
             'mode_of_trans' => 'required',
             's_profile' => '',

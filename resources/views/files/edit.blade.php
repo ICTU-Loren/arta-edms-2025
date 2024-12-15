@@ -107,8 +107,8 @@
                                                 <td><input type="text" name="status" value="Open" class="form-control" placeholder="Enter status"></td>
                                             </tr>
                                             <tr>
-                                                <th>DTS No.</th>
-                                                <td><input type="text" name="id" class="form-control" value="EX2021-00{{ $documents->id }}" disabled></td>
+                                                <th>EDMS No.</th>
+                                                <td><input type="text" name="id" class="form-control" value="EX2025-01-000{{ $documents->id }}" disabled></td>
                                             </tr>
                                             <tr>
                                                 <th>Created by:</th>

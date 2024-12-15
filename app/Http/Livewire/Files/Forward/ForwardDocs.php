@@ -50,21 +50,21 @@ class ForwardDocs extends Component
     public function updatedSelectedDepartment($department)
     {
         if (!is_null($department)) {
-            $this->offices = Office::where('department_id', $department)->orderBy('name')->get();
+            $this->offices = Office::where('department_id', $department)->orderBy('id')->get();
         }
     }
 
     public function updatedSelectedOffice($office)
     {
         if (!is_null($office)) {
-            $this->div_units = Div_unit::where('office_id', $office)->orderBy('name')->get();
+            $this->div_units = Div_unit::where('office_id', $office)->orderBy('id')->get();
         }
     }
 
     public function updatedSelectedDivunit($div_unit)
     {
         if (!is_null($div_unit)) {
-            $this->personnels = User::where('div_unit_id', $div_unit)->orderBy('name')->get();
+            $this->personnels = User::where('div_unit_id', $div_unit)->orderBy('id')->get();
         }
     }
 
@@ -78,16 +78,16 @@ class ForwardDocs extends Component
     public $actions = [
         'For appropriate action',
         'For approval',
-        'For comment/reaction/response',
-        'For compliance/implementation',
+        'For comment / reaction / response',
+        'For compliance / implementation',
         'For dissemination of information',
         'For draft of reply',
-        'For endorsement/recommendation',
+        'For endorsement / recommendation',
         'For filing',
         'For follow-up',
-        'For investigation/verification and report',
-        'For notation and return/file',
-        'For notification/reply to party',
+        'For investigation / verification and report',
+        'For notation and return / file',
+        'For notification / reply to party',
         'For reply',
         'For review',
         'For revision',
@@ -109,20 +109,14 @@ class ForwardDocs extends Component
     ];
 
     public $exmodeoftrans = [
-        'Courier',
-        'EDTS',
-        'E-mail',
-        'Messenger',
-        'Personal / Walk-in',
-        'PhilPost',
-        'Registered',
-        'Snail Mail'
+        'EDMS',
     ];
 
     use WithFileUploads;
 
-    public $dts = 'EX2022-000';
+    public $dts = 'EX2025-01-000';
     public $dts_no;
+    public $externals_id;
     public $status = 'New';
     public $department;
     public $department_id;
@@ -155,6 +149,7 @@ class ForwardDocs extends Component
         $validatedData = $this->validate([
             'dts' => '',
             'dts_no' => '',
+            'externals_id' => '',
             'status' => '',
             'department' => 'required',
             'department_id' => '',
@@ -182,8 +177,11 @@ class ForwardDocs extends Component
             'routed_by_div_unit' => '',
         ]);
 
-        $dts_no = str_replace(('http://127.0.0.1:8000/files/ev/'), '', url()->previous());
+        $dts_no = str_replace(('http://10.20.29.32/files/ev/'), '', url()->previous());
         $validatedData['dts_no']=$dts_no;
+
+        $externals_id = str_replace(('http://10.20.29.32/files/ev/'), '', url()->previous());
+        $validatedData['externals_id']=$externals_id;
 
         $assigned_date = Carbon::now()->toDateTimeString();
         $validatedData['assigned_date']=$assigned_date;
@@ -205,9 +203,11 @@ class ForwardDocs extends Component
         
         ExRoute::create($validatedData);
         
+        return redirect()->route('ev.index', $externals_id)
+        ->with('success','Document successfully routed to the assigned personnel!');
         // return redirect()->back();
-        $this->dispatchBrowserEvent('closeModal');
-        session()->flash('message', 'Document successfully routed to the assigned Office/Personnel!');
+        // $this->dispatchBrowserEvent('closeModal');
+        // session()->flash('message', 'Document successfully routed to the assigned Office/Personnel!');
     }
 
  

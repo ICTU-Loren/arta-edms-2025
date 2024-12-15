@@ -48,7 +48,7 @@
                           <thead>
                             <tr>
                               <th hidden>ID</th>
-                              <th width="10%">DTS No.</th>
+                              <th width="10%">EDMS No.</th>
                               <th width="10%">Assigned date</th>
                               <th width="20%">Assigned by</th>
                               <th width="20%">Title</th>

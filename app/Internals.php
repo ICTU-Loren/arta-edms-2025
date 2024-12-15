@@ -15,6 +15,7 @@ class Internals extends Model
     protected $fillable = [
         'id',
         'dts',
+        'in_route_id',
         'status',
         'department',
         'office',
@@ -50,6 +51,8 @@ class Internals extends Model
 
     protected $casts = [
         'date' => 'datetime',
+        'department' => 'array',
+        'office' => 'array',
     ];
 
     // public static function boot()
@@ -63,8 +66,9 @@ class Internals extends Model
     //     });
     // }
 
-    // public function exroute()
-    // {
-    //     return $this->hasMany(ExRoute::class);
-    // }
+    //has many in route table
+    public function inRoute()
+    {
+        return $this->hasMany(InRoute::class);
+    }
 }

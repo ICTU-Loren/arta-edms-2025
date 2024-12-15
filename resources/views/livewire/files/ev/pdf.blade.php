@@ -6,32 +6,41 @@
                         }
 
                         td, th {
-                        border: 1px solid #dddddd;
+                        border: 1px solid #bfbfbf;
                         text-align: left;
                         padding: 5px;
                         }
 
-                        tr:nth-child(even) {
-                        background-color: #ffffff;
-                        }
                     </style>
 
+                    <!-- DOCUMENT ROUTING SLIP -->
+
                         <div class="col-12 mb-3">
-                            <img src="<?php echo $header_logo ?>" style="position:fixed;top:-30px;width:250px height:60px;float:right;margin-botton:30px">
+                            <img src="<?php echo $header_logo1 ?>" style="position:fixed;top:-30px;width:250px height:60px;float:right;margin-botton:30px">
                         </div>
 
-                        <br/><br/><br/><br/>
+                        <br/><br/><br/>
 
                         <table>
                             <tr>
-                                <th>DTS No.</th>
+                                <td colspan="2" style="background:#404040;color:#FFFFFF;padding:5px;text-align:center;">
+                                    DOCUMENT ROUTING SLIP
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br/>
+
+                        <table>
+                            <tr>
+                                <th>eDMS No.</th>
                                 <th width="25%">Document Status</th>
-                                <th>ARTA-EDTS URL</th>
+                                <th>ARTA-EDMS URL</th>
                             </tr>
                             <tr>
                                 <td>{{ $externals->dts }}{{ $externals->id }}</td>
                                 <td>{{ $externals->status }}</td>
-                                <td>http://127.0.0.1:8000/files/ev/{{ $externals->id }}</td>
+                                <td>http://10.20.29.32/files/ev/{{ $externals->id }}</td>
                             </tr>
                         </table>
 
@@ -64,7 +73,7 @@
                                         @if ($externals->office == '1')
                                             ODG - Personnel
                                             @elseif ($externals->office == '2')
-                                                Public Relations Unit (PRU)
+                                                Information and Public Relations Division (IPRD)
                                             @elseif ($externals->office == '3')
                                                 ODDGAF - Personnel
                                             @elseif ($externals->office == '4')
@@ -93,10 +102,6 @@
                                     @endif
                                 </span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <th>Title</th>
-                                <td>{{ $externals->title }}</td>
                             </tr>
                             <tr>
                                 <th>Subject</th>
@@ -160,18 +165,16 @@
                             </tr>
                         </table>
 
-                        <br/>
-
                         <table>
                             <tr>
                                 <td colspan="2" style="background:#f2f2f2;color:#6c757d;padding:5px;">
-                                    ARTA-EDTS Details
+                                    ARTA-EDMS Details
                                 </td>
                             </tr>
                             <tr>
                                 <th width="25%">Created by</th>
                                 <td>{{ $externals->created_by }} <br /> 
-                                    <span class="ml-0" style="font-size:14px;">{{ $externals->created_by_div_unit }}</span></td>
+                                    <span class="ml-0" style="font-size:13px;">{{ $externals->created_by_div_unit }}</span></td>
                             </tr>
                             <tr>
                                 <th>Date & Time created</th>
@@ -180,7 +183,7 @@
                             <tr>
                                 <th width="25%">Closed by</th>
                                 <td>{{ $externals->modified_by }} <br /> 
-                                    <span class="ml-0" style="font-size:14px;">{{ $externals->modified_by_div_unit }}</span></td>
+                                    <span class="ml-0" style="font-size:13px;">{{ $externals->modified_by_div_unit }}</span></td>
                             </tr>
                             <tr>
                                 <th>Date & Time modified</th>
@@ -188,5 +191,157 @@
                             </tr>
                         </table>
 
-                    <img src="<?php echo $footer_logo ?>" style="position:fixed;bottom:-40px;left:0;right:0;height:30px;width:100%;">
+                        <img src="<?php echo $footer_logo2 ?>" style="position:fixed;bottom:-40px;left:0;right:0;height:30px;width:100%;">
+
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+                        <!-- DOCUMENT ROUTING AND TRACKING RECORD -->
+
+                        <div class="col-12 mb-3">
+                            <img src="<?php echo $header_logo2 ?>" style="position:fixed;top:-30px;width:250px height:60px;float:right;margin-botton:30px">
+                        </div>
+
+                        <br/><br/><br/>
+
+                        <table>
+                            <tr>
+                                <td colspan="2" style="background:#404040;color:#FFFFFF;padding:5px;text-align:center;">
+                                    DOCUMENT ROUTING AND TRACKING RECORD
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table>
+                            <tr style="background:#f2f2f2;">
+                                <th width="25%">From</th>
+                                <th width="25%">To</th>
+                                <th width="10%">Action Requested</th>
+                                <th width="40%">Remarks / Instructions</th>
+                            </tr>
+
+                            @foreach ($externals->exRoute as $exRoute)
+                                @if(count($externals->exRoute) > 0)
+                                    <tr>
+                                        <td>{{ $exRoute->routed_by }} <br/> <span style="font-size:13px;">{{ $exRoute->routed_by_div_unit }} <br/> {{ $exRoute->created_at }}</span></td>
+                                        <td>{{ $exRoute->personnel }}<br />
+                                            <span class="ml-0" style="font-size:13px;">
+                                            @if($exRoute->div_unit > 0)
+                                                @if ($exRoute->div_unit == '1')
+                                                        HEA
+                                                    @elseif ($exRoute->div_unit == '2')
+                                                        EA
+                                                    @elseif ($exRoute->div_unit == '3')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '4')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '5')
+                                                        IO
+                                                    @elseif ($exRoute->div_unit == '6')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '7')
+                                                        EA
+                                                    @elseif ($exRoute->div_unit == '8')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '9')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '10')
+                                                        FAO-OD
+                                                    @elseif ($exRoute->div_unit == '11')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '12')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '13')
+                                                        FD
+                                                    @elseif ($exRoute->div_unit == '14')
+                                                        GSD
+                                                    @elseif ($exRoute->div_unit == '15')
+                                                        HRDD
+                                                    @elseif ($exRoute->div_unit == '16')
+                                                        ITO
+                                                    @elseif ($exRoute->div_unit == '17')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '18')
+                                                        PlanOff
+                                                    @elseif ($exRoute->div_unit == '19')
+                                                        EA
+                                                    @elseif ($exRoute->div_unit == '20')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '21')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '22')
+                                                        IELO-OD
+                                                    @elseif ($exRoute->div_unit == '23')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '24')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '25')
+                                                        IED
+                                                    @elseif ($exRoute->div_unit == '26')
+                                                        LitDiv
+                                                    @elseif ($exRoute->div_unit == '27')
+                                                        LPAO-OD
+                                                    @elseif ($exRoute->div_unit == '28')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '29')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '30')
+                                                        LegDiv
+                                                    @elseif ($exRoute->div_unit == '31')
+                                                        PAD
+                                                    @elseif ($exRoute->div_unit == '32')
+                                                        EA
+                                                    @elseif ($exRoute->div_unit == '33')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '34')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '35')
+                                                        BRO-OD
+                                                    @elseif ($exRoute->div_unit == '36')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '37')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '38')
+                                                        BRO A
+                                                    @elseif ($exRoute->div_unit == '39')
+                                                        BRO B
+                                                    @elseif ($exRoute->div_unit == '40')
+                                                        BRO C
+                                                    @elseif ($exRoute->div_unit == '41')
+                                                        BRO D
+                                                    @elseif ($exRoute->div_unit == '42')
+                                                        DBD
+                                                    @elseif ($exRoute->div_unit == '43')
+                                                        RMTD
+                                                    @elseif ($exRoute->div_unit == '44')
+                                                        CMEO-OD
+                                                    @elseif ($exRoute->div_unit == '45')
+                                                        AA
+                                                    @elseif ($exRoute->div_unit == '46')
+                                                        PO
+                                                    @elseif ($exRoute->div_unit == '47')
+                                                        CMEO A
+                                                    @elseif ($exRoute->div_unit == '48')
+                                                        CMEO B
+                                                    @elseif ($exRoute->div_unit == '49')
+                                                        CMEO C
+                                                    @else ($exRoute->div_unit == '50')
+                                                        CMEO D
+                                                @endif
+                                            @endif
+
+                                                <br/>
+                                                {{ $exRoute->open_at }}
+                                            </span>
+                                        </td>
+                                        <td>{{ $exRoute->action_req }}</td>
+                                        <td class="mb-4">Dealine: {{ $exRoute->due_date }} <br/> MOT: {{ $exRoute->modeoftrans }} <br/><br/> {{ $exRoute->note_comment_routed }}</td>
+                                    </tr>
+
+                                    @else
+                                        <p class="ml-4">No Route History.</p>
+                                @endif
+                            @endforeach
+                        </table>
+
+                    <img src="<?php echo $footer_logo1 ?>" style="position:fixed;bottom:-40px;left:0;right:0;height:30px;width:100%;">
 

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="https://www.arta.gov.ph" class="brand-link h-13">
       <img src="{{ asset('images/arta.png') }}" alt="ARTA Logo" class="brand-image img-circle elevation-3" style="opacity:1">
-      <span class="brand-text font-weight-light ml-1"> EDTS</span>
+      <span class="brand-text font-weight-light ml-1"> eDMS</span>
     </a>
 
     <!-- Sidebar -->
@@ -75,40 +75,52 @@
                 </li>
               </ul>
             </li>
-
-            <li class="nav-item">
-              <a href="{{ asset('manual/ARTA-EDTS User Manual 04-04-22.pdf') }}" class="nav-link" target="_blank">
-              <i class="nav-icon fas fa-question-circle"></i>
-                <p> User Manual</p>
-              </a>
-            </li>
           @endcan
 
           @hasanyrole('SuperAdmin|Admin')
-            <li class="nav-header">ADMIN MANAGEMENT</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-cogs"></i>
-                  <p> Settings
-                    <i class="right fas fa-caret-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
-                      <i class="fas fa-caret-right nav-icon"></i>
-                      <p> Manage Accounts</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('roles.index') }}" class="nav-link">
-                      <i class="fas fa-caret-right nav-icon"></i>
-                      <p> Manage Roles</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+            <li class="nav-header" style="background-color:#394046;margin-top:20px;">ADMIN MANAGEMENT</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p> Settings
+                  <i class="right fas fa-caret-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('users.index') }}" class="nav-link">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                    <p> Manage Accounts</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('roles.index') }}" class="nav-link">
+                    <i class="fas fa-caret-right nav-icon"></i>
+                    <p> Manage Roles</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           @endhasanyrole
+
+          @can('sidebar-view')
+          <li class="nav-header" style="background-color:#394046;margin-top:20px;">NEED HELP?</li>
+          <li class="nav-item">
+            <a href="https://teams.microsoft.com/l/entity/a6b63365-31a4-4f43-92ec-710b71557af9/_djb2_msteams_prefix_3497283460?context=%7B%22channelId%22%3A%2219%3A5c08e72997624105a6d2dda7e58afd36%40thread.skype%22%7D&tenantId=8ab96c80-565f-49a7-89ca-7aaa1c207770" 
+                class="nav-link" target="_blank">
+            <i class="nav-icon fas fa-headset"></i>
+              <p> ICT Helpdesk</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ asset('manual/ARTA-EDTS User Manual 04-04-22.pdf') }}" class="nav-link" target="_blank">
+            <i class="nav-icon fas fa-question-circle"></i>
+              <p> User Manual</p>
+            </a>
+          </li>
+
+          @endcan
 
         </ul>
       </nav>

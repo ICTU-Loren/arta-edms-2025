@@ -99,8 +99,8 @@
                                         <td><input type="text" name="" class="form-control" value="{{ $documents->doc_class }}" disabled></td>
                                     </tr>
                                     <tr>
-                                        <th>DTS No.</th>
-                                        <td><input type="text" name="" class="form-control" value="IN2021-00{{ $documents->id }}" disabled></td>
+                                        <th>EDMS No.</th>
+                                        <td><input type="text" name="" class="form-control" value="IN2025-01-000{{ $documents->id }}" disabled></td>
                                     </tr>
                                     <tr>
                                         <th>Created by</th>

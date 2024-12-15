@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. {{ $internals->dts }}{{ $internals->id }}</span></h5>
+                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">eDMS No. {{ $internals->dts }}{{ $internals->id }}</span></h5>
                     </div><!-- /.col -->
 
                     <div class="col-sm-4" >
@@ -54,15 +54,15 @@
                             </ul>
                         </div>
 
-                        <!-- /.card-header -->
+                        <!-- Document Profile -->
                         <div class="card-body">
                             <div class="tab-content">
-                                <!-- Summary Start -->
+                                <!-- Overview tab -->
                                 <div class="active tab-pane" id="summary">
-                                    <!-- Post -->
                                     <div class="post">
 
                                         <div class="row">
+                                            <!-- Right side -->
                                             <div class="col-lg-8 col-md-12 col-sm-12 table-responsive">
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
@@ -81,18 +81,20 @@
                                                                         Office of the Deputy Director General for Administration & Finance (ODDGAF)
                                                                     @elseif ($internals->department == '3')
                                                                         Office of the Deputy Director General for Legal (ODDGL)
-                                                                    @else ($internals->department == '4')
+                                                                    @elseif ($internals->department == '4')
                                                                         Office of the Deputy Director General for Operations (ODDGO)
+                                                                    @else ($internals->department == '5')
+                                                                        All Offices
                                                                 @endif <br />
                                                             @endif
                                                                 
                                                             @if($internals->office > 0)
                                                                 @if ($internals->office == '1')
-                                                                    ODG - Personnel
+                                                                        ODG
                                                                     @elseif ($internals->office == '2')
-                                                                        Public Relations Unit (PRU)
+                                                                        Information and Public Relations Division (IPRD)
                                                                     @elseif ($internals->office == '3')
-                                                                        ODDGAF - Personnel
+                                                                        ODDGAF
                                                                     @elseif ($internals->office == '4')
                                                                         Finance and Administrative Office (FAO)
                                                                     @elseif ($internals->office == '5')
@@ -100,18 +102,18 @@
                                                                     @elseif ($internals->office == '6')
                                                                         Planning Unit (PU)
                                                                     @elseif ($internals->office == '7')
-                                                                        ODDGL - Personnel
+                                                                        ODDGL
                                                                     @elseif ($internals->office == '8')
                                                                         Investigation, Enforcement and Litigation Office (IELO)
                                                                     @elseif ($internals->office == '9')
                                                                         Legal and Public Assistance Office (LPAO)
                                                                     @elseif ($internals->office == '10')
-                                                                        ODDGO - Personnel
+                                                                        ODDGO
                                                                     @elseif ($internals->office == '11')
                                                                         Better Regulations Office (BRO)
                                                                     @else ($internals->office == '12')
                                                                         Compliance Monitoring and Evaluation Office (CMEO)
-                                                                    
+                                                                        
                                                                 @endif <br />
                                                             @endif
 
@@ -119,10 +121,6 @@
                                                                 {{ $internals->div_unit }}
                                                             @endif
                                                         </span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Title</th>
-                                                        <td>{{ $internals->title }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Subject</th>
@@ -168,6 +166,7 @@
                                                 
                                             </div>
 
+                                            <!-- Left side -->
                                             <div class="col-lg-4 col-md-12 col-sm-12 table-responsive">
                                                 <form action="{{ route('iv.update',$internals->id) }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
@@ -202,7 +201,8 @@
                                                             @endif
                                                             @if ($internals->status <> 'Closed')
                                                                 <td style="width:40%;">
-                                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-save mr-2"></i> Save</button>
+                                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#indocstatusSave" data-whatever="@getbootstrap"><i class="fas fa-save mr-2"></i> Save</button>
+                                                                    <!-- <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-save mr-2"></i> Save</button> -->
                                                                 </td>
                                                                 @else
                                                                 <td style="width:40%;">
@@ -210,6 +210,27 @@
                                                                 </td>
                                                             @endif
                                                         </tr>
+
+                                                        <!-- Modal for Doc Status Save Button -->
+                                                        <div class="modal fade" id="indocstatusSave" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header bg-danger">
+                                                                        <h5 class="modal-title" id="ModalLabel">Document Status</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Do you want to save this status?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary btn-sm close-btn float-right" data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-danger btn-sm"> Confirm</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         
                                                     </table>
                                                 </form>
@@ -226,40 +247,38 @@
                                                     </tr>
                                                 </table>
 
-                                                <!-- <a href="/files/iv/qr-code/{{ $internals->id }}" class="edit btn btn-primary"><i class="fas fa-qrcode"></i> Generate QR Code</i></a> -->
                                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#QRModal" data-whatever="@getbootstrap"><i class="fas fa-qrcode"></i> Generate QR Code</button>
-
+                                                <!-- <a href="/files/iv/qr-code/{{ $internals->id }}" class="edit btn btn-primary"><i class="fas fa-qrcode"></i> Generate QR Code</i></a> -->
                                             </div>
 
                                         </div>
-
                                     </div>
-                                    <!-- /.post -->
                                 </div>
-                                <!-- /.Summary-tab-pane -->
 
-                                <!-- Route Start -->
+                                <!-- Route History Tab -->
                                 <div class="tab-pane" id="route">
                                     @include('livewire.files.forward.inroute.show')
                                 </div>
-                                <!-- /.Route-tab-pane -->
 
                             </div>
-                            <!-- /.tab-content -->
                         </div>
-                        <!-- /.card-body -->
+                        
+                        <!-- Footer buttons -->
                         <div class="card-footer">
                             <button type="button" class="btn btn-secondary btn-sm" onclick="goBack()">Back</button>
                             
                             @if ($internals->status <> 'Closed')
                                     @if(Auth::check() && (Auth::user()->name == $internals->created_by))
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-share-square"></i> Add Route</button>
+                                        @if(count($inroute) > 0)
+                                            <button type="button" class="btn btn-secondary btn-sm" disabled><i class="fas fa-share-square"></i> Add Route</button>
+                                            @else <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-share-square"></i> Add Route</button>
+                                        @endif
                                         @else <!-- <button type="button" class="btn btn-secondary btn-sm float-right" disabled><i class="fas fa-edit"></i> Update</button> -->
                                     @endif
                                 @else <button type="button" class="btn btn-secondary btn-sm" disabled><i class="fas fa-share-square"></i> Add Route</button>
                             @endif
 
-                            <div class="float-right">
+                            <!-- <div class="float-right">
                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle float-right" data-toggle="dropdown">
                                     <i class="fas fa-print"></i> Print
                                 </button>
@@ -267,14 +286,15 @@
                                     <li class="dropdown-item"><a href="/files/iv/print/{{ $internals->id }}" class="btnprn btn"> Overview</a></li>
                                     <li class="dropdown-item"><a href="/files/forward/inroute/print/{{ $internals->id }}" class="btnprn btn"> Route History</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
 
                             <div class="float-right mr-1">
                                 <a href="/files/iv/pdf/{{ $internals->id }}" class="edit btn btn-primary btn-sm" title="PDF"><i class="fas fa-file-download"></i> Export to PDF</a>
                             </div>
 
                         </div>
-                        <!-- Modal for Forward To -->
+
+                        <!-- Modal for Add Route -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
@@ -285,11 +305,13 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                    @livewire('files.forward.forward-in-docs')
+
+                                        @livewire('files.forward.forward-in-docs')
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
                         <!-- Modal for QR Code -->
                         <div class="modal fade" id="QRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

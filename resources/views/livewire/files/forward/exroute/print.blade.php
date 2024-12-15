@@ -5,12 +5,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-sm-6">
                         <h4 class="m-0">Print Preview</h4>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-secondary float-right" onclick="goBack()">Back</button>
+                        <!-- <button type="button" class="btn btn-secondary float-right" onclick="goBack()">Back</button> -->
                     </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -25,6 +25,7 @@
                 <div class="row">
 
                     <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-secondary mt-3" onclick="goBack()">Back</button>
                         <img src="{{ asset('/images/ARTA-OP.png') }}" style="top:-50px;width:250px;height:80px;float:right;margin-botton:30px;" alt="" title="">
                     </div>
 
@@ -35,7 +36,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tr>
-                                        <th width="25%">DTS No.</th>
+                                        <th width="25%">eDMS No.</th>
                                         <td>{{ $exroute->dts }}{{ $exroute->dts_no }}</td>
                                     </tr>
                                     <tr>
@@ -56,9 +57,9 @@
                                                                                 
                                             @if($exroute->office > 0)
                                                 @if ($exroute->office == '1')
-                                                    ODG - Personnel
+                                                        ODG - Personnel
                                                     @elseif ($exroute->office == '2')
-                                                        PRU
+                                                        IPRD
                                                     @elseif ($exroute->office == '3')
                                                         ODDGAF - Personnel
                                                     @elseif ($exroute->office == '4')
@@ -84,94 +85,120 @@
 
                                             @if($exroute->div_unit > 0)
                                                 @if ($exroute->div_unit == '1')
-                                                Head Executive Assistant (HEA)
-                                                @elseif ($exroute->div_unit == '2')
-                                                    Executive Assistant (EA)
-                                                @elseif ($exroute->div_unit == '3')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '4')
-                                                    PRU - Personnel
-                                                @elseif ($exroute->div_unit == '5')
-                                                    Executive Assistant (EA)
-                                                @elseif ($exroute->div_unit == '6')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '7')
-                                                    Director
-                                                @elseif ($exroute->div_unit == '8')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '9')
-                                                    Finance Division
-                                                @elseif ($exroute->div_unit == '10')
-                                                    General Services Division (GSD)
-                                                @elseif ($exroute->div_unit == '11')
-                                                    Human Resource Development Division (HRDD)
-                                                @elseif ($exroute->div_unit == '12')
-                                                    ICTU - Personnel
-                                                @elseif ($exroute->div_unit == '13')
-                                                    PU - Personnel
-                                                @elseif ($exroute->div_unit == '14')
-                                                    Executive Assistant (EA)
-                                                @elseif ($exroute->div_unit == '15')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '16')
-                                                    Director
-                                                @elseif ($exroute->div_unit == '17')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '18')
-                                                    Investigation and Enforcement Division (IED)
-                                                @elseif ($exroute->div_unit == '19')
-                                                    Litigation Division
-                                                @elseif ($exroute->div_unit == '20')
-                                                    Director
-                                                @elseif ($exroute->div_unit == '21')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '22')
-                                                    Legal Division
-                                                @elseif ($exroute->div_unit == '23')
-                                                    Public Assistance Division (PAD)
-                                                @elseif ($exroute->div_unit == '24')
-                                                    Executive Assistant (EA)
-                                                @elseif ($exroute->div_unit == '25')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '26')
-                                                    Director
-                                                @elseif ($exroute->div_unit == '27')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '28')
-                                                    Better Regulation Division A (BRD A)
-                                                @elseif ($exroute->div_unit == '29')
-                                                    Better Regulation Division B (BRD B)
-                                                @elseif ($exroute->div_unit == '30')
-                                                    Better Regulation Division C (BRD C)
-                                                @elseif ($exroute->div_unit == '31')
-                                                    Better Regulation Division D (BRD D)
-                                                @elseif ($exroute->div_unit == '32')
-                                                    Doing Business Division (DBD)
-                                                @elseif ($exroute->div_unit == '33')
-                                                    Regulatory Management and Training Division (RMTD)
-                                                @elseif ($exroute->div_unit == '34')
-                                                    Director
-                                                @elseif ($exroute->div_unit == '35')
-                                                    Administrative Officer
-                                                @elseif ($exroute->div_unit == '36')
-                                                    Compliance Monitoring and Evaluation Division A (CMED A)
-                                                @elseif ($exroute->div_unit == '37')
-                                                    Compliance Monitoring and Evaluation Division B (CMED B)
-                                                @elseif ($exroute->div_unit == '38')
-                                                    Compliance Monitoring and Evaluation Division C (CMED C)
-                                                @else ($exroute->div_unit == '39')
-                                                    Compliance Monitoring and Evaluation Division D (CMED D)
+                                                        HEA
+                                                    @elseif ($exroute->div_unit == '2')
+                                                        EA
+                                                    @elseif ($exroute->div_unit == '3')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '4')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '5')
+                                                        IO
+                                                    @elseif ($exroute->div_unit == '6')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '7')
+                                                        EA
+                                                    @elseif ($exroute->div_unit == '8')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '9')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '10')
+                                                        FAO-OD
+                                                    @elseif ($exroute->div_unit == '11')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '12')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '13')
+                                                        FD
+                                                    @elseif ($exroute->div_unit == '14')
+                                                        GSD
+                                                    @elseif ($exroute->div_unit == '15')
+                                                        HRDD
+                                                    @elseif ($exroute->div_unit == '16')
+                                                        ITO
+                                                    @elseif ($exroute->div_unit == '17')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '18')
+                                                        PlanOff
+                                                    @elseif ($exroute->div_unit == '19')
+                                                        EA
+                                                    @elseif ($exroute->div_unit == '20')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '21')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '22')
+                                                        IELO-OD
+                                                    @elseif ($exroute->div_unit == '23')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '24')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '25')
+                                                        IED
+                                                    @elseif ($exroute->div_unit == '26')
+                                                        LitDiv
+                                                    @elseif ($exroute->div_unit == '27')
+                                                        LPAO-OD
+                                                    @elseif ($exroute->div_unit == '28')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '29')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '30')
+                                                        LegDiv
+                                                    @elseif ($exroute->div_unit == '31')
+                                                        PAD
+                                                    @elseif ($exroute->div_unit == '32')
+                                                        EA
+                                                    @elseif ($exroute->div_unit == '33')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '34')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '35')
+                                                        BRO-OD
+                                                    @elseif ($exroute->div_unit == '36')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '37')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '38')
+                                                        BRO A
+                                                    @elseif ($exroute->div_unit == '39')
+                                                        BRO B
+                                                    @elseif ($exroute->div_unit == '40')
+                                                        BRO C
+                                                    @elseif ($exroute->div_unit == '41')
+                                                        BRO D
+                                                    @elseif ($exroute->div_unit == '42')
+                                                        DBD
+                                                    @elseif ($exroute->div_unit == '43')
+                                                        RMTD
+                                                    @elseif ($exroute->div_unit == '44')
+                                                        CMEO-OD
+                                                    @elseif ($exroute->div_unit == '45')
+                                                        AA
+                                                    @elseif ($exroute->div_unit == '46')
+                                                        PO
+                                                    @elseif ($exroute->div_unit == '47')
+                                                        CMEO A
+                                                    @elseif ($exroute->div_unit == '48')
+                                                        CMEO B
+                                                    @elseif ($exroute->div_unit == '49')
+                                                        CMEO C
+                                                    @else ($exroute->div_unit == '50')
+                                                        CMEO D
                                                 @endif
                                             @endif
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Action Required</th>
+                                        <th>Remarks / Instructions</th>
+                                        <td>{{ $exroute->note_comment_routed }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Action Requested</th>
                                         <td>{{ $exroute->action_req }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Due Date</th>
+                                        <th>Deadline</th>
                                         <td>{{ $exroute->due_date }}</td>
                                     </tr>
                                     <tr>
@@ -195,10 +222,6 @@
                                                     @else <i>private</i>
                                             @endif
                                         @endif</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Note / Comment</th>
-                                        <td>{{ $exroute->note_comment_routed }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -290,7 +313,7 @@
                         @endif
 
                         <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-2">
-                            <p class="my-0" style="color:#BFBFBF;"><i class="fas fa-level-up-alt fa-lg"></i> <span class="text-muted well well-sm shadow-none ml-3" style="font-size:15px;">Routed at: <strong>{{ $exroute->created_at }}</strong> / by <strong>{{ $exroute->routed_by }}</strong> ({{ $exroute->routed_by_div_unit }})</span></p>
+                            <p class="my-0" style="color:#BFBFBF;"><i class="fas fa-arrow-up bg-info fa-lg" style="padding:6px;border-radius:50%;"></i> <span class="text-muted well well-sm shadow-none ml-3" style="font-size:15px;">Routed at: <strong>{{ $exroute->created_at }}</strong> / by <strong>{{ $exroute->routed_by }}</strong> ({{ $exroute->routed_by_div_unit }})</span></p>
                         </div>
 
                     @endforeach

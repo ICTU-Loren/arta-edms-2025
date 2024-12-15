@@ -133,8 +133,8 @@
                                         <td><input type="text" name="" class="form-control" value="{{ $externals->doc_class }}" disabled></td>
                                     </tr>
                                     <tr>
-                                        <th>DTS No.</th>
-                                        <td><input type="text" name="" class="form-control" value="EX2021-00{{ $externals->id }}" disabled></td>
+                                        <th>EDMS No.</th>
+                                        <td><input type="text" name="" class="form-control" value="EX2025-01-000{{ $externals->id }}" disabled></td>
                                     </tr>
                                     <tr>
                                         <th>Received byllll</th>

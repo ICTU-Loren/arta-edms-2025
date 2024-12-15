@@ -1,5 +1,5 @@
 <head>
-    <title>ARTA - EDTS</title>
+    <title>eDMS | ARTA</title>
     <link rel="icon" type="image/png" href="{{ asset('images/arta.png') }}">
 </head>
 
@@ -7,9 +7,6 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
-            <div class="mt-6">
-                <h3 class="box-title text-center text-lg"><strong>Electronic Document Tracking System</strong></h3>
-            </div> 
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -21,9 +18,13 @@
         @endif
 
         <form method="POST" action="{{ route('login') }}">
+            <div class="py-6" style="border-bottom: #D9D9D9 solid 1px;">
+                <h3 class="box-title text-center text-lg"><strong>Electronic Document Management System</strong></h3>
+            </div> 
+
             @csrf
 
-            <div>
+            <div class="mt-6">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>

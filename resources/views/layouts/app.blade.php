@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>ARTA - EDTS</title>
-        <!-- <title>{{ config('app.name', 'ARTA-EDTS') }}</title> -->
+        <title>eDMS | ARTA</title>
+        <!-- <title>{{ config('app.name', 'ARTA-EDMS') }}</title> -->
         <link rel="icon" type="image/png" href="{{ asset('images/arta.png') }}">
 
         @livewireStyles
@@ -168,19 +168,20 @@
             });
         </script>
         
-        <!-- Dropdown Select2 -->
-        <script>
+        <!-- Original Dropdown Select2 for address to -->
+        <!-- <script>
             $(function () {
                 //Initialize Select2 Elements
-                $('.select2').select2()
+                $('.select2').select2();
 
                 //Initialize Select2 Elements
                 $('.select2bs4').select2({
                 theme: 'bootstrap4'
                 })
-            });
-        </script>
-        <script>
+            })
+        </script> -->
+        
+        <!-- <script>
             $(document).ready(function() {
                 $('#select2-dropdown').select2();
                 $('#select2-dropdown').on('change', function (e) {
@@ -188,8 +189,8 @@
                     @$this.set('docclass', data);
                 });
             });
-        </script>
-        <script>
+        </script> -->
+        <!-- <script>
             $(document).ready(function() {
                 $('#docclass2').select2();
                 $('#docclass2').on('change', function (e) {
@@ -197,7 +198,7 @@
                     @$this.set('docclass', data);
                 });
             });
-        </script>
+        </script> -->
         <!-- DataTables -->
         <script>
         $(function () {
@@ -283,6 +284,17 @@
         });
         </script>
         
+        @stack('ex-personnel-js')
+        @stack('in-personnel-js')
+        @stack('ex-doc_type-js')
+        @stack('in-doc_type-js')
+        @stack('ex-doc_class-js')
+        @stack('in-doc_class-js')
+        @stack('ex-mode_of_trans-js')
+        @stack('in-mode_of_trans-js')
+        @stack('s_profile-js')
+        @stack('received_by-js')
+        <!-- @stack('js') -->
         <livewire:scripts />
     </body>
 </html>

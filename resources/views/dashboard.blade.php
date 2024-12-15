@@ -26,15 +26,15 @@
           <div class="container-fluid">
             <div class="row">
 
-            <div class="col-12">
-              <div class="alert alert-info alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-info"></i> Important Reminder</h5>
-                Please check your &nbsp <b>ARTA Email Account &nbsp > Junk Email folder</b> &nbsp regularly. Thank you.
+              <div class="col-12">
+                <div class="alert alert-info alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-info"></i> Important Reminder</h5>
+                  Please check your &nbsp <b>ARTA Email Account &nbsp > Junk Email folder</b> &nbsp regularly. Thank you.
+                </div>
               </div>
-            </div>
 
-              @unlessrole('SuperAdmin|Admin|User|Director|ODG/ODDG')
+              @unlessrole('SuperAdmin|Admin|User|Head|Director')
                 <div class="col-12">
                   <div class="alert alert-info alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -67,7 +67,7 @@
                       <div class="row">
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-primary elevation-1">
+                            <span class="info-box-icon bg-danger elevation-1">
                               <a href="{{ url('files/n/external')}}"><i class="fas fa-folder-plus"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -84,7 +84,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-danger elevation-1">
+                            <span class="info-box-icon bg-primary elevation-1">
                               <a href="{{ url('files/p/external')}}"><i class="fas fa-spinner"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -167,7 +167,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-primary elevation-1">
+                            <span class="info-box-icon bg-danger elevation-1">
                               <a href="{{ url('files/n/internal')}}"><i class="fas fa-folder-plus"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -184,7 +184,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-danger elevation-1">
+                            <span class="info-box-icon bg-primary elevation-1">
                               <a href="{{ url('files/p/internal')}}"><i class="fas fa-spinner"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -304,12 +304,75 @@
               @endcanany
 
               @can('department-status')
+                <!-- Overall External Documents -->
+                <div class="col-lg-6 col-sm-12 col-md-12">
+                  <!-- Default box -->
+                  <div class="card card-outline">
+                    <div class="card-header">
+                      <h3 class="card-title">Overall External Documents</h3>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-md-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-primary"><i class="far fa-folder-open"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Open</span>
+                              <h3 class="info-box-number">{{$allextopen}}</h3>
+                            </div>
+                              
+                            <span class="info-box-icon bg-warning"><i class="far fa-folder"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Closed</span>
+                              <h3 class="info-box-number">{{$allextclosed}}</h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Overall Internal Documents -->
+                <div class="col-lg-6 col-sm-12 col-md-12">
+                  <!-- Default box -->
+                  <div class="card card-outline">
+                    <div class="card-header">
+                      <h3 class="card-title">Overall Internal Documents</h3>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-md-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-primary"><i class="far fa-folder-open"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Open</span>
+                              <h3 class="info-box-number">{{$allintopen}}</h3>
+                            </div>
+                            
+                            <span class="info-box-icon bg-warning"><i class="far fa-folder"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Closed</span>
+                              <h3 class="info-box-number">{{$allintclosed}}</h3>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
                 <!-- Charts -->
                 <div class="col-lg-6 col-sm-12 col-md-12">
                   <!-- Default box -->
                   <div class="card card-outline">
                     <div class="card-header">
-                      <h3 class="card-title">External Status<span class="ml-2" style="font-size:15px;color:#737373;">Department</span></h3>
+                      <h3 class="card-title">External Status<span class="ml-2" style="font-size:15px;color:#737373;">Head Office</span></h3>
 
                       <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -340,7 +403,7 @@
                   <!-- Default box -->
                   <div class="card card-outline">
                     <div class="card-header">
-                      <h3 class="card-title">Internal Status<span class="ml-2" style="font-size:15px;color:#737373;">Department</span></h3>
+                      <h3 class="card-title">Internal Status<span class="ml-2" style="font-size:15px;color:#737373;">Head Office</span></h3>
 
                       <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -495,209 +558,6 @@
                 </div>
               @endcan
 
-              @can('department-status')
-                <!-- External Assigned Documents -->
-                <div class="col-lg-6 col-sm-12 col-md-12">
-                  <!-- Default box -->
-                  <div class="card card-outline">
-                    <div class="card-header">
-                      <h3 class="card-title">Overall External<span class="ml-2" style="font-size:15px;color:#737373;">Route Documents</span></h3>
-
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                          <!--<button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                          </button>-->
-                        </div>
-                      </div>
-
-                      <div class="card-body">
-                        <!-- Small boxes (Stat box) -->
-                        <div class="row">
-                          <div class="col-lg-6 col-sm-12 col-md-12">
-                            <div class="info-box">
-                              <span class="info-box-icon bg-secondary elevation-1">
-                                <i class="fas fa-folder-plus"></i></a>
-                              </span>
-                                <div class="info-box-content">
-                                  <span class="info-box-text">New</span>
-                                  <h3 class="info-box-number">
-                                    {{ $allextcounts }}
-                                  </h3>
-                                </div>
-                              <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                          </div>
-                          <!-- /.col -->
-
-                          <div class="col-lg-6 col-sm-12 col-md-12">
-                            <div class="info-box">
-                              <span class="info-box-icon bg-secondary elevation-1">
-                                <i class="fas fa-spinner"></i></a>
-                              </span>
-                                <div class="info-box-content">
-                                  <span class="info-box-text">In-progress</span>
-                                  <h3 class="info-box-number">
-                                    {{ $allextprocounts }}
-                                  </h3>
-                                </div>
-                              <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                          </div>
-                            <!-- /.col -->
-                        </div>
-
-                        <div class="row">
-                          <div class="col-lg-6 col-sm-12 col-md-12">
-                            <div class="info-box">
-                              <span class="info-box-icon bg-secondary elevation-1">
-                                <i class="fas fa-folder"></i></a>
-                              </span>
-                                <div class="info-box-content">
-                                  <span class="info-box-text">Hold</span>
-                                  <h3 class="info-box-number">
-                                    {{ $allextholdcounts }}
-                                  </h3>
-                                </div>
-                              <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                          </div>
-                          <!-- /.col -->
-
-                            <div class="col-lg-6 col-sm-12 col-md-12">
-                              <div class="info-box">
-                                <span class="info-box-icon bg-secondary elevation-1">
-                                  <i class="fas fa-folder-minus"></i></a>
-                                </span>
-                                  <div class="info-box-content">
-                                    <span class="info-box-text">Done</span>
-                                    <h3 class="info-box-number">
-                                      {{ $allextdonecounts }}
-                                    </h3>
-                                  </div>
-                                <!-- /.info-box-content -->
-                              </div>
-                              <!-- /.info-box -->
-                            </div>
-                            <!-- /.col -->
-
-                        </div>
-                        <!-- ./row -->
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                  </div>
-                  <!-- /.col -->
-
-                  <!-- External Assigned Documents -->
-                  <div class="col-lg-6 col-sm-12 col-md-12">
-                    <!-- Default box -->
-                    <div class="card card-outline">
-                      <div class="card-header">
-                        <h3 class="card-title">Overall Internal<span class="ml-2" style="font-size:15px;color:#737373;">Route Documents</span></h3>
-
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                          <!--<button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                          </button>-->
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                      <!-- Small boxes (Stat box) -->
-                      <div class="row">
-                        <div class="col-lg-6 col-sm-12 col-md-12">
-                          <div class="info-box">
-                            <span class="info-box-icon bg-secondary elevation-1">
-                              <i class="fas fa-folder-plus"></i></a>
-                            </span>
-                              <div class="info-box-content">
-                                <span class="info-box-text">New</span>
-                                <h3 class="info-box-number">
-                                  {{ $allintcounts }}
-                                </h3>
-                              </div>
-                            <!-- /.info-box-content -->
-                          </div>
-                          <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-
-                        <div class="col-lg-6 col-sm-12 col-md-12">
-                          <div class="info-box">
-                            <span class="info-box-icon bg-secondary elevation-1">
-                              <i class="fas fa-spinner"></i></a>
-                            </span>
-                              <div class="info-box-content">
-                                <span class="info-box-text">In-progress</span>
-                                <h3 class="info-box-number">
-                                  {{ $allintprocounts }}
-                                </h3>
-                              </div>
-                            <!-- /.info-box-content -->
-                          </div>
-                          <!-- /.info-box -->
-                        </div>
-                          <!-- /.col -->
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-6 col-sm-12 col-md-12">
-                          <div class="info-box">
-                            <span class="info-box-icon bg-secondary elevation-1">
-                              <i class="fas fa-folder"></i></a>
-                            </span>
-                              <div class="info-box-content">
-                                <span class="info-box-text">Hold</span>
-                                <h3 class="info-box-number">
-                                  {{ $allintholdcounts }}
-                                </h3>
-                              </div>
-                            <!-- /.info-box-content -->
-                          </div>
-                          <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-
-                        <div class="col-lg-6 col-sm-12 col-md-12">
-                          <div class="info-box">
-                            <span class="info-box-icon bg-secondary elevation-1">
-                              <i class="fas fa-folder-minus"></i></a>
-                            </span>
-                              <div class="info-box-content">
-                                <span class="info-box-text">Done</span>
-                                <h3 class="info-box-number">
-                                  {{ $allintdonecounts }}
-                                </h3>
-                              </div>
-                            <!-- /.info-box-content -->
-                          </div>
-                          <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-
-                      </div>
-                      <!-- ./row -->
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-                <!-- /.col -->
-              @endcan
-              
-            </div>
-            <!-- /.row -->
-          </div>
         </section>
         <!-- /.main-content -->
         

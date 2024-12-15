@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">DTS No. {{ $externals->dts }}{{ $externals->id }}</span></h5>
+                        <h5 class="mr-0">Document Profile <span class="ml-2" style="font-size:18px;color:#737373;">eDMS No. {{ $externals->dts }}{{ $externals->id }}</span></h5>
                     </div><!-- /.col -->
 
                     <div class="col-sm-4" >
@@ -54,16 +54,17 @@
                             </ul>
                         </div>
 
-                        <!-- /.card-header -->
+                        <!-- Document Profile -->
                         <div class="card-body">
                             <div class="tab-content">
-                                <!-- Summary Start -->
+                                <!-- Overview tab -->
                                 <div class="active tab-pane" id="summary">
-                                    <!-- Post -->
                                     <div class="post">
 
                                         <div class="row">
+                                            <!-- left side -->
                                             <div class="col-lg-8 col-md-12 col-sm-12 table-responsive">
+                                                
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
                                                         <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
@@ -84,18 +85,20 @@
                                                                             Office of the Deputy Director General for Administration & Finance (ODDGAF)
                                                                         @elseif ($externals->department == '3')
                                                                             Office of the Deputy Director General for Legal (ODDGL)
-                                                                        @else ($externals->department == '4')
+                                                                        @elseif ($externals->department == '4')
                                                                             Office of the Deputy Director General for Operations (ODDGO)
+                                                                        @else ($externals->department == '5')
+                                                                            All Offices
                                                                     @endif <br />
                                                                 @endif
                                                                     
                                                                 @if($externals->office > 0)
                                                                     @if ($externals->office == '1')
-                                                                        ODG - Personnel
+                                                                            ODG
                                                                         @elseif ($externals->office == '2')
-                                                                            Public Relations Unit (PRU)
+                                                                            Information and Public Relations Division (IPRD)
                                                                         @elseif ($externals->office == '3')
-                                                                            ODDGAF - Personnel
+                                                                            ODDGAF
                                                                         @elseif ($externals->office == '4')
                                                                             Finance and Administrative Office (FAO)
                                                                         @elseif ($externals->office == '5')
@@ -103,13 +106,13 @@
                                                                         @elseif ($externals->office == '6')
                                                                             Planning Unit (PU)
                                                                         @elseif ($externals->office == '7')
-                                                                            ODDGL - Personnel
+                                                                            ODDGL
                                                                         @elseif ($externals->office == '8')
                                                                             Investigation, Enforcement and Litigation Office (IELO)
                                                                         @elseif ($externals->office == '9')
                                                                             Legal and Public Assistance Office (LPAO)
                                                                         @elseif ($externals->office == '10')
-                                                                            ODDGO - Personnel
+                                                                            ODDGO
                                                                         @elseif ($externals->office == '11')
                                                                             Better Regulations Office (BRO)
                                                                         @else ($externals->office == '12')
@@ -125,10 +128,6 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Title</th>
-                                                        <td>{{ $externals->title }}</td>
-                                                    </tr>
-                                                    <tr>
                                                         <th>Subject</th>
                                                         <td>{{ $externals->subject }}</td>
                                                     </tr>
@@ -141,6 +140,7 @@
                                                         <td>{{ $externals->doc_type }}</td>
                                                     </tr>
                                                 </table>
+
                                                 <table class="table table-bordered table-striped">
                                                     <tr>
                                                         <td colspan="2" style="background:#E9ECEF;color:#6c757d;">
@@ -187,8 +187,22 @@
                                                         <th>Remarks</th>
                                                         <td height="100px">{{ $externals->comment }}</td>
                                                     </tr>
+                                                    <!-- <tr>
+                                                        <th>Eloquent Relationship</th>
+                                                        <td height="100px">
+                                                            @forelse ($externals->exRoute as $exRoute)
+                                                                <b>{{ $exRoute['subject'] }}</b>
+
+                                                                @empty
+
+                                                                None.
+
+                                                            @endforelse
+
+                                                            
+                                                        </td>
+                                                    </tr> -->
                                                 </table>
-                                                
                                             </div>
 
                                             <!-- Modal for File upload
@@ -204,6 +218,7 @@
                                                 </div>
                                             </div> -->
 
+                                            <!-- right side -->
                                             <div class="col-lg-4 col-md-12 col-sm-12 table-responsive">
                                                 <form action="{{ route('ev.update',$externals->id) }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
@@ -238,7 +253,8 @@
                                                             @endif
                                                             @if ($externals->status <> 'Closed')
                                                                 <td style="width:40%;">
-                                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-save mr-2"></i> Save</button>
+                                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exdocstatusSave" data-whatever="@getbootstrap"><i class="fas fa-save mr-2"></i> Save</button>
+                                                                    <!-- <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-save mr-2"></i> Save</button> -->
                                                                 </td>
                                                                 @else
                                                                 <td style="width:40%;">
@@ -246,8 +262,31 @@
                                                                 </td>
                                                             @endif
                                                         </tr>
+
+                                                        <!-- Modal for Doc Status Save Button -->
+                                                        <div class="modal fade" id="exdocstatusSave" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header bg-danger">
+                                                                        <h5 class="modal-title" id="ModalLabel">Document Status</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Do you want to save this status?</p>
+                                                                        <h6 class="mt-3"><i class="fas fa-exclamation-circle"></i> Closing this document is not reversible.</h6>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary btn-sm close-btn float-right" data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-danger btn-sm"> Confirm</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         
                                                     </table>
+
                                                 </form>
 
                                                 <table class="table table-bordered table-striped">
@@ -274,40 +313,38 @@
                                                     </tr>
                                                 </table>
 
-                                                <!-- <a href="/files/ev/qr-code/{{ $externals->id }}" class="edit btn btn-primary"><i class="fas fa-qrcode"></i> Generate QR Code</i></a> -->
                                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#QRModal" data-whatever="@getbootstrap"><i class="fas fa-qrcode"></i> Generate QR Code</button>
-                                                
+                                                <!-- <a href="/files/ev/qr-code/{{ $externals->id }}" class="edit btn btn-primary"><i class="fas fa-qrcode"></i> Generate QR Code</i></a> -->
                                             </div>
                                             
                                         </div>
-
                                     </div>
-                                    <!-- /.post -->
                                 </div>
-                                <!-- /.Summary-tab-pane -->
 
-                                <!-- Route Start -->
+                                <!-- Route History Tab -->
                                 <div class="tab-pane" id="route">
                                     @include('livewire.files.forward.exroute.show')
                                 </div>
-                                <!-- /.Route-tab-pane -->
 
                             </div>
-                            <!-- /.tab-content -->
                         </div>
-                        <!-- /.card-body -->
+
+                        <!-- Footer buttons -->
                         <div class="card-footer">
                             <button type="button" class="btn btn-secondary btn-sm" onclick="goBack()">Back</button>
                             <!-- <a href="/files/ev/edit/{{ $externals->id }}" class="edit btn btn-primary" title="Edit"><i class="fas fa-edit"></i> Edit</i></a> -->
                             @if ($externals->status <> 'Closed')
                                     @if(Auth::check() && (Auth::user()->name == $externals->created_by))
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-share-square"></i> Add Route</button>
+                                        @if(count($exroute) > 0)
+                                            <button type="button" class="btn btn-secondary btn-sm" disabled><i class="fas fa-share-square"></i> Add Route</button>
+                                            @else <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-share-square"></i> Add Route</button>
+                                        @endif
                                         @else <!-- <button type="button" class="btn btn-secondary btn-sm float-right" disabled><i class="fas fa-edit"></i> Update</button> -->
                                     @endif
                                 @else <button type="button" class="btn btn-secondary btn-sm" disabled><i class="fas fa-share-square"></i> Add Route</button>
                             @endif
                             
-                            <div  class="float-right">
+                            <!-- <div  class="float-right">
                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle float-right" data-toggle="dropdown">
                                     <i class="fas fa-print"></i> Print
                                 </button>
@@ -315,14 +352,15 @@
                                     <li class="dropdown-item"><a href="/files/ev/print/{{ $externals->id }}" class="btnprn btn">Overview</a></li>
                                     <li class="dropdown-item"><a href="/files/forward/exroute/print/{{ $externals->id }}" class="btnprn btn">Route History</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
 
                             <div class="float-right mr-1">
                                 <a href="/files/ev/pdf/{{ $externals->id }}" class="edit btn btn-primary btn-sm" title="PDF"><i class="fas fa-file-download"></i> Export to PDF</a>
                             </div>
 
                         </div>
-                        <!-- Modal for Forward To -->
+
+                        <!-- Modal for Add Route -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">

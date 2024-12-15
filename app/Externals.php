@@ -19,6 +19,7 @@ class Externals extends Model
     protected $fillable = [
         'id',
         'dts',
+        'ex_route_id',
         'status',
         'department',
         'office',
@@ -54,6 +55,8 @@ class Externals extends Model
 
     protected $casts = [
         'date' => 'datetime',
+        'department' => 'array',
+        'office' => 'array',
     ];
 
     // public static function boot()
@@ -67,8 +70,9 @@ class Externals extends Model
     //     });
     // }
 
-    public function department()
+    //has many ex route table
+    public function exRoute()
     {
-        return $this->belongsTo(Department::class, 'foreign_key');
+        return $this->hasMany(ExRoute::class);
     }
 }

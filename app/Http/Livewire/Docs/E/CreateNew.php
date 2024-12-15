@@ -26,11 +26,11 @@ class CreateNew extends Component
 
     public function mount()
     {
-        $this->departments = Department::all();
+        $this->departments = Department::orderBy('id')->get();
         $this->offices = collect();
         $this->div_units = collect();
 
-        $this->personnels = User::orderBy('div_unit')->get();
+        $this->personnels = User::orderBy('name')->get();
     }
 
     public function render()
@@ -41,14 +41,14 @@ class CreateNew extends Component
     public function updatedSelectedDepartment($departments)
     {
         if (!is_null($departments)) {
-            $this->offices = Office::where('department_id', $departments)->orderBy('name')->get();
+            $this->offices = Office::where('department_id', $departments)->orderBy('id')->get();
         }
     }
 
     public function updatedSelectedOffice($offices)
     {
         if (!is_null($offices)) {
-            $this->div_units = Div_unit::where('office_id', $offices)->orderBy('name')->get();
+            $this->div_units = Div_unit::where('office_id', $offices)->orderBy('id')->get();
         }
     }
 
@@ -58,46 +58,60 @@ class CreateNew extends Component
     ];
 
     public $docclass = [
-        'Complaints',
+        'Administrative Order',
+        'Administrative Circular',
+        'Advisory',
+        'Circular',
+        'Complaint',
         'Confidential',
         'Department Order',
-        'E-mail',
-        'Forms',
+        'Form',
         'Invitation',
         'Joint Memorandum Circular',
         'Letter',
         'Magazine',
         'Memorandum Circular',
+        'Memorandum of Agreement',
+        'Memorandum of Understanding',
+        'Memorandum Order',
         'News Print',
         'Office Order',
+        'Ordinance',
         'Payable',
         'Payroll',
         'Procurement',
+        'Project Procurement Management Plan',
+        'Regulation',
+        'Report',
         'Restricted',
         'Sealed',
-        'Unclassified'
+        'Travel Order',
+        'Unclassified',
+        'Work and Financial Plan'
     ];
 
     public $modeoftrans = [
         'Courier',
-        'E-mail',
-        'Messenger',
-        'Personal / Walk-in',
+        'Email',
+        'In person',
         'PhilPost',
-        'Registered',
-        'Snail Mail'
+        'Social Media',
+        'Website'
     ];
 
     public $sprofile = [
         'Government-Owned and Controlled Corporation (GOCC)',
         'Local Government Unit (LGU)',
         'National Government Agency (NGA)',
-        'Private'
+        'General Public',
+        'Private Sector',
+        'State Universities and Colleges (SUC)',
+        'Water District (WD)'
     ];
 
     use WithFileUploads;
 
-    public $dts = 'EX2022-000';
+    public $dts = 'EX2025-01-000';
     public $department;
     public $office;
     public $div_unit;
@@ -126,18 +140,18 @@ class CreateNew extends Component
     {
         $data = $this->validate([
             'dts' => '',
-            'department' => 'required',
+            'department' => '',
             'office' => '',
             'div_unit' => '',
-            'personnel' => 'required',
+            'personnel' => '',
             'doc_class' => 'required',
             'doc_type' => 'required',
-            'title' => 'required',
+            'title' => '',
             'subject' => 'required',
-            'mode_of_trans' => '',
-            's_profile' => '',
+            'mode_of_trans' => 'required',
+            's_profile' => 'required',
             's_name' => 'required',
-            's_address' => 'required',
+            's_address' => '',
             's_email' => '',
             's_contact' => '',
             'received_by' => 'required',

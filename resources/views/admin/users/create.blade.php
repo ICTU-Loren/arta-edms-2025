@@ -6,11 +6,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="m-1">Create New User</h4>
-                    </div>
-                    <!-- /.col -->
+                <div class="row mb-2">
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <h5 class="mr-0">Create New User</h5>
+                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
@@ -43,13 +42,13 @@
                                     <div class="form-group col-md-6">
                                         <div class="form-group">
                                             <strong>Name</strong>
-                                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                                            {!! Form::text('name', null, array('placeholder' => '','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="form-group">
                                             <strong>Email Address</strong>
-                                            {!! Form::text('email', null, array('placeholder' => 'Email Address','class' => 'form-control')) !!}
+                                            {!! Form::text('email', null, array('placeholder' => '','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -57,13 +56,13 @@
                                     <div class="form-group col-md-6">
                                         <div class="form-group">
                                             <strong>Password</strong>
-                                            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                                            {!! Form::password('password', array('placeholder' => '','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="form-group">
                                             <strong>Confirm Password</strong>
-                                            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                                            {!! Form::password('confirm-password', array('placeholder' => '','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +85,7 @@
                                             <select name="office" id="office" class="form-control">
                                                 <option value="-" selected>-</option>
                                                 <option value="ODG - Personnel">ODG - Personnel</option>
-                                                <option value="Public Relations Unit (PRU)">Public Relations Unit (PRU)</option>
+                                                <option value="Information and Public Relations Division (IPRD)">Information and Public Relations Division (IPRD)</option>
                                                 <option value="none" disabled>----</option>
                                                 <option value="ODDGAF - Personnel">ODDGAF - Personnel</option>
                                                 <option value="Finance and Administrative Office (FAO)">Finance and Administrative Office (FAO)</option>
@@ -105,51 +104,66 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <div class="form-group">
-                                            <label>Director/Division/Personnel</label>
+                                            <label>Director/Division/Designation</label>
                                             <select name="div_unit" id="div_unit" class="form-control">
                                                 <option value="-" selected>-</option>
-                                                <option value="Head Executive Assistant (HEA)">ODG - Head Executive Assistant (HEA)</option>
-                                                <option value="Executive Assistant (EA)">ODG - Executive Assistant (EA)</option>
-                                                <option value="Administrative Officer">ODG - Administrative Officer</option>
-                                                <option value="PRU - Personnel">PRU - Personnel</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="Executive Assistant (EA)">ODDGAF - Executive Assistant (EA)</option> 
-                                                <option value="Administrative Officer">ODDGAF - Administrative Officer</option>
-                                                <option value="Director">FAO - Director</option>
-                                                <option value="Administrative Officer">FAO - Administrative Officer</option>
-                                                <option value="Finance Division">Finance Division</option>
-                                                <option value="General Services Division (GSD)">General Services Division (GSD)</option>
-                                                <option value="Human Resource Development Division (HRDD)">Human Resource Development Division (HRDD)</option>
-                                                <option value="ICTU - Personnel">ICTU - Personnel</option>
-                                                <option value="PU - Personnel">PU - Personnel</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="Executive Assistant (EA)">ODDGL - Executive Assistant (EA)</option>
-                                                <option value="Administrative Officer">ODDGL - Administrative Officer</option>
-                                                <option value="Director">IELO - Director</option> 
-                                                <option value="Administrative Officer">IELO - Administrative Officer</option> 
-                                                <option value="Investigation and Enforcement Division (IED)">Investigation and Enforcement Division (IED)</option> 
-                                                <option value="Litigation Division">Litigation Division</option>
-                                                <option value="Director">LPAO - Director</option> 
-                                                <option value="Administrative Officer">LPAO - Administrative Officer</option> 
-                                                <option value="Legal Division">Legal Division</option> 
+                                                <option value="none" disabled>----ODG----</option>
+                                                <option value="Head Executive Assistant (HEA)">Head Executive Assistant (HEA)</option>
+                                                <option value="Executive Assistant (EA)">Executive Assistant (EA)</option>
+                                                <option value="Administrative Assistant (AA)">Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">Program Officer (PO)</option>
+                                                <option value="Information Officer (IO)">IPRD - Information Officer (IO)</option>
+                                                <option value="Program Officer (PO)">IPRD - Program Officer (PO)</option>
+
+                                                <option value="none" disabled>----ODDGAF----</option>
+                                                <option value="Executive Assistant (EA)">Executive Assistant (EA)</option> 
+                                                <option value="Administrative Assistant (AA)">Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">Program Officer (PO)</option>
+                                                <option value="Office of the Director (FAO-OD)">FAO-OD - Office of the Director</option>
+                                                <option value="Administrative Officer (AA)">FAO-OD - Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">FAO-OD - Program Officer (PO)</option>
+                                                <option value="Finance Division (FD)">FAO - Finance Division (FD)</option>
+                                                <option value="General Services Division (GSD)">FAO - General Services Division (GSD)</option>
+                                                <option value="Human Resource Development Division (HRDD)"> FAO - Human Resource Development Division (HRDD)</option>
+                                                <option value="Information and Technology Officer (ITO)">ICTU - Information and Technology Officer (ITO)</option>
+                                                <option value="Program Officer (PO)">ICTU - Program Officer (PO)</option>
+                                                <option value="Planning Officer (PlanOff)">PU - Planning Officer (PlanOff)</option>
+
+                                                <option value="none" disabled>----ODDGL----</option>
+                                                <option value="Executive Assistant (EA)">Executive Assistant (EA)</option> 
+                                                <option value="Administrative Assistant (AA)">Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">Program Officer (PO)</option>
+                                                <option value="Office of the Director (IELO-OD)">IELO-OD - Office of the Director</option>
+                                                <option value="Administrative Officer (AA)">IELO-OD - Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">IELO-OD - Program Officer (PO)</option>
+                                                <option value="Investigation and Enforcement Division (IED)">IELO - Investigation and Enforcement Division (IED)</option> 
+                                                <option value="Litigation Division (LitDv)">IELO - Litigation Division (LitDiv)</option>
+                                                <option value="Office of the Director (LPAO-OD)">LPAO-OD - Office of the Director</option>
+                                                <option value="Administrative Officer (AA)">LPAO-OD - Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">LPAO-OD - Program Officer (PO)</option>
+                                                <option value="Legal Division (LegDiv)">Legal Division (LegDiv)</option> 
                                                 <option value="Public Assistance Division (PAD)">Public Assistance Division (PAD)</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="Executive Assistant (EA)">ODDGO - Executive Assistant (EA)</option>
-                                                <option value="Administrative Officer">ODDGO - Administrative Officer</option>
-                                                <option value="Director">BRO - Director</option>
-                                                <option value="Administrative Officer">BRO - Administrative Officer</option>
-                                                <option value="Better Regulation Division A (BRD A)">Better Regulation Division A (BRD A)</option>
-                                                <option value="Better Regulation Division B (BRD B)">Better Regulation Division B (BRD B)</option>
-                                                <option value="Better Regulation Division C (BRD C)">Better Regulation Division C (BRD C)</option>
-                                                <option value="Better Regulation Division D (BRD D)">Better Regulation Division D (BRD D)</option>
-                                                <option value="Doing Business Division (DBD)">Doing Business Division (DBD)</option>
-                                                <option value="Regulatory Management and Training Division (RMTD)">Regulatory Management and Training Division (RMTD)</option>
-                                                <option value="Director">CMEO - Director</option>
-                                                <option value="Administrative Officer">CMEO - Administrative Officer</option>
-                                                <option value="Compliance Monitoring and Evaluation Division A (CMED A)">Compliance Monitoring and Evaluation Division A (CMED A)</option>
-                                                <option value="Compliance Monitoring and Evaluation Division B (CMED B)">Compliance Monitoring and Evaluation Division B (CMED B)</option>
-                                                <option value="Compliance Monitoring and Evaluation Division C (CMED C)">Compliance Monitoring and Evaluation Division C (CMED C)</option>
-                                                <option value="Compliance Monitoring and Evaluation Division D (CMED D)">Compliance Monitoring and Evaluation Division D (CMED D)</option>
+
+                                                <option value="none" disabled>----ODDGO----</option>
+                                                <option value="Executive Assistant (EA)">Executive Assistant (EA)</option>
+                                                <option value="Administrative Assistant (AA)">Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">Program Officer (PO)</option>
+                                                <option value="Office of the Director (BRO-OD)">BRO-OD - Office of the Director</option>
+                                                <option value="Administrative Officer (AA)">BRO-OD - Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">BRO-OD - Program Officer (PO)</option>
+                                                <option value="Sectoral Division A (BRO A)">BRO - Sectoral Division A (BRO A)</option>
+                                                <option value="Sectoral Division B (BRO B)">BRO - Sectoral Division B (BRO B)</option>
+                                                <option value="Sectoral Division C (BRO C)">BRO - Sectoral Division C (BRO C)</option>
+                                                <option value="Sectoral Division D (BRO D)">BRO - Sectoral Division D (BRO D)</option>
+                                                <option value="Doing Business Division (DBD)">BRO - Doing Business Division (DBD)</option>
+                                                <option value="Regulatory Management and Training Division (RMTD)">BRO - Regulatory Management and Training Division (RMTD)</option>
+                                                <option value="Office of the Director (CMEO-OD)">CMEO-OD - Office of the Director</option>
+                                                <option value="Administrative Officer (AA)">CMEO-OD - Administrative Assistant (AA)</option>
+                                                <option value="Program Officer (PO)">CMEO-OD - Program Officer (PO)</option>
+                                                <option value="Division A (CMED A)">CMEO - Division A (CMEO A)</option>
+                                                <option value="Division B (CMED B)">CMEO - Division B (CMEO B)</option>
+                                                <option value="Division C (CMED C)">CMEO - Division C (CMEO C)</option>
+                                                <option value="Division D (CMED D)">CMEO - Division D (CMEO D)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -174,11 +188,11 @@
                                             <select name="office_id" id="office_id" class="form-control">
                                                 <option value="-" selected>-</option>
                                                 <option value="1">ODG - Personnel</option>
-                                                <option value="2">Public Relations Unit (PRU)</option>
+                                                <option value="2">Information and Public Relations Division (IPRD)</option>
                                                 <option value="none" disabled>----</option>
                                                 <option value="3">ODDGAF - Personnel</option>
                                                 <option value="4">Finance and Administrative Office (FAO)</option>
-                                                <option value="5">Information and Communications Technology Unit (ICTU))</option>
+                                                <option value="5">Information and Communications Technology Unit (ICTU)</option>
                                                 <option value="6">Planning Unit (PU)</option>
                                                 <option value="none" disabled>----</option>
                                                 <option value="7">ODDGL - Personnel</option>
@@ -196,48 +210,63 @@
                                             <label>Confirm Director/Division/Personnel</label>
                                             <select name="div_unit_id" id="div_unit_id" class="form-control">
                                                 <option value="-" selected>-</option>
-                                                <option value="1">ODG - Head Executive Assistant (HEA)</option>
-                                                <option value="2">ODG - Executive Assistant (EA)</option>
-                                                <option value="3">ODG - Administrative Officer</option>
-                                                <option value="4">PRU - Personnel</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="5">ODDGAF - Executive Assistant (EA)</option> 
-                                                <option value="6">ODDGAF - Administrative Officer</option>
-                                                <option value="7">FAO - Director</option>
-                                                <option value="8">FAO - Administrative Officer</option>
-                                                <option value="9">Finance Division</option>
-                                                <option value="10">General Services Division (GSD)</option>
-                                                <option value="11">Human Resource Development Division (HRDD)</option>
-                                                <option value="12">ICTU - Personnel</option>
-                                                <option value="13">PU - Personnel</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="14">ODDGL - Executive Assistant (EA)</option>
-                                                <option value="15">ODDGL - Administrative Officer</option>
-                                                <option value="16">IELO - Director</option> 
-                                                <option value="17">IELO - Administrative Officer</option> 
-                                                <option value="18">Investigation and Enforcement Division (IED)</option> 
-                                                <option value="19">Litigation Division</option>
-                                                <option value="20">LPAO - Director</option> 
-                                                <option value="21">LPAO - Administrative Officer</option> 
-                                                <option value="22">Legal Division</option> 
-                                                <option value="23">Public Assistance Division (PAD)</option>
-                                                <option value="none" disabled>----</option>
-                                                <option value="24">ODDGO - Executive Assistant (EA)</option>
-                                                <option value="25">ODDGO - Administrative Officer</option>
-                                                <option value="26">BRO - Director</option>
-                                                <option value="27">BRO - Administrative Officer</option>
-                                                <option value="28">Better Regulation Division A (BRD A)</option>
-                                                <option value="29">Better Regulation Division B (BRD B)</option>
-                                                <option value="30">Better Regulation Division C (BRD C)</option>
-                                                <option value="31">Better Regulation Division D (BRD D)</option>
-                                                <option value="32">Doing Business Division (DBD)</option>
-                                                <option value="33">Regulatory Management and Training Division (RMTD)</option>
-                                                <option value="34">CMEO - Director</option>
-                                                <option value="35">CMEO - Administrative Officer</option>
-                                                <option value="36">Compliance Monitoring and Evaluation Division A (CMED A)</option>
-                                                <option value="37">Compliance Monitoring and Evaluation Division B (CMED B)</option>
-                                                <option value="38">Compliance Monitoring and Evaluation Division C (CMED C)</option>
-                                                <option value="39">Compliance Monitoring and Evaluation Division D (CMED D)</option>
+                                                <option value="none" disabled>--ODG--</option>
+                                                <option value="1">Head Executive Assistant (HEA)</option>
+                                                <option value="2">Executive Assistant (EA)</option>
+                                                <option value="3">Administrative Assistant (AA)</option>
+                                                <option value="4">Program Officer (PO)</option>
+                                                <option value="5">IPRD - Information Officer (IO)</option>
+                                                <option value="6">IPRD - Program Officer (PO)</option>
+
+                                                <option value="none" disabled>----ODDGAF----</option>
+                                                <option value="7">Executive Assistant (EA)</option> 
+                                                <option value="8">Administrative Assistant (AA)</option>
+                                                <option value="9">Program Officer (PO)</option>
+                                                <option value="10">FAO-OD - Office of the Director</option>
+                                                <option value="11">FAO-OD - Administrative Assistant (AA)</option>
+                                                <option value="12">FAO-OD - Program Officer (PO)</option>
+                                                <option value="13">FAO - Finance Division (FD)</option>
+                                                <option value="14">FAO - General Services Division (GSD)</option>
+                                                <option value="15"> FAO - Human Resource Development Division (HRDD)</option>
+                                                <option value="16">ICTU - Information and Technology Officer (ITO)</option>
+                                                <option value="17">ICTU - Program Officer (PO)</option>
+                                                <option value="18">PU - Planning Officer (PlanOff)</option>
+
+                                                <option value="none" disabled>----ODDGL----</option>
+                                                <option value="19">Executive Assistant (EA)</option> 
+                                                <option value="20">Administrative Assistant (AA)</option>
+                                                <option value="21">Program Officer (PO)</option>
+                                                <option value="22">IELO-OD - Office of the Director</option>
+                                                <option value="23">IELO-OD - Administrative Assistant (AA)</option>
+                                                <option value="24">IELO-OD - Program Officer (PO)</option>
+                                                <option value="25">IELO - Investigation and Enforcement Division (IED)</option> 
+                                                <option value="26">IELO - Litigation Division (LitDiv)</option>
+                                                <option value="27">LPAO-OD - Office of the Director</option>
+                                                <option value="28">LPAO-OD - Administrative Assistant (AA)</option>
+                                                <option value="29">LPAO-OD - Program Officer (PO)</option>
+                                                <option value="30">Legal Division (LegDiv)</option> 
+                                                <option value="31">Public Assistance Division (PAD)</option>
+
+                                                <option value="none" disabled>----ODDGO----</option>
+                                                <option value="32">Executive Assistant (EA)</option>
+                                                <option value="33">Administrative Assistant (AA)</option>
+                                                <option value="34">Program Officer (PO)</option>
+                                                <option value="35">BRO-OD - Office of the Director</option>
+                                                <option value="36">BRO-OD - Administrative Assistant (AA)</option>
+                                                <option value="37">BRO-OD - Program Officer (PO)</option>
+                                                <option value="38">BRO - Sectoral Division A (BRO A)</option>
+                                                <option value="39">BRO - Sectoral Division B (BRO B)</option>
+                                                <option value="40">BRO - Sectoral Division C (BRO C)</option>
+                                                <option value="41">BRO - Sectoral Division D (BRO D)</option>
+                                                <option value="42">BRO - Doing Business Division (DBD)</option>
+                                                <option value="43">BRO - Regulatory Management and Training Division (RMTD)</option>
+                                                <option value="44">CMEO-OD - Office of the Director</option>
+                                                <option value="45">CMEO-OD - Administrative Assistant (AA)</option>
+                                                <option value="46">CMEO-OD - Program Officer (PO)</option>
+                                                <option value="47">CMEO - Division A (CMEO A)</option>
+                                                <option value="48">CMEO - Division B (CMEO B)</option>
+                                                <option value="49">CMEO - Division C (CMEO C)</option>
+                                                <option value="50">CMEO - Division D (CMEO D)</option>
                                             </select>
                                         </div>
                                     </div>

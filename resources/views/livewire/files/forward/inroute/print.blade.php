@@ -10,7 +10,7 @@
                         <h4 class="m-0">Print Preview</h4>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-secondary float-right" onclick="goBack()">Back</button>
+                        <!-- <button type="button" class="btn btn-secondary float-right" onclick="goBack()">Back</button> -->
                     </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -25,6 +25,7 @@
                 <div class="row">
 
                     <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-secondary mt-3" onclick="goBack()">Back</button>
                         <img src="{{ asset('/images/ARTA-OP.png') }}" style="top:-50px;width:250px;height:80px;float:right;margin-botton:30px;" alt="" title="">
                     </div>
 
@@ -35,7 +36,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tr>
-                                        <th width="25%">DTS No.</th>
+                                        <th width="25%">eDMS No.</th>
                                         <td>{{ $inroute->dts }}{{ $inroute->dts_no }}</td>
                                     </tr>
                                     <tr>
@@ -56,9 +57,9 @@
                                                                                 
                                             @if($inroute->office > 0)
                                                 @if ($inroute->office == '1')
-                                                    ODG - Personnel
+                                                        ODG - Personnel
                                                     @elseif ($inroute->office == '2')
-                                                        PRU
+                                                        IPRD
                                                     @elseif ($inroute->office == '3')
                                                         ODDGAF - Personnel
                                                     @elseif ($inroute->office == '4')
@@ -84,94 +85,120 @@
 
                                             @if($inroute->div_unit > 0)
                                                 @if ($inroute->div_unit == '1')
-                                                Head Executive Assistant (HEA)
-                                                @elseif ($inroute->div_unit == '2')
-                                                    Executive Assistant (EA)
-                                                @elseif ($inroute->div_unit == '3')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '4')
-                                                    PRU - Personnel
-                                                @elseif ($inroute->div_unit == '5')
-                                                    Executive Assistant (EA)
-                                                @elseif ($inroute->div_unit == '6')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '7')
-                                                    Director
-                                                @elseif ($inroute->div_unit == '8')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '9')
-                                                    Finance Division
-                                                @elseif ($inroute->div_unit == '10')
-                                                    General Services Division (GSD)
-                                                @elseif ($inroute->div_unit == '11')
-                                                    Human Resource Development Division (HRDD)
-                                                @elseif ($inroute->div_unit == '12')
-                                                    ICTU - Personnel
-                                                @elseif ($inroute->div_unit == '13')
-                                                    PU - Personnel
-                                                @elseif ($inroute->div_unit == '14')
-                                                    Executive Assistant (EA)
-                                                @elseif ($inroute->div_unit == '15')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '16')
-                                                    Director
-                                                @elseif ($inroute->div_unit == '17')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '18')
-                                                    Investigation and Enforcement Division (IED)
-                                                @elseif ($inroute->div_unit == '19')
-                                                    Litigation Division
-                                                @elseif ($inroute->div_unit == '20')
-                                                    Director
-                                                @elseif ($inroute->div_unit == '21')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '22')
-                                                    Legal Division
-                                                @elseif ($inroute->div_unit == '23')
-                                                    Public Assistance Division (PAD)
-                                                @elseif ($inroute->div_unit == '24')
-                                                    Executive Assistant (EA)
-                                                @elseif ($inroute->div_unit == '25')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '26')
-                                                    Director
-                                                @elseif ($inroute->div_unit == '27')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '28')
-                                                    Better Regulation Division A (BRD A)
-                                                @elseif ($inroute->div_unit == '29')
-                                                    Better Regulation Division B (BRD B)
-                                                @elseif ($inroute->div_unit == '30')
-                                                    Better Regulation Division C (BRD C)
-                                                @elseif ($inroute->div_unit == '31')
-                                                    Better Regulation Division D (BRD D)
-                                                @elseif ($inroute->div_unit == '32')
-                                                    Doing Business Division (DBD)
-                                                @elseif ($inroute->div_unit == '33')
-                                                    Regulatory Management and Training Division (RMTD)
-                                                @elseif ($inroute->div_unit == '34')
-                                                    Director
-                                                @elseif ($inroute->div_unit == '35')
-                                                    Administrative Officer
-                                                @elseif ($inroute->div_unit == '36')
-                                                    Compliance Monitoring and Evaluation Division A (CMED A)
-                                                @elseif ($inroute->div_unit == '37')
-                                                    Compliance Monitoring and Evaluation Division B (CMED B)
-                                                @elseif ($inroute->div_unit == '38')
-                                                    Compliance Monitoring and Evaluation Division C (CMED C)
-                                                @else ($inroute->div_unit == '39')
-                                                    Compliance Monitoring and Evaluation Division D (CMED D)
+                                                        HEA
+                                                    @elseif ($inroute->div_unit == '2')
+                                                        EA
+                                                    @elseif ($inroute->div_unit == '3')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '4')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '5')
+                                                        IO
+                                                    @elseif ($inroute->div_unit == '6')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '7')
+                                                        EA
+                                                    @elseif ($inroute->div_unit == '8')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '9')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '10')
+                                                        FAO-OD
+                                                    @elseif ($inroute->div_unit == '11')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '12')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '13')
+                                                        FD
+                                                    @elseif ($inroute->div_unit == '14')
+                                                        GSD
+                                                    @elseif ($inroute->div_unit == '15')
+                                                        HRDD
+                                                    @elseif ($inroute->div_unit == '16')
+                                                        ITO
+                                                    @elseif ($inroute->div_unit == '17')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '18')
+                                                        PlanOff
+                                                    @elseif ($inroute->div_unit == '19')
+                                                        EA
+                                                    @elseif ($inroute->div_unit == '20')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '21')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '22')
+                                                        IELO-OD
+                                                    @elseif ($inroute->div_unit == '23')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '24')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '25')
+                                                        IED
+                                                    @elseif ($inroute->div_unit == '26')
+                                                        LitDiv
+                                                    @elseif ($inroute->div_unit == '27')
+                                                        LPAO-OD
+                                                    @elseif ($inroute->div_unit == '28')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '29')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '30')
+                                                        LegDiv
+                                                    @elseif ($inroute->div_unit == '31')
+                                                        PAD
+                                                    @elseif ($inroute->div_unit == '32')
+                                                        EA
+                                                    @elseif ($inroute->div_unit == '33')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '34')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '35')
+                                                        BRO-OD
+                                                    @elseif ($inroute->div_unit == '36')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '37')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '38')
+                                                        BRO A
+                                                    @elseif ($inroute->div_unit == '39')
+                                                        BRO B
+                                                    @elseif ($inroute->div_unit == '40')
+                                                        BRO C
+                                                    @elseif ($inroute->div_unit == '41')
+                                                        BRO D
+                                                    @elseif ($inroute->div_unit == '42')
+                                                        DBD
+                                                    @elseif ($inroute->div_unit == '43')
+                                                        RMTD
+                                                    @elseif ($inroute->div_unit == '44')
+                                                        CMEO-OD
+                                                    @elseif ($inroute->div_unit == '45')
+                                                        AA
+                                                    @elseif ($inroute->div_unit == '46')
+                                                        PO
+                                                    @elseif ($inroute->div_unit == '47')
+                                                        CMEO A
+                                                    @elseif ($inroute->div_unit == '48')
+                                                        CMEO B
+                                                    @elseif ($inroute->div_unit == '49')
+                                                        CMEO C
+                                                    @else ($inroute->div_unit == '50')
+                                                        CMEO D
                                                 @endif
                                             @endif
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Action Required</th>
+                                        <th>Remarks / Instructions</th>
+                                        <td>{{ $inroute->note_comment_routed }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Action Requested</th>
                                         <td>{{ $inroute->action_req }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Due Date</th>
+                                        <th>Deadlinee</th>
                                         <td>{{ $inroute->due_date }}</td>
                                     </tr>
                                     <tr>
@@ -195,10 +222,6 @@
                                                     @else <i>private</i>
                                             @endif
                                         @endif</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Note / Comment</th>
-                                        <td>{{ $inroute->note_comment_routed }}</td>
                                     </tr>
                                 </table>
                             </div>

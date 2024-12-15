@@ -49,9 +49,9 @@
                             <tr>
                               <th hidden>ID</th>
                               <th width="8%">EDMS No.</th>
-                              <th width="15%">Addressed to</th>
-                              <th width="5%">Classification</th>
-                              <th width="20%">Title</th>
+                              <!-- <th width="15%">Addressed to</th> -->
+                              <th width="20%">Classification</th>
+                              <!-- <th width="20%">Title</th> -->
                               <th width="30%">Subject</th>
                               <th width="5%">Status</th>
                               <th width="5%">Action</th>
@@ -63,9 +63,9 @@
                             <tr>
                               <td hidden>{{ ++$i }}</td>
                               <td>{{ $externals->dts }}{{ $externals->id }}</td>
-                              <td>{{ $externals->personnel }}</td>
+                              <!-- <td>{{ $externals->personnel }}</td> -->
                               <td>{{ $externals->doc_class }}</td>
-                              <td>{{ $externals->title }}</td>
+                              <!-- <td>{{ $externals->title }}</td> -->
                               <td>{{ $externals->subject }}</td>
                               <td>
                                 @if ($externals->status == 'Open')

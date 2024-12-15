@@ -67,7 +67,7 @@
                       <div class="row">
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-primary elevation-1">
+                            <span class="info-box-icon bg-danger elevation-1">
                               <a href="{{ url('files/n/external')}}"><i class="fas fa-folder-plus"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -84,7 +84,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-danger elevation-1">
+                            <span class="info-box-icon bg-primary elevation-1">
                               <a href="{{ url('files/p/external')}}"><i class="fas fa-spinner"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -167,7 +167,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-primary elevation-1">
+                            <span class="info-box-icon bg-danger elevation-1">
                               <a href="{{ url('files/n/internal')}}"><i class="fas fa-folder-plus"></i></a>
                             </span>
                               <div class="info-box-content">
@@ -184,7 +184,7 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-12">
                           <div class="info-box">
-                            <span class="info-box-icon bg-danger elevation-1">
+                            <span class="info-box-icon bg-primary elevation-1">
                               <a href="{{ url('files/p/internal')}}"><i class="fas fa-spinner"></i></a>
                             </span>
                               <div class="info-box-content">

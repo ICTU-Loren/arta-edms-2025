@@ -5,4 +5,4 @@
     </svg>
 </a> -->
 
-<img src="{{ asset('/images/ARTA-OP.png') }}" alt="" style="width:317px;">
+<img src="{{ asset('/images/arta-bagong pilipinas.png') }}" alt="" style="width:450px;">

@@ -19,7 +19,7 @@
 
         <form method="POST" action="{{ route('login') }}">
             <div class="py-6" style="border-bottom: #D9D9D9 solid 1px;">
-                <h3 class="box-title text-center text-lg"><strong>Electronic Document Management System</strong></h3>
+                <h3 class="box-title text-center text-lg"><strong>Electronic - Document Management System</strong></h3>
             </div> 
 
             @csrf
